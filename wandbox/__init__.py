@@ -1,7 +1,7 @@
 __author__ = 'Takazumi Shirayanagi'
-__version__ = '0.3.2'
+__version__ = '0.3.3'
 
-__copyright__ = '2014-2016 %s ' % __author__
+__copyright__ = '2014-2017 %s ' % __author__
 __license__ = """
 The MIT License (MIT)
 
