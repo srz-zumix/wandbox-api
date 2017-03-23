@@ -5,7 +5,7 @@ f = open(os.path.join(os.path.dirname(__file__), 'README.md'))
 readme = f.read()
 f.close()
 
-VERSION = "0.3.2"
+VERSION = "0.3.3"
 
 setup(
 	name = "wandbox-api"
