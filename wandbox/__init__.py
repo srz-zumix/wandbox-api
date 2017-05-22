@@ -1,5 +1,5 @@
 __author__ = 'Takazumi Shirayanagi'
-__version__ = '0.3.4'
+__version__ = '0.3.5'
 
 __copyright__ = '2014-2017 %s ' % __author__
 __license__ = """
