@@ -26,7 +26,8 @@ class Wandbox:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        return True
+        self.reset()
+        return False
 
     @staticmethod
     def GetCompilerList():
