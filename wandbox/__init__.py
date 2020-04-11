@@ -1,7 +1,7 @@
 __author__ = 'Takazumi Shirayanagi'
 __version__ = '0.3.7'
 
-__copyright__ = '2014-2018 %s ' % __author__
+__copyright__ = '2014-2020 %s ' % __author__
 __license__ = """
 The MIT License (MIT)
 
@@ -27,4 +27,4 @@ SOFTWARE.
 """ % __copyright__
 
 
-from wandbox import Wandbox
+from .wandbox import Wandbox
