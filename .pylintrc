@@ -1,2 +1,3 @@
 disable=
-    W0702
+    W0702, # bare-except
+    R0201 # no-self-use

@@ -108,13 +108,11 @@ class Runner:
             self.switches = Runner.GetSwitches(self.compiler, self.retry, self.retry_wait)
         return self.switches
 
-    def build_options(self, user_options=[], disable_options=[], use_default=True):
+    def build_options(self, user_options=None, disable_options=None, use_default=True):
         options = []
         if use_default:
             switches = self.get_switches()
-            tmp = user_options
-            if not tmp:
-                tmp = []
+            tmp = [] if user_options is None else user_options
             for s in switches:
                 if s['type'] == 'select':
                     target = s['default']
@@ -128,11 +126,12 @@ class Runner:
                 elif s['type'] == 'single':
                     if s['default'] and (s['default'] in tmp):
                         options.append(s['name'])
-        else:
-            options = user_options
-        for dis in disable_options:
-            if dis in options:
-                options.remove(dis)
+        elif user_options:
+            options.extend(user_options)
+        if disable_options:
+            for dis in disable_options:
+                if dis in options:
+                    options.remove(dis)
         self.wandbox.options(','.join(options))
 
     def build_compiler_options(self, options):

@@ -11,8 +11,8 @@ import requests
 import json
 
 from time import sleep
-from requests.exceptions import HTTPError
-from requests.exceptions import ConnectionError
+from requests.exceptions import HTTPError as RHTTPError
+from requests.exceptions import ConnectionError as RConnectionError
 
 #
 #
@@ -153,7 +153,7 @@ class Wandbox:
     def Call(action, retries, retry_wait):
         try:
             return action()
-        except (HTTPError, ConnectionError) as e:
+        except (RHTTPError, RConnectionError) as e:
 
             def is_retry(e):
                 if e is None:
