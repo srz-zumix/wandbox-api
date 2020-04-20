@@ -148,13 +148,13 @@ class CLI:
             '-l',
             '--language',
             default=lang,
-            help=argparse.SUPPRESS
+            help=argparse.SUPPRESS if lang else 'specify language'
         )
         self.parser.add_argument(
             '-c',
             '--compiler',
             default=compiler,
-            help='specify compiler'
+            help=argparse.SUPPRESS if compiler else 'specify compiler'
         )
         self.parser.add_argument(
             '-x',
