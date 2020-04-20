@@ -1,5 +1,6 @@
 from .cli import CLI
 
+
 def main():
     cli = CLI(None)
     cli.exec()

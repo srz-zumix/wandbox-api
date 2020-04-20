@@ -1,5 +1,7 @@
 # Wandbox API for Python
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ff3eb34b617416c97f590b45b5e82fe)](https://app.codacy.com/manual/srz-zumix/wandbox-api?utm_source=github.com&utm_medium=referral&utm_content=srz-zumix/wandbox-api&utm_campaign=Badge_Grade_Settings)
+
 [Wandbox](http://melpon.org/wandbox/) is a social compilation service.  
 This project is a Pythonic binding to the Wandbox API, and CLI command.
 

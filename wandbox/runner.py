@@ -13,6 +13,7 @@ import codecs
 
 from .wandbox import Wandbox
 
+
 def text_transform(value):
     try:
         if isinstance(value, str):
@@ -22,6 +23,7 @@ def text_transform(value):
     except:
         pass
     return value
+
 
 class Runner:
     """wandbox Runner class"""
@@ -192,4 +194,4 @@ class Runner:
         file = self.file_open(filepath, 'r')
         code = file.read()
         file.close()
-        return { filename: code }
+        return {filename: code}
