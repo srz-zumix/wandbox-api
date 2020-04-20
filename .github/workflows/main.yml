@@ -1,0 +1,12 @@
+name: GitHub Actions
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+    - name: test
+      run: python setup.py test

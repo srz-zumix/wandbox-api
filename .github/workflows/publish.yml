@@ -1,0 +1,27 @@
+name: PyPI Publish
+on:
+  push:
+    tags:
+      - v.*
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Init .pypirc
+      env:
+        PYPI_USERNAME: __token__
+        PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        echo -e '[pypi]' >> ~/.pypirc
+        echo -e "username = ${PYPI_USERNAME}" >> ~/.pypirc
+        echo -e "password = ${PYPI_PASSWORD}" >> ~/.pypirc
+    - name: Publish
+      run: |
+        pip install twine
+        python setup.py publish

@@ -10,6 +10,9 @@ Wandbox API for Python
 import requests
 import json
 
+from time import sleep
+from requests.exceptions import HTTPError as RHTTPError
+from requests.exceptions import ConnectionError as RConnectionError
 
 #
 #
@@ -145,6 +148,33 @@ class Wandbox:
         reset parametes
         """
         self.parameter = {'code': ''}
+
+    @staticmethod
+    def Call(action, retries, retry_wait):
+        try:
+            return action()
+        except (RHTTPError, RConnectionError) as e:
+
+            def is_retry(e):
+                if e is None:
+                    return False
+                if e.response is None:
+                    return False
+                return e.response.status_code in [504]
+
+            retries -= 1
+            if is_retry(e) and retries > 0:
+                try:
+                    print(e.message)
+                except:
+                    pass
+                print('wait {0}sec...'.format(retry_wait))
+                sleep(retry_wait)
+                return Wandbox.Call(action, retries, retry_wait)
+            else:
+                raise
+        except:
+            raise
 
 
 if __name__ == '__main__':
