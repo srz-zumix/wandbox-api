@@ -87,9 +87,9 @@ class CLI:
                             print(self.format_default(default_option, indent))
                         for o in s['options']:
                             if (o['name'] == default_option) and ('name' in s):
-                                print(self.format_default(o['name'], indent+2))
+                                print(self.format_default(o['name'], indent + 2))
                             else:
-                                print(self.format_indent(o['name'], indent+2))
+                                print(self.format_indent(o['name'], indent + 2))
                     elif s['type'] == 'single':
                         if s['default']:
                             print(self.format_default(s['name'], indent))
@@ -212,29 +212,38 @@ class CLI:
         )
         subparser = self.parser.add_subparsers()
 
-        list_cmd = subparser.add_parser('list',
+        list_cmd = subparser.add_parser(
+            'list',
             description='show list api response',
-            help='show list api response. see `list -h`')
+            help='show list api response. see `list -h`'
+        )
         list_cmd.set_defaults(handler=self.command_list)
 
-        compiler_cmd = subparser.add_parser('compiler',
+        compiler_cmd = subparser.add_parser(
+            'compiler',
             description='show support compilers',
             help='show support compilers. see `compiler -h`')
         compiler_cmd.set_defaults(handler=self.command_compiler)
 
-        lang_cmd = subparser.add_parser('lang',
+        lang_cmd = subparser.add_parser(
+            'lang',
             description='show support languages',
-            help='show support languages. see `lang -h`')
+            help='show support languages. see `lang -h`'
+        )
         lang_cmd.set_defaults(handler=self.command_lang)
 
-        option_cmd = subparser.add_parser('option',
+        option_cmd = subparser.add_parser(
+            'option',
             description='show compiler options',
-            help='see `option -h`')
+            help='see `option -h`'
+        )
         option_cmd.set_defaults(handler=self.command_options)
 
-        permlink_cmd = subparser.add_parser('permlink',
+        permlink_cmd = subparser.add_parser(
+            'permlink',
             description='get permlink',
-            help='get permlink. see `permlink -h`')
+            help='get permlink. see `permlink -h`'
+        )
         permlink_cmd.set_defaults(handler=self.command_permlink)
         permlink_cmd.add_argument(
             'id',
@@ -242,10 +251,12 @@ class CLI:
             help='permlink id'
         )
 
-        passthrough_cmd = subparser.add_parser('run',
+        passthrough_cmd = subparser.add_parser(
+            'run',
             prefix_chars='+',
             description='build and run command',
-            help='build and run command. see `run -h`')
+            help='build and run command. see `run -h`'
+        )
         passthrough_cmd.set_defaults(handler=self.command_run)
         passthrough_cmd.add_argument(
             'compile_options',

@@ -1,3 +1,4 @@
 disable=
-    W0702, # bare-except
-    R0201 # no-self-use
+    W0702,  # bare-except
+    R0201,  # no-self-use
+    B110    # Test for a pass in the except block

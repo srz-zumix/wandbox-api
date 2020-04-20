@@ -4,6 +4,7 @@ import os
 from .cli import CLI
 from .runner import Runner
 
+
 class CxxRunner(Runner):
 
     EXPAND_INCLUDE_REGEX = re.compile(r'^\s*#\s*include\s*"(.*?)"')
@@ -79,10 +80,12 @@ class CxxCLI(CLI):
         return CxxRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
     def setup_runner(self, args, enable_options, disable_options, runner):
+
         def filterout_cppver(opt):
             tmp = list(filter(lambda s: s.find('c++') == -1, opt))
             tmp = list(filter(lambda s: s.find('gnu++') == -1, tmp))
             return tmp
+
         def check_option(args, name):
             if hasattr(args, name):
                 if getattr(args, name):
