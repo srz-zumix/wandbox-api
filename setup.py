@@ -11,7 +11,7 @@ for line in f:
     if '__version__ = ' in line:
         version_ = [x for x in re.split(r"[ =']", line) if x][1]
     elif '__author__ = ' in line:
-        author_ = [ x for x in re.split(r"[ =']", line) if x][1]
+        author_ = [x for x in re.split(r"[ =']", line) if x][1]
 f.close()
 
 setup(
