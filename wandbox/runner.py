@@ -7,16 +7,11 @@
 Wandbox runner for Python
 """
 
-import wandbox
-
-import argparse
 import sys
-import json
 import os
 import codecs
 
 from .wandbox import Wandbox
-from argparse import ArgumentParser
 
 def text_transform(value):
     try:

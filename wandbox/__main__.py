@@ -1,5 +1,3 @@
-import wandbox
-
 from .cli import CLI
 
 def main():

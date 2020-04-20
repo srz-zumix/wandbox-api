@@ -156,9 +156,9 @@ class Wandbox:
         except (HTTPError, ConnectionError) as e:
 
             def is_retry(e):
-                if e == None:
+                if e is None:
                     return False
-                if e.response == None:
+                if e.response is None:
                     return False
                 return e.response.status_code in [504]
 

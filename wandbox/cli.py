@@ -122,9 +122,9 @@ class CLI:
     def run(self, args, options):
         runner = self.get_runner(args, options)
         self.setup_runner(args, options, [], runner)
-        self.run_wtih_runner(args, runner)
+        self.run_with_runner(args, runner)
 
-    def run_wtih_runner(self, args, runner):
+    def run_with_runner(self, args, runner):
         if args.dryrun:
             runner.dump()
             sys.exit(0)
