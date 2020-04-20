@@ -53,8 +53,8 @@ class CLI:
             else:
                 print('{0}: {1}'.format(d['language'], d['name']))
 
-    def format_indent(self, str, indent=0):
-        return '{0}{1}'.format(' ' * indent, str)
+    def format_indent(self, value, indent=0):
+        return '{0}{1}'.format(' ' * indent, value)
 
     def format_default(self, name, indent=0):
         return '{0}{1} (default)'.format(' ' * indent, name)
