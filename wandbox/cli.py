@@ -15,6 +15,7 @@ import json
 
 from .wandbox import Wandbox
 from .runner import Runner
+from .__init__ import *
 from argparse import ArgumentParser
 
 
