@@ -128,7 +128,7 @@ class CLI:
         if args.dryrun:
             runner.dump()
             sys.exit(0)
-        r = runner.exec()
+        r = runner.run()
         b = Runner.ShowResult(r)
         sys.exit(b)
 
@@ -275,7 +275,7 @@ class CLI:
     def print_help(self):
         self.parser.print_help()
 
-    def exec(self):
+    def run(self):
         args = self.parse_command_line()
         if hasattr(args, 'handler'):
             args.handler(args)

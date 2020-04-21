@@ -170,7 +170,7 @@ class Runner:
         ro = ro.replace('\\n', '\n')
         self.wandbox.runtime_options(ro)
 
-    def exec(self):
+    def run(self):
         return Wandbox.Call(lambda : self.wandbox.run(), self.retry, self.retry_wait)
 
     def dump(self):
