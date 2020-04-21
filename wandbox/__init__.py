@@ -28,5 +28,5 @@ SOFTWARE.
 """ % __copyright__
 
 from .wandbox import Wandbox
-from .cli import WandboxCLI
-from .runner import WandboxRunner
+from .cli import CLI as WandboxCLI
+from .runner import Runner as WandboxRunner
