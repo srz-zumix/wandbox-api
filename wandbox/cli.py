@@ -275,7 +275,7 @@ class CLI:
     def print_help(self):
         self.parser.print_help()
 
-    def run(self):
+    def execute(self):
         args = self.parse_command_line()
         if hasattr(args, 'handler'):
             args.handler(args)

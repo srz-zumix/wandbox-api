@@ -110,7 +110,7 @@ class CxxCLI(CLI):
 
 def cxx(compiler=None):
     cli = CxxCLI(compiler)
-    cli.run()
+    cli.execute()
 
 
 def main():
