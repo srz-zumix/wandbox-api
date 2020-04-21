@@ -24,4 +24,5 @@ jobs:
     - name: Publish
       run: |
         pip install twine
-        python setup.py publish
+        python setup.py sdist bdist_wheel
+        twine upload --repository pypi dist/*
