@@ -15,7 +15,6 @@ import json
 
 from .wandbox import Wandbox
 from .runner import Runner
-from .__init__ import *
 from argparse import ArgumentParser
 
 
@@ -143,7 +142,7 @@ class CLI:
             '-v',
             '--version',
             action='version',
-            version=u'%(prog)s version ' + wandbox.__version__
+            version=u'%(prog)s version ' + wandbox.version
         )
         self.parser.add_argument(
             '-l',
