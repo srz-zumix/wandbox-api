@@ -5,7 +5,7 @@ on:
       - v*
 
 jobs:
-  test:
+  pypi:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@master
