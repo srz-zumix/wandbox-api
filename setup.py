@@ -31,6 +31,9 @@ setup(
         "Development Status :: 4 - Beta"
         , "Topic :: Utilities"
         , "License :: OSI Approved :: MIT License"
+        , "Programming Language :: Python"
+        , "Programming Language :: Python :: 3.7"
+        , "Programming Language :: Python :: 3.8"
     ]
     , entry_points={
         'console_scripts': [
