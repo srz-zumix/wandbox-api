@@ -23,6 +23,6 @@ jobs:
         echo -e "password = ${PYPI_PASSWORD}" >> ~/.pypirc
     - name: Publish
       run: |
-        pip install twine
+        pip install twine wheel
         python setup.py sdist bdist_wheel
         twine upload --repository pypi dist/*

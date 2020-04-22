@@ -1,6 +1,5 @@
 __author__ = 'Takazumi Shirayanagi'
 __version__ = '0.9.0'
-version = __version__
 
 __copyright__ = '2014-2020 %s ' % __author__
 __license__ = """
@@ -28,5 +27,5 @@ SOFTWARE.
 """ % __copyright__
 
 from .wandbox import Wandbox
-from .cli import CLI as WandboxCLI
-from .runner import Runner as WandboxRunner
+from .cli import CLI
+from .runner import Runner

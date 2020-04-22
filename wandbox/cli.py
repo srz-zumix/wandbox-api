@@ -17,6 +17,8 @@ from .wandbox import Wandbox
 from .runner import Runner
 from argparse import ArgumentParser
 
+VERSION = wandbox.__version__
+
 
 def get_compiler_list(retry, wait):
     return Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
@@ -142,7 +144,7 @@ class CLI:
             '-v',
             '--version',
             action='version',
-            version=u'%(prog)s version ' + wandbox.version
+            version=u'%(prog)s version ' + VERSION
         )
         self.parser.add_argument(
             '-l',
