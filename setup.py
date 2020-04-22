@@ -26,6 +26,7 @@ setup(
     , keywords = "API, Wandbox"
     , packages = ['wandbox']
     , long_description = readme
+    , long_description_content_type='text/markdown'
     , classifiers = [
         "Development Status :: 4 - Beta"
         , "Topic :: Utilities"
