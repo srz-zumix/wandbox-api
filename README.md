@@ -9,11 +9,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## Installation
 
-```
-  git clone https://github.com/srz-zumix/wandbox-api.git
-  cd wandbox-api
-  python setup.py install
-```
+> pip install wandbox-api
 
 ## CLI
 
