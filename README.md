@@ -99,3 +99,9 @@ optional arguments:
   --sprout              use sprout
   --msgpack             use msgpack
 ```
+
+#### Example
+
+> wandbox-cxx -c gcc-head run main.cpp -DWANDBOX
+
+> CXX="wandbox-gcc run" make
