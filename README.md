@@ -25,7 +25,7 @@ positional arguments:
     list                show list api response. see `list -h`
     compiler            show support compilers. see `compiler -h`
     lang                show support languages. see `lang -h`
-    option              see `option -h`
+    option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
     run                 build and run command. see `run -h`
     help                see `help -h`
@@ -67,7 +67,7 @@ positional arguments:
     list                show list api response. see `list -h`
     compiler            show support compilers. see `compiler -h`
     lang                show support languages. see `lang -h`
-    option              see `option -h`
+    option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
     run                 build and run command. see `run -h`
     help                see `help -h`

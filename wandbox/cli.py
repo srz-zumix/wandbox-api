@@ -237,7 +237,7 @@ class CLI:
         option_cmd = subparser.add_parser(
             'option',
             description='show compiler options',
-            help='see `option -h`'
+            help='show compiler options. see `option -h`'
         )
         option_cmd.set_defaults(handler=self.command_options)
 
