@@ -257,7 +257,7 @@ class CLI:
             'run',
             prefix_chars='+',
             description='build and run command',
-            help='build and run command. see `run -h`'
+            help='build and run command. see `run +h`'
         )
         passthrough_cmd.set_defaults(handler=self.command_run)
         passthrough_cmd.add_argument(
