@@ -135,7 +135,7 @@ class CLI:
         sys.exit(b)
 
     def command_help(self, args):
-        print(self.parser.parse_args([args.command, '--help']))
+        print(self.parser.parse_args(['--help']))
 
     # command line option
     def setup(self, lang, compiler):
