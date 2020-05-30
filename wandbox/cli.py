@@ -135,7 +135,7 @@ class CLI:
         sys.exit(b)
 
     def command_help(self, args):
-        print(self.parser.parse_args(['--help']))
+        print(self.parser.parse_args([args.subcommand[0], '--help']))
 
     # command line option
     def setup(self, lang, compiler):
@@ -267,8 +267,15 @@ class CLI:
             help='comiple command options'
         )
 
-        help_cmd = subparser.add_parser('help', help='see `help -h`')
+        subcommands = self.parser.format_usage().split('{')[1].split('}')[0]
+        help_cmd = subparser.add_parser('help', help='show subcommand help. see `help -h`')
         help_cmd.set_defaults(handler=self.command_help)
+        help_cmd.add_argument(
+            'subcommand',
+            nargs=1,
+            help='subcommand name {' + subcommands + '}'
+        )
+        help_cmd.usage = help_cmd.format_usage().replace('subcommand', 'subcommand{' + subcommands + '}')
 
     def parse_command_line(self):
         args = self.parser.parse_args()
