@@ -27,8 +27,8 @@ positional arguments:
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
-    run                 build and run command. see `run -h`
-    help                see `help -h`
+    run                 build and run command. see `run +h`
+    help                show subcommand help. see `help -h`
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -69,8 +69,8 @@ positional arguments:
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
-    run                 build and run command. see `run -h`
-    help                see `help -h`
+    run                 build and run command. see `run +h`
+    help                show subcommand help. see `help -h`
 
 optional arguments:
   -h, --help            show this help message and exit
