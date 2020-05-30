@@ -275,7 +275,8 @@ class CLI:
             nargs=1,
             help='subcommand name {' + subcommands + '}'
         )
-        help_cmd.usage = help_cmd.format_usage().replace('usage: ', '').replace('subcommand', 'subcommand{' + subcommands + '}')
+        help_cmd_default_usage = help_cmd.format_usage().replace('usage: ', '')
+        help_cmd.usage = help_cmd_default_usage.replace('subcommand', 'subcommand{' + subcommands + '}')
 
     def parse_command_line(self):
         args = self.parser.parse_args()
