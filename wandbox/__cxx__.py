@@ -42,9 +42,9 @@ class CxxCLI(CLI):
 
     def __init__(self, compiler=None):
         super(CxxCLI, self).__init__('C++', compiler)
+        self.cxx_setup('C++', compiler)
 
-    def setup(self, lang, compiler):
-        super(CxxCLI, self).setup(lang, compiler)
+    def cxx_setup(self, lang, compiler):
         self.parser.add_argument(
             '--std',
             metavar='VERSION',
