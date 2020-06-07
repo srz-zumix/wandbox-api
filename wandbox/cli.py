@@ -7,17 +7,14 @@
 Wandbox CLI for Python
 """
 
-import wandbox
-
-import argparse
 import sys
 import json
 
+from wandbox import __version__ as VERSION
 from .wandbox import Wandbox
 from .runner import Runner
 from argparse import ArgumentParser
-
-VERSION = wandbox.__version__
+from argparse import SUPPRESS
 
 
 def get_compiler_list(retry, wait):
@@ -150,13 +147,13 @@ class CLI:
             '-l',
             '--language',
             default=lang,
-            help=argparse.SUPPRESS if lang else 'specify language'
+            help=SUPPRESS if lang else 'specify language'
         )
         self.parser.add_argument(
             '-c',
             '--compiler',
             default=compiler,
-            help=argparse.SUPPRESS if compiler else 'specify compiler'
+            help=SUPPRESS if compiler else 'specify compiler'
         )
         self.parser.add_argument(
             '-x',
