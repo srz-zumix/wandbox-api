@@ -224,6 +224,12 @@ class CLI:
             help='show support compilers. see `compiler -h`')
         compiler_cmd.set_defaults(handler=self.command_compiler)
 
+        compiler_cmd = subparser.add_parser(
+            'versions',
+            description='show support compilers',
+            help='show support compilers. see `versions -h`')
+        compiler_cmd.set_defaults(handler=self.command_compiler)
+
         lang_cmd = subparser.add_parser(
             'lang',
             description='show support languages',

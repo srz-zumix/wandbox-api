@@ -40,7 +40,11 @@ setup(
             'wandbox     = wandbox.__main__:main',
             'wandbox-cxx = wandbox.__cxx__:main',
             'wandbox-g++ = wandbox.__cxx__:gcc',
-            'wandbox-clang++ = wandbox.__cxx__:clang'
+            'wandbox-clang++ = wandbox.__cxx__:clang',
+            'wandbox-python = wandbox.__python__:main',
+            'wandbox-python2 = wandbox.__python__:python2',
+            'wandbox-python3 = wandbox.__python__:python3',
+            'wandbox-pypy = wandbox.__python__:pypy'
         ]
     }
     , install_requires=['requests']
