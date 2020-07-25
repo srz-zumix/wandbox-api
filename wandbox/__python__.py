@@ -4,6 +4,7 @@ import os
 from .cli import CLI
 from .runner import Runner
 
+
 class PythonRunner(Runner):
 
     IMPORT_REGEX = re.compile(r'^\s*import\s*(.*?)(\s*as\s*\S*|)$')

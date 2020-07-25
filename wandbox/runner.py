@@ -29,7 +29,7 @@ class Runner:
     """wandbox Runner class"""
 
     def __init__(self, lang, compiler, save, encoding, retry, retry_wait,
-                    has_compiler_option_raw=True, prefix_chars='-'):
+    has_compiler_option_raw=True, prefix_chars='-'):
         self.wandbox = Wandbox()
         if lang is None:
             raise Exception('language is required')
