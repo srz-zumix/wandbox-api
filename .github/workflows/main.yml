@@ -18,6 +18,9 @@ jobs:
     container: python:3.8-alpine
     steps:
     - uses: actions/checkout@master
+    - nmae: setup
+      run: |
+        apk add make
     - name: test
       run: |
         make install
