@@ -6,8 +6,8 @@ from .runner import Runner
 
 class PythonRunner(Runner):
 
-    IMPORT_REGEX = re.compile(r'^\s*import\s*(\S*?)$')
-    FROM_IMPORT_REGEX = re.compile(r'^\s*from\s*(\S*?)\s*import\s*(\S*?)$')
+    IMPORT_REGEX = re.compile(r'^\s*import\s*(.*?)(\s*as\s*\S*|)$')
+    FROM_IMPORT_REGEX = re.compile(r'^\s*from\s*(\S*?)\s*import\s*(.*?)(\s*as\s*\S*|)$')
     imports = []
 
     def get_imports(self, path, module_name):
@@ -26,12 +26,15 @@ class PythonRunner(Runner):
         for line in file:
             m = self.IMPORT_REGEX.match(line)
             if m:
-                module_name = m.group(1)
-                files.update(self.get_imports(os.path.dirname(filepath), module_name))
+                modules = m.group(1)
+                for module_name in modules.split(','):
+                    files.update(self.get_imports(os.path.dirname(filepath), module_name.strip()))
             else:
                 m = self.FROM_IMPORT_REGEX.match(line)
                 if m:
-                    module_name = m.group(1)
+                    module = m.group(1)
+                    module_names = module.split('.')
+                    module_name = os.path.join(*module_names)
                     files.update(self.get_imports(os.path.dirname(filepath), module_name))
             code += line
         file.close()

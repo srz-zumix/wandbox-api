@@ -1,0 +1,2 @@
+def piyo():
+    print("piyo")
