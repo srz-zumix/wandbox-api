@@ -4,7 +4,8 @@
 PYTHON:=python
 
 local:
-	python sample.py
+	${PYTHON} sample.py ${TESTFILES}
 
 wandbox:
-	PYTHON="wandbox-python3 run" make -C . local
+	make -C . local --no-print-directory PYTHON="wandbox-python3 run"
+	make -C . local --no-print-directory PYTHON="wandbox-python3 run" TESTFILES=test3.py

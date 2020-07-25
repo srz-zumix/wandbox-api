@@ -41,6 +41,7 @@ setup(
             'wandbox-cxx = wandbox.__cxx__:main',
             'wandbox-g++ = wandbox.__cxx__:gcc',
             'wandbox-clang++ = wandbox.__cxx__:clang',
+            'wandbox-cs = wandbox.__csharp__:main',
             'wandbox-python = wandbox.__python__:main',
             'wandbox-python2 = wandbox.__python__:python2',
             'wandbox-python3 = wandbox.__python__:python3',

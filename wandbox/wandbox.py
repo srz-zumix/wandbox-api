@@ -99,6 +99,9 @@ class Wandbox:
         append file
         """
         if 'codes' in self.parameter:
+            for f in self.parameter['codes']:
+                if f['file'] == filename:
+                    return
             self.parameter['codes'].append({'file': filename, 'code': code})
         else:
             self.parameter.update({'codes': [{'file': filename, 'code': code}]})
@@ -125,7 +128,11 @@ class Wandbox:
         """
         set wandbox defined compiler options
         """
-        self.parameter.update({'compiler-option-raw': options_str})
+        if options_str is None:
+            if 'compiler-option-raw' in self.parameter:
+                del self.parameter['compiler-option-raw']
+        else:
+            self.parameter.update({'compiler-option-raw': options_str})
 
     def add_compiler_options(self, options_str):
         """

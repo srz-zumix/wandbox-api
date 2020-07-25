@@ -6,9 +6,19 @@ on:
       - master
 
 jobs:
-  test:
+  setup-test:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@master
     - name: test
       run: python setup.py test
+
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+    - name: test
+      run: |
+        make install
+        make test
+

@@ -1,10 +1,11 @@
 #
 # Makefile
 
-all: cpp python
+SUBDIRS := $(wildcard src/*/.)
 
-cpp:
-	make -C src/cpp wandbox
+all: $(SUBDIRS)
 
-python:
-	make -C src/python wandbox
+$(SUBDIRS):
+	make -C $@ wandbox
+
+.PHONY: all $(SUBDIRS)
