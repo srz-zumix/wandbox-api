@@ -12,12 +12,13 @@ class PythonRunner(Runner):
     imports = []
 
     def get_imports(self, path, module_name):
-        module_path = os.path.normpath(os.path.join(path, module_name + '.py'))
+        module_file = module_name + '.py'
+        module_path = os.path.normpath(os.path.join(path, module_file))
         if os.path.exists(module_path):
             module_abspath = os.path.abspath(module_path)
             if module_abspath not in self.imports:
                 self.imports.append(module_abspath)
-                return self.open_code(module_path, module_path)
+                return self.open_code(module_path, module_file)
         return []
 
     def make_code(self, filepath, filename):
