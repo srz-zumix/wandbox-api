@@ -15,7 +15,7 @@ jobs:
 
   test:
     runs-on: ubuntu-18.04
-    container: python:alpine-3.8
+    container: python:3.8-alpine
     steps:
     - uses: actions/checkout@master
     - name: test
