@@ -102,3 +102,13 @@ optional arguments:
 > wandbox-cxx -c gcc-head run main.cpp -DWANDBOX
 
 > CXX="wandbox-gcc run" make
+
+### Python
+
+* wandbox-python
+* wandbox-python2  
+  (wandbox-cxx -c cpython-2.7-head)
+* wandbox-python3  
+  (wandbox-cxx -c cpython-head)
+* wandbox-pypy
+  (wandbox-cxx -c pypy-head)

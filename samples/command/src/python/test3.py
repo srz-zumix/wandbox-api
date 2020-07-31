@@ -1,0 +1,2 @@
+def fuga():
+    print("fuga")

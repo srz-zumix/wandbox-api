@@ -7,6 +7,7 @@
 Wandbox CLI for Python
 """
 
+import os
 import sys
 import json
 
@@ -119,6 +120,12 @@ class CLI:
         runner.build_compiler_options(args.compile_options)
 
     def run(self, args, options):
+        if args.language and args.compiler is None:
+            r = get_compiler_list(args.retry, args.retry_wait)
+            for d in r:
+                if args.language == d['language']:
+                    args.compiler = d['name']
+                    break
         runner = self.get_runner(args, options)
         self.setup_runner(args, options, [], runner)
         self.run_with_runner(args, runner)
@@ -283,6 +290,8 @@ class CLI:
 
     def parse_command_line(self):
         args = self.parser.parse_args()
+        if 'WANDBOX_DRYRUN' in os.environ:
+            args.dryrun = True
         return args
 
     def print_help(self):

@@ -28,8 +28,13 @@ def text_transform(value):
 class Runner:
     """wandbox Runner class"""
 
-    def __init__(self, lang, compiler, save, encoding, retry, retry_wait, prefix_chars='-'):
+    def __init__(self, lang, compiler, save, encoding, retry, retry_wait,
+                    has_compiler_option_raw=True, prefix_chars='-'):
         self.wandbox = Wandbox()
+        if lang is None:
+            raise Exception('language is required')
+        if compiler is None:
+            raise Exception('compiler is required')
         self.language = lang
         self.compiler = compiler
         self.wandbox.compiler(self.compiler)
@@ -39,6 +44,7 @@ class Runner:
         self.encoding = encoding
         self.switches = None
         self.wandbox.permanent_link(save)
+        self.has_compiler_option_raw = has_compiler_option_raw
 
     @staticmethod
     def ShowParameter(response):
@@ -114,20 +120,23 @@ class Runner:
         options = []
         if use_default:
             switches = self.get_switches()
-            tmp = [] if user_options is None else user_options
-            for s in switches:
-                if s['type'] == 'select':
-                    target = s['default']
-                    candidate = [x['name'] for x in s['options']]
-                    for opt in tmp:
-                        if opt in candidate:
-                            target = opt
-                            tmp.remove(opt)
-                            break
-                    options.append(target)
-                elif s['type'] == 'single':
-                    if s['default'] and (s['default'] in tmp):
-                        options.append(s['name'])
+            if switches:
+                tmp = [] if user_options is None else user_options
+                for s in switches:
+                    if s['type'] == 'select':
+                        target = s['default']
+                        candidate = [x['name'] for x in s['options']]
+                        for opt in tmp:
+                            if opt in candidate:
+                                target = opt
+                                tmp.remove(opt)
+                                break
+                        options.append(target)
+                    elif s['type'] == 'single':
+                        if s['default'] and (s['default'] in tmp):
+                            options.append(s['name'])
+            elif user_options:
+                options.extend(user_options)
         elif user_options:
             options.extend(user_options)
         if disable_options:
@@ -136,16 +145,20 @@ class Runner:
                     options.remove(dis)
         self.wandbox.options(','.join(options))
 
+    def add_compiler_options(self, option):
+        if self.has_compiler_option_raw:
+            self.wandbox.add_compiler_options(option)
+
     def build_compiler_options(self, options):
         codes = []
         for opt in options:
             if opt[0] in self.prefix_chars:
-                self.wandbox.add_compiler_options(opt)
+                self.add_compiler_options(opt)
             else:
                 if os.path.isfile(opt):
                     codes.append(opt)
                 else:
-                    self.wandbox.add_compiler_options(opt)
+                    self.add_compiler_options(opt)
         main_filepath = codes[0]
         main_files = self.open_code(main_filepath, main_filepath)
         for k, v in main_files.items():
@@ -157,7 +170,7 @@ class Runner:
         for filepath_ in codes[1:]:
             filepath = filepath_.strip()
             files = self.open_code(filepath, filepath)
-            self.wandbox.add_compiler_options(filepath)
+            self.add_compiler_options(filepath)
             for k, v in files.items():
                 self.wandbox.add_file(k, v)
 
