@@ -19,12 +19,13 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 ```
 usage: wandbox [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT]
-               {list,compiler,lang,option,permlink,run,help} ...
+               {list,compiler,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
   {list,compiler,lang,option,permlink,run,help}
     list                show list api response. see `list -h`
     compiler            show support compilers. see `compiler -h`
+    versions            show support compilers. see `versions -h`
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
@@ -61,12 +62,13 @@ optional arguments:
 usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                    [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT] [--std VERSION]
                    [--boost VERSION] [--optimize] [--cpp-verbose] [--sprout] [--msgpack]
-                   {list,compiler,lang,option,permlink,run,help} ...
+                   {list,compiler,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
   {list,compiler,lang,option,permlink,run,help}
     list                show list api response. see `list -h`
     compiler            show support compilers. see `compiler -h`
+    versions            show support compilers. see `versions -h`
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
