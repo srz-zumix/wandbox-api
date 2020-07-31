@@ -22,7 +22,7 @@ usage: wandbox [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-
                {list,compiler,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
-  {list,compiler,lang,option,permlink,run,help}
+  {list,compiler,versions,lang,option,permlink,run,help}
     list                show list api response. see `list -h`
     compiler            show support compilers. see `compiler -h`
     versions            show support compilers. see `versions -h`
@@ -65,7 +65,7 @@ usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n
                    {list,compiler,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
-  {list,compiler,lang,option,permlink,run,help}
+  {list,compiler,versions,lang,option,permlink,run,help}
     list                show list api response. see `list -h`
     compiler            show support compilers. see `compiler -h`
     versions            show support compilers. see `versions -h`
