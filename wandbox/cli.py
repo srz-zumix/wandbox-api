@@ -11,7 +11,7 @@ import os
 import sys
 import json
 
-from wandbox import __version__ as VERSION
+from . import __version__ as VERSION
 from .wandbox import Wandbox
 from .runner import Runner
 from argparse import ArgumentParser
@@ -25,8 +25,8 @@ def get_compiler_list(retry, wait):
 class CLI:
     """wandbox CLI class"""
 
-    def __init__(self, lang=None, compiler=None):
-        self.setup(lang, compiler)
+    def __init__(self, lang=None, compiler=None, has_option=True):
+        self.setup(lang, compiler, has_option)
 
     def command_list(self, args):
         r = get_compiler_list(args.retry, args.retry_wait)
@@ -142,7 +142,7 @@ class CLI:
         print(self.parser.parse_args([args.subcommand[0], '--help']))
 
     # command line option
-    def setup(self, lang, compiler):
+    def setup(self, lang, compiler, has_option):
         self.parser = ArgumentParser()
         self.parser.add_argument(
             '-v',
@@ -167,7 +167,7 @@ class CLI:
             '--options',
             action='append',
             default=[],
-            help='used options for a compiler'
+            help=SUPPRESS if not has_option else 'used options for a compiler'
         )
         self.parser.add_argument(
             '-r',

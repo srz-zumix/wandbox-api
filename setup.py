@@ -49,4 +49,6 @@ setup(
         ]
     }
     , install_requires=['requests']
+    , tests_require=['tox', 'pytest']
+    , test_suite="tests.test_suite"
 )
