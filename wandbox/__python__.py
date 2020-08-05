@@ -7,7 +7,7 @@ from .runner import Runner
 
 
 def _show(node):
-    for name,val in ast.iter_fields(node):
+    for name, val in ast.iter_fields(node):
         print("{name}: {val}".format(name=name, val=val))
 
 
