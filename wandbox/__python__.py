@@ -79,8 +79,8 @@ class PythonRunner(Runner):
                     else:
                         module_name = os.path.join(*module_names)
                         if module.startswith('.'):
-                            name = os.path.join(os.path.dirname(filename), module_name))
-                            files.update(self.get_imports(os.path.dirname(filepath), name)
+                            name = os.path.join(os.path.dirname(filename), module_name)
+                            files.update(self.get_imports(os.path.dirname(filepath), name))
                         else:
                             files.update(self.get_imports(os.path.dirname(filepath), module_name))
             code += line
