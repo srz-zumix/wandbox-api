@@ -99,7 +99,7 @@ optional arguments:
   --msgpack             use msgpack
 ```
 
-#### Example
+#### C++ Example
 
 > wandbox-cxx -c gcc-head run main.cpp -DWANDBOX
 
@@ -114,3 +114,15 @@ optional arguments:
   (wandbox-cxx -c cpython-head)
 * wandbox-pypy
   (wandbox-cxx -c pypy-head)
+
+#### Python Example
+
+> wandbox-python3 run sample.py
+
+wandbox-python supports setup.py
+
+> wandbox-python -c cpython-head -r test run setup.py
+
+If you open a file, add the file
+
+> wandbox-python -c cpython-head -r test run setup.py README.md
