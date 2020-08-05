@@ -5,14 +5,20 @@ import ast
 from .cli import CLI
 from .runner import Runner
 
-def show(node):
+
+def _show(node):
     for name,val in ast.iter_fields(node):
         print("{name}: {val}".format(name=name, val=val))
+
 
 class SetUpVisitor(ast.NodeVisitor):
 
     def __init__(self):
         self.packages = []
+
+    def append_testsuite(self, testsuite):
+        path = testsuite.split('.')
+        self.packages.append(path[0])
 
     def visit_Call(self, node):
         if isinstance(node.func, ast.Name):
@@ -22,8 +28,15 @@ class SetUpVisitor(ast.NodeVisitor):
                         if isinstance(keyword.value, ast.List):
                             for package in keyword.value.elts:
                                 self.packages.append(package.value)
-                        else:
-                            pass
+                        elif isinstance(keyword.value, ast.Str):
+                            self.packages.append(keyword.value.value)
+                    if keyword.arg == "test_suite":
+                        if isinstance(keyword.value, ast.List):
+                            for package in keyword.value.elts:
+                                self.append_testsuite(package.value)
+                        elif isinstance(keyword.value, ast.Str):
+                            self.append_testsuite(keyword.value.value)
+
 
 
 class PythonRunner(Runner):
@@ -66,12 +79,14 @@ class PythonRunner(Runner):
                     else:
                         module_name = os.path.join(*module_names)
                         if module.startswith('.'):
-                            files.update(self.get_imports(os.path.dirname(filepath), os.path.join(os.path.dirname(filename), module_name)))
+                            name = os.path.join(os.path.dirname(filename), module_name))
+                            files.update(self.get_imports(os.path.dirname(filepath), name)
                         else:
                             files.update(self.get_imports(os.path.dirname(filepath), module_name))
             code += line
         file.close()
         files[filename] = code
+        # print(files.keys())
         return files
 
     def make_from_setup_py(self, filepath, filename):
