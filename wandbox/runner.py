@@ -133,7 +133,7 @@ class Runner:
                                 break
                         options.append(target)
                     elif s['type'] == 'single':
-                        if s['default'] and (s['default'] in tmp):
+                        if s['default'] and (s['default'] not in tmp):
                             options.append(s['name'])
             elif user_options:
                 options.extend(user_options)

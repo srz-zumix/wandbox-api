@@ -22,7 +22,7 @@ class test_wandbox_cxx(unittest.TestCase):
 
     def test_build(self):
         try:
-            with patch('argparse._sys.argv', [ __file__, 'run', os.path.join(src_path, 'cpp/sample.cpp'), os.path.join(src_path, 'cpp/test.cpp'), '-I' + os.path.join(src_path, 'cpp')]):
+            with patch('argparse._sys.argv', [ __file__, 'run', os.path.join(src_path, 'cxx/sample.cpp'), os.path.join(src_path, 'cxx/test.cpp'), '-I' + os.path.join(src_path, 'cxx')]):
                 cli = cxx.CxxCLI("gcc-head")
                 cli.execute()
         except SystemExit as e:

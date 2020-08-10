@@ -1,9 +1,8 @@
 #
 # Makefile
 
-
 local:
-	${CXX} sample.cpp test.cpp
+	${CXX} -CC -nostdinc -E -P sample.cpp test.cpp
 
 wandbox:
-	CXX="wandbox-cxx -c gcc-head run" make -C . local --no-print-directory
+	CXX="wandbox-gcc-PP --boost 1.70 run" make -C . local --no-print-directory

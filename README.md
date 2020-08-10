@@ -105,6 +105,14 @@ optional arguments:
 
 > CXX="wandbox-gcc run" make
 
+### CPP (C PreProcessor)
+
+* wandbox-CPP
+* wandbox-gcc-PP  
+  (wandbox-CPP -c gcc-head-pp)
+* wandbox-clang-PP
+  (wandbox-CPP -c clang-head-pp)
+
 ### Python
 
 * wandbox-python
