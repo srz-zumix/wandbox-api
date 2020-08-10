@@ -33,8 +33,9 @@ class CppCLI(CLI):
                     disable_options.append(name)
         check_option(args, 'cpp-p')
         if args.boost:
-            if args.compiler not in args.boost:
-                args.boost = args.boost + '-' + args.compiler
+            postfix = args.compiler.replace('-pp', '-header')
+            if postfix not in args.boost:
+                args.boost = args.boost + '-' + postfix
             enable_options = list(filter(lambda s: s.find('boost') == -1, enable_options))
             enable_options.append('boost-' + str(args.boost))
 
