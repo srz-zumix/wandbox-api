@@ -14,6 +14,11 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## CLI
 
+* [C++](#C++)
+* [C](#C)
+* [CPP](#CPP)
+* [Python](#Python)
+
 ### wandbox
 
 ```
@@ -110,9 +115,19 @@ optional arguments:
 
 > CXX="wandbox-gcc run" make
 
-### CPP (C PreProcessor)
+### C
+
+* wandbox-cc
+  (wandbox -l C)
+* wandbox-gcc  
+  (wandbox-cc -c gcc-head-c)
+* wandbox-clang
+  (wandbox-cc -c clang-head-c)
+
+### CPP
 
 * wandbox-CPP
+  (wandbox -l CPP)
 * wandbox-gcc-PP  
   (wandbox-CPP -c gcc-head-pp)
 * wandbox-clang-PP
@@ -121,6 +136,7 @@ optional arguments:
 ### Python
 
 * wandbox-python
+  (wandbox -l Python)
 * wandbox-python2  
   (wandbox-cxx -c cpython-2.7-head)
 * wandbox-python3  
