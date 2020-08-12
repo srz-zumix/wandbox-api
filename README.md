@@ -14,8 +14,8 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## CLI
 
-* [C++](#cplusplus)
-* [C](#c-lang)
+* [C++](#c)
+* [C](#c-1)
 * [CPP](#CPP)
 * [Python](#Python)
 
@@ -57,7 +57,7 @@ optional arguments:
   --retry COUNT         number of retries when HTTPError occurs
 ```
 
-### [](#cplusplus) C++
+### C++
 
 * wandbox-cxx
 * wandbox-g++  
@@ -115,7 +115,7 @@ optional arguments:
 
 > CXX="wandbox-gcc run" make
 
-### [](#c-lang) C
+### C
 
 * wandbox-cc
   (wandbox -l C)
