@@ -45,7 +45,6 @@ class Runner:
         self.switches = None
         self.wandbox.permanent_link(save)
         self.has_compiler_option_raw = has_compiler_option_raw
-        self.initialize()
 
     @staticmethod
     def ShowParameter(response):
@@ -212,5 +211,5 @@ class Runner:
         file.close()
         return {filename: code}
 
-    def initialize(self):
+    def reset(self):
         pass

@@ -9,7 +9,7 @@ class CxxRunner(Runner):
 
     EXPAND_INCLUDE_REGEX = re.compile(r'^\s*#\s*include\s*"(.*?)"')
 
-    def initialize(self):
+    def reset(self):
         self.expand = False
         self.includes = []
 

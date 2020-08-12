@@ -119,6 +119,7 @@ class CLI:
         return Runner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
     def setup_runner(self, args, enable_options, disable_options, runner):
+        runner.reset()
         runner.set_stdin(args.stdin)
         runner.set_runtime_options(args.runtime_options)
         runner.build_options(enable_options, disable_options, not args.no_default)
