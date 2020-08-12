@@ -17,7 +17,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 ### wandbox
 
 ```
-usage: wandbox [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
+usage: wandbox [-h] [-v] [-l LANGUAGE] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT]
                {list,compiler,versions,lang,option,permlink,run,help} ...
 
@@ -35,6 +35,8 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
+  -l LANGUAGE, --language LANGUAGE
+                        specify language
   -c COMPILER, --compiler COMPILER
                         specify compiler
   -x OPTIONS, --options OPTIONS
@@ -61,7 +63,7 @@ optional arguments:
 ```
 usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                    [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT] [--std VERSION]
-                   [--boost VERSION] [--optimize] [--cpp-verbose] [--sprout] [--msgpack]
+                   [--boost VERSION] [--no-warning] [--optimize] [--cpp-pedantic PEDANTIC] [--cpp-verbose] [--sprout] [--msgpack]
                    {list,compiler,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
@@ -93,7 +95,10 @@ optional arguments:
   --retry COUNT         number of retries when HTTPError occurs
   --std VERSION         set --std options
   --boost VERSION       set boost options version X.XX or nothing
+  --no-warning          disable warning option
   --optimize            use optimization
+  --cpp-pedantic PEDANTIC
+                        use cpp-pedantic
   --cpp-verbose         use cpp-verbose
   --sprout              use sprout
   --msgpack             use msgpack
