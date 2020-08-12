@@ -8,8 +8,10 @@ from .runner import Runner
 class CxxRunner(Runner):
 
     EXPAND_INCLUDE_REGEX = re.compile(r'^\s*#\s*include\s*"(.*?)"')
-    expand = False
-    includes = []
+
+    def initialize(self):
+        self.expand = False
+        self.includes = []
 
     def make_code(self, filepath, filename):
         files = dict()
@@ -56,9 +58,19 @@ class CxxCLI(CLI):
             help='set boost options version X.XX or nothing'
         )
         self.parser.add_argument(
+            '--no-warning',
+            action='store_true',
+            help='disable warning option'
+        )
+        self.parser.add_argument(
             '--optimize',
             action='store_true',
             help='use optimization'
+        )
+        self.parser.add_argument(
+            '--cpp-pedantic',
+            metavar='PEDANTIC',
+            help='use cpp-pedantic'
         )
         self.parser.add_argument(
             '--cpp-verbose',
@@ -86,16 +98,23 @@ class CxxCLI(CLI):
             tmp = list(filter(lambda s: s.find('gnu++') == -1, tmp))
             return tmp
 
-        def check_option(args, name):
-            if hasattr(args, name):
-                if getattr(args, name):
-                    enable_options.append(name)
-                else:
-                    disable_options.append(name)
-        check_option(args, 'cpp-verbose')
-        check_option(args, 'msgpack')
-        check_option(args, 'optimize')
-        check_option(args, 'sprout')
+        self.check_bool_option(args, 'no-warning'   , enable_options, disable_options)
+        self.check_bool_option(args, 'cpp-verbose'  , enable_options, disable_options)
+        self.check_bool_option(args, 'msgpack'      , enable_options, disable_options)
+        self.check_bool_option(args, 'optimize'     , enable_options, disable_options)
+        self.check_bool_option(args, 'sprout'       , enable_options, disable_options)
+        if args.cpp_pedantic:
+            pedantic_opt = args.cpp_pedantic
+            if args.cpp_pedantic == 'no':
+                pedantic_opt = 'cpp-no-pedantic'
+            elif args.cpp_pedantic == 'yes':
+                pedantic_opt = 'cpp-pedantic'
+            elif args.cpp_pedantic == 'error':
+                pedantic_opt = 'cpp-pedantic-errors'
+            elif args.cpp_pedantic == 'errors':
+                pedantic_opt = 'cpp-pedantic-errors'
+            enable_options = list(filter(lambda s: s.find('pedantic') == -1, enable_options))
+            enable_options.append(pedantic_opt)
         if args.boost:
             if args.compiler not in args.boost:
                 args.boost = args.boost + '-' + args.compiler

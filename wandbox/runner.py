@@ -45,6 +45,7 @@ class Runner:
         self.switches = None
         self.wandbox.permanent_link(save)
         self.has_compiler_option_raw = has_compiler_option_raw
+        self.initialize()
 
     @staticmethod
     def ShowParameter(response):
@@ -135,14 +136,14 @@ class Runner:
                     elif s['type'] == 'single':
                         if s['default'] and (s['default'] not in tmp):
                             options.append(s['name'])
-            elif user_options:
-                options.extend(user_options)
+                options.extend(tmp)
         elif user_options:
             options.extend(user_options)
         if disable_options:
             for dis in disable_options:
                 if dis in options:
                     options.remove(dis)
+
         self.wandbox.options(','.join(options))
 
     def add_compiler_options(self, option):
@@ -159,6 +160,8 @@ class Runner:
                     codes.append(opt)
                 else:
                     self.add_compiler_options(opt)
+        if len(codes) == 0:
+            raise Exception('error: No input source file or not exist')
         main_filepath = codes[0]
         main_files = self.open_code(main_filepath, main_filepath)
         for k, v in main_files.items():
@@ -208,3 +211,6 @@ class Runner:
         code = file.read()
         file.close()
         return {filename: code}
+
+    def initialize(self):
+        pass
