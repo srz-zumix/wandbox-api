@@ -108,12 +108,18 @@ class CLI:
         options = []
         for o in args.options:
             options.extend(o.split(','))
-        self.run(args, options)
+        try:
+            self.run(args, options)
+        except Exception as e:
+            print(e)
+            self.print_help()
+            sys.exit(1)
 
     def get_runner(self, args, options):
         return Runner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
     def setup_runner(self, args, enable_options, disable_options, runner):
+        runner.reset()
         runner.set_stdin(args.stdin)
         runner.set_runtime_options(args.runtime_options)
         runner.build_options(enable_options, disable_options, not args.no_default)
@@ -288,8 +294,8 @@ class CLI:
         help_cmd_default_usage = help_cmd.format_usage().replace('usage: ', '')
         help_cmd.usage = help_cmd_default_usage.replace('subcommand', 'subcommand{' + subcommands + '}')
 
-    def parse_command_line(self):
-        args = self.parser.parse_args()
+    def parse_command_line(self, argv):
+        args = self.parser.parse_args(argv)
         if 'WANDBOX_DRYRUN' in os.environ:
             args.dryrun = True
         return args
@@ -298,8 +304,24 @@ class CLI:
         self.parser.print_help()
 
     def execute(self):
-        args = self.parse_command_line()
+        self.execute_with_args()
+
+    def execute_with_args(self, args=None):
+        args = self.parse_command_line(args)
         if hasattr(args, 'handler'):
             args.handler(args)
         else:
             self.print_help()
+
+    def check_bool_option(self, args, name, enable_options, disable_options):
+        attr_name = name.replace('-', '_')
+        if name.startswith('no-'):
+            opt_name = name.replace('no-', '')
+            self._check_bool_option(args, opt_name, attr_name, disable_options)
+        else:
+            self._check_bool_option(args, name, attr_name, enable_options)
+
+    def _check_bool_option(self, args, opt_name, attr_name, options):
+        if hasattr(args, attr_name):
+            if getattr(args, attr_name):
+                options.append(opt_name)

@@ -15,9 +15,9 @@ class CppCLI(CLI):
             help='set boost options version X.XX or nothing'
         )
         self.parser.add_argument(
-            '--cpp-p',
+            '--no-cpp-p',
             action='store_true',
-            help='use cpp -P'
+            help='disable cpp -P'
         )
 
     def get_runner(self, args, options):
@@ -25,13 +25,7 @@ class CppCLI(CLI):
 
     def setup_runner(self, args, enable_options, disable_options, runner):
 
-        def check_option(args, name):
-            if hasattr(args, name):
-                if getattr(args, name):
-                    enable_options.append(name)
-                else:
-                    disable_options.append(name)
-        check_option(args, 'cpp-p')
+        self.check_bool_option(args, 'no-cpp-p'  , enable_options, disable_options)
         if args.boost:
             postfix = args.compiler.replace('-pp', '-header')
             if postfix not in args.boost:

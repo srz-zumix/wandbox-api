@@ -15,14 +15,7 @@ class CsCLI(CLI):
         )
 
     def setup_runner(self, args, enable_options, disable_options, runner):
-
-        def check_option(args, name):
-            if hasattr(args, name):
-                if getattr(args, name):
-                    enable_options.append(name)
-                else:
-                    disable_options.append(name)
-        check_option(args, 'optimize')
+        self.check_bool_option(args, 'optimize'     , enable_options, disable_options)
         super(CsCLI, self).setup_runner(args, list(set(enable_options)), disable_options, runner)
 
 

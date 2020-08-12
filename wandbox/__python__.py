@@ -43,7 +43,9 @@ class PythonRunner(Runner):
 
     IMPORT_REGEX = re.compile(r'^\s*import\s*(.*?)(\s*as\s*\S*|)$')
     FROM_IMPORT_REGEX = re.compile(r'^\s*from\s*(\S*?)\s*import\s*(.*?)(\s*as\s*\S*|)$')
-    imports = []
+
+    def reset(self):
+        self.imports = []
 
     def get_imports(self, path, module_name):
         if path == module_name:
