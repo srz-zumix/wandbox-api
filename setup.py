@@ -51,7 +51,9 @@ setup(
             'wandbox-python = wandbox.__python__:main',
             'wandbox-python2 = wandbox.__python__:python2',
             'wandbox-python3 = wandbox.__python__:python3',
-            'wandbox-pypy = wandbox.__python__:pypy'
+            'wandbox-pypy = wandbox.__python__:pypy',
+            'wandbox-ruby = wandbox.__ruby__:main',
+            'wandbox-mruby = wandbox.__ruby__:mruby'
         ]
     }
     , install_requires=['requests']

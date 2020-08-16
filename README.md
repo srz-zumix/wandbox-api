@@ -21,7 +21,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ### wandbox
 
-```
+```sh
 usage: wandbox [-h] [-v] [-l LANGUAGE] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT]
                {list,compiler,versions,lang,option,permlink,run,help} ...
@@ -65,7 +65,7 @@ optional arguments:
 * wandbox-clang++  
   (wandbox-cxx -c clang-head)
 
-```
+```sh
 usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                    [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT] [--std VERSION]
                    [--boost VERSION] [--no-warning] [--optimize] [--cpp-pedantic PEDANTIC] [--cpp-verbose] [--sprout] [--msgpack]
