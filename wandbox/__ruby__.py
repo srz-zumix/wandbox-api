@@ -45,7 +45,6 @@ class RubyRunner(Runner):
         return files
 
 
-
 class RubyCLI(CLI):
 
     def __init__(self, compiler=None):
