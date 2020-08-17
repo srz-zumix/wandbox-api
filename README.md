@@ -18,6 +18,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C](#c-1)
 * [CPP](#CPP)
 * [Python](#Python)
+* [Ruby](#Ruby)
 
 ### wandbox
 
@@ -58,6 +59,8 @@ optional arguments:
 ```
 
 ### C++
+
+Include files required for compilation are automatically added to the file list.
 
 * wandbox-cxx
 * wandbox-g++  
@@ -117,6 +120,8 @@ optional arguments:
 
 ### C
 
+Include files required for compilation are automatically added to the file list.
+
 * wandbox-cc
   (wandbox -l C)
 * wandbox-gcc  
@@ -126,6 +131,8 @@ optional arguments:
 
 ### CPP
 
+Include files required for compilation are automatically added to the file list.
+
 * wandbox-CPP
   (wandbox -l CPP)
 * wandbox-gcc-PP  
@@ -134,6 +141,8 @@ optional arguments:
   (wandbox-CPP -c clang-head-pp)
 
 ### Python
+
+Import files/modules required for compilation are automatically added to the file list.
 
 * wandbox-python
   (wandbox -l Python)
@@ -155,3 +164,16 @@ wandbox-python supports setup.py
 If you open a file, add the file
 
 > wandbox-python -c cpython-head -r test run setup.py README.md
+
+### Ruby
+
+Require files required for compilation are automatically added to the file list.
+
+* wandbox-ruby
+  (wandbox -l Ruby)
+* wandbox-mruby  
+  (wandbox-ruby -c mruby-head)
+
+#### Ruby Example
+
+> wandbox-ruby run sample.rb
