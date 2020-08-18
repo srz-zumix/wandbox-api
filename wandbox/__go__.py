@@ -1,5 +1,6 @@
 from .cli import CLI
 
+
 class GoCLI(CLI):
 
     def __init__(self, compiler=None):
