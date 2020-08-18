@@ -315,12 +315,12 @@ class CLI:
 
     def check_bool_option(self, args, name, enable_options, disable_options, prefix=''):
         attr_name = name.replace('-', '_')
-        opt_name = prefix
         if name.startswith('no-'):
-            opt_name += name.replace('no-', '')
+            opt_name = prefix + name.replace('no-', '')
+            self._check_bool_option(args, opt_name, attr_name, disable_options)
         else:
-            opt_name += name
-        self._check_bool_option(args, opt_name, attr_name, enable_options)
+            opt_name = prefix + name
+            self._check_bool_option(args, opt_name, attr_name, enable_options)
 
     def _check_bool_option(self, args, opt_name, attr_name, options):
         if hasattr(args, attr_name):
