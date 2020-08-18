@@ -17,6 +17,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C++](#c)
 * [C](#c-1)
 * [CPP](#CPP)
+* [GO](#Go)
 * [Python](#Python)
 * [Ruby](#Ruby)
 
@@ -139,6 +140,11 @@ Include files required for compilation are automatically added to the file list.
   (wandbox-CPP -c gcc-head-pp)
 * wandbox-clang-PP
   (wandbox-CPP -c clang-head-pp)
+
+### Go
+
+* wandbox-go
+  (wandbox -l Go)
 
 ### Python
 

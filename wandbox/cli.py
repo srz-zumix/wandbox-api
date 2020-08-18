@@ -313,13 +313,14 @@ class CLI:
         else:
             self.print_help()
 
-    def check_bool_option(self, args, name, enable_options, disable_options):
+    def check_bool_option(self, args, name, enable_options, disable_options, prefix=''):
         attr_name = name.replace('-', '_')
+        opt_name = prefix
         if name.startswith('no-'):
-            opt_name = name.replace('no-', '')
-            self._check_bool_option(args, opt_name, attr_name, disable_options)
+            opt_name += name.replace('no-', '')
         else:
-            self._check_bool_option(args, name, attr_name, enable_options)
+            opt_name += name
+        self._check_bool_option(args, opt_name, attr_name, enable_options)
 
     def _check_bool_option(self, args, opt_name, attr_name, options):
         if hasattr(args, attr_name):
