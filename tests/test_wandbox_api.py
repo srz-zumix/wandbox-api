@@ -2,6 +2,7 @@ import sys
 import os
 import wandbox
 from wandbox import __cxx__ as cxx
+from wandbox import __go__ as go
 
 try:
     import unittest2 as unittest
@@ -89,6 +90,32 @@ class test_wandbox_cxx(wandbox_test_base):
             self.assertTrue('warning' in output)
         else:
             self.fail('SystemExit exception expected')
+
+
+class test_wandbox_go(wandbox_test_base):
+
+    def setUp(self):
+        return super(test_wandbox_go, self).setUp()
+
+    def tearDown(self):
+        return super(test_wandbox_go, self).tearDown()
+
+    def wandbox_go(self, opt):
+        opt.extend(run_cxx_options)
+        cli = go.GoCLI("go-head")
+        cli.execute_with_args(opt)
+
+    def test_prefix_options(self):
+        try:
+            self.wandbox_go([ '--dryrun', '--gcflags-m' ])
+        except SystemExit as e:
+            self.assertEqual(e.code, 0)
+            output = self.stdoout()
+            eprint(output)
+            self.assertTrue('go-gcflags-m' in output)
+        else:
+            self.fail('SystemExit exception expected')
+
 
 if __name__ == '__main__':
     test_loader = unittest.defaultTestLoader
