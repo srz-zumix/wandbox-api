@@ -1,12 +1,11 @@
-import os
 import sys
-import json
 
 from argparse import ArgumentParser
 from argparse import SUPPRESS
 from io import StringIO
 
 from .cli import CLI
+
 
 class OpenSSLCLI:
 

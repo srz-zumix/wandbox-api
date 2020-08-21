@@ -7,6 +7,7 @@
 Wandbox API for Python
 """
 
+import sys
 import requests
 import json
 
@@ -274,7 +275,7 @@ class Wandbox:
     @staticmethod
     def GetDefaultOptions(compiler, retry, wait):
         opt = []
-        for s in Runner.GetSwitches(compiler, retry, wait):
+        for s in Wandbox.GetSwitches(compiler, retry, wait):
             if s['type'] == 'select':
                 opt.append(s['default'])
             elif s['type'] == 'single':
