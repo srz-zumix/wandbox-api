@@ -10,6 +10,7 @@ Wandbox CLI for Python
 import os
 import sys
 import json
+import traceback
 
 from . import __version__ as VERSION
 from .wandbox import Wandbox
@@ -26,6 +27,7 @@ class CLI:
     """wandbox CLI class"""
 
     def __init__(self, lang=None, compiler=None, has_option=True):
+        self.result_key = None
         self.setup(lang, compiler, has_option)
 
     def command_list(self, args):
@@ -99,9 +101,9 @@ class CLI:
     def command_permlink(self, args):
         r = Wandbox.Call(lambda : Wandbox.GetPermlink(args.id[0]), args.retry, args.retry_wait)
         p = r['parameter']
-        Runner.ShowParameter(p)
+        Wandbox.ShowParameter(p)
         print('result:')
-        b = Runner.ShowResult(r['result'])
+        b = Wandbox.ShowResult(r['result'])
         sys.exit(b)
 
     def command_run(self, args):
@@ -110,8 +112,8 @@ class CLI:
             options.extend(o.split(','))
         try:
             self.run(args, options)
-        except Exception as e:
-            print(e)
+        except Exception:
+            print(traceback.format_exc())
             self.print_help()
             sys.exit(1)
 
@@ -123,7 +125,7 @@ class CLI:
         runner.set_stdin(args.stdin)
         runner.set_runtime_options(args.runtime_options)
         runner.build_options(enable_options, disable_options, not args.no_default)
-        runner.build_compiler_options(args.compile_options)
+        runner.build_compiler_options(args.sources + args.compile_options)
 
     def run(self, args, options):
         if args.language and args.compiler is None:
@@ -141,8 +143,13 @@ class CLI:
             runner.dump()
             sys.exit(0)
         r = runner.run()
-        b = Runner.ShowResult(r)
-        sys.exit(b)
+        if self.result_key:
+            exit_code, msg = Wandbox.GetResult(r, self.result_key)
+            if exit_code == 0:
+                print(msg)
+        else:
+            exit_code = Wandbox.ShowResult(r)
+        sys.exit(exit_code)
 
     def command_help(self, args):
         print(self.parser.parse_args([args.subcommand[0], '--help']))
@@ -277,10 +284,16 @@ class CLI:
         )
         passthrough_cmd.set_defaults(handler=self.command_run)
         passthrough_cmd.add_argument(
+            'sources',
+            metavar='SOURCE',
+            nargs='+',
+            help='source files'
+        )
+        passthrough_cmd.add_argument(
             'compile_options',
             metavar='COMPILE_OPTIONS',
             nargs='*',
-            help='comiple command options'
+            help='comiple options'
         )
 
         subcommands = self.parser.format_usage().split('{')[1].split('}')[0]

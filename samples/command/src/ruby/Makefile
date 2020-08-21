@@ -1,7 +1,7 @@
 #
 # Makefile
 
-RUBY=ruby
+RUBY:=ruby
 
 local:
 	${RUBY} sample.rb
