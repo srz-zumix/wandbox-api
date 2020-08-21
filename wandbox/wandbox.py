@@ -260,10 +260,10 @@ class Wandbox:
     @staticmethod
     def GetResult(r, key):
         if 'error' in r:
-            return 0, r['error']
+            return 1, r['error']
         elif key in r:
             return 0, r[key]
-        return 1, ''
+        return 0, ''
 
     @staticmethod
     def GetSwitches(compiler, retry, wait):

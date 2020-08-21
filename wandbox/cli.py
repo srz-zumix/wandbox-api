@@ -143,13 +143,16 @@ class CLI:
             runner.dump()
             sys.exit(0)
         r = runner.run()
-        if self.result_key:
-            exit_code, msg = Wandbox.GetResult(r, self.result_key)
-            if exit_code == 0:
-                print(msg)
-        else:
-            exit_code = Wandbox.ShowResult(r)
+        exit_code = self.on_run_response(r)
         sys.exit(exit_code)
+
+    def on_run_response(self, response):
+        if self.result_key:
+            exit_code, msg = Wandbox.GetResult(response, self.result_key)
+            print(msg)
+        else:
+            exit_code = Wandbox.ShowResult(response)
+        return exit_code
 
     def command_help(self, args):
         print(self.parser.parse_args([args.subcommand[0], '--help']))
