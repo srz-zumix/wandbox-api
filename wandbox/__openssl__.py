@@ -5,7 +5,6 @@ from argparse import SUPPRESS
 from io import StringIO
 
 from .cli import CLI
-from .wandbox import Wandbox
 
 
 class OpenSSLCLI:
@@ -24,7 +23,6 @@ class OpenSSLCLI:
                     else:
                         file.write(response['program_message'])
             return super(OpenSSLCLI.InnerCLI, self).on_run_response(response)
-
 
     def __init__(self):
         self.setup()
@@ -88,7 +86,7 @@ class OpenSSLCLI:
         sslcmd = opts.command
         sslopts = args
         if opts.infile:
-            sslopts = [ '-in', opts.infile ] + sslopts
+            sslopts = ['-in', opts.infile] + sslopts
             run_options.append(opts.infile)
         command = ' '.join(['openssl', sslcmd] + sslopts)
         code = StringIO(command)
