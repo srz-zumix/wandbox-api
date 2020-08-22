@@ -20,6 +20,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [GO](#Go)
 * [Python](#Python)
 * [Ruby](#Ruby)
+* [OpenSSL](#OpenSSL)
 
 ### wandbox
 
@@ -183,3 +184,14 @@ Require files required for compilation are automatically added to the file list.
 #### Ruby Example
 
 > wandbox-ruby run sample.rb
+
+### OpenSSL
+
+Even just having wandbox would be enough.
+
+* wandbox-ssl
+
+#### OpenSSL Example
+
+> wandbox-ssl genrsa -out test.key 2048
+> wandbox-ssl rsa -in test.key -pubout -out test.key.pub

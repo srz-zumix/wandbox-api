@@ -59,12 +59,11 @@ class PythonRunner(Runner):
                 return self.open_code(module_path, module_file)
         return dict()
 
-    def make_code(self, filepath, filename):
+    def make_code(self, file, filepath, filename):
         if os.path.basename(filepath) == 'setup.py':
             return self.make_from_setup_py(filepath, filename)
         files = dict()
         code = ''
-        file = self.file_open(filepath, 'r')
         for line in file:
             m = self.IMPORT_REGEX.match(line)
             if m:
@@ -86,7 +85,6 @@ class PythonRunner(Runner):
                         else:
                             files.update(self.get_imports(os.path.dirname(filepath), module_name))
             code += line
-        file.close()
         files[filename] = code
         # print(files.keys())
         return files

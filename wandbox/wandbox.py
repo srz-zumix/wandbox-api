@@ -7,6 +7,7 @@
 Wandbox API for Python
 """
 
+import sys
 import requests
 import json
 
@@ -14,6 +15,18 @@ from time import sleep
 from requests.exceptions import HTTPError as RHTTPError
 from requests.exceptions import ConnectionError as RConnectionError
 from requests.exceptions import ConnectTimeout as RConnectTimeout
+
+
+def text_transform(value):
+    try:
+        if isinstance(value, str):
+            return value.decode()
+        # elif isinstance(value, unicode):
+        #     return value.encode('utf_8')
+    except Exception:
+        pass
+    return value
+
 
 #
 #
@@ -197,6 +210,78 @@ class Wandbox:
         except Exception:
             raise
 
+    @staticmethod
+    def ShowParameter(response):
+        r = response
+        if 'compiler' in r:
+            print('compiler:' + r['compiler'])
+        if 'options' in r:
+            print('options:' + r['options'])
+        if 'compiler-option-raw' in r:
+            print('compiler-option-raw:' + r['compiler-option-raw'])
+        if 'runtime-option-raw' in r:
+            print('runtime-option-raw' + r['runtime-option-raw'])
+        if 'created-at' in r:
+            print(r['created-at'])
+
+    @staticmethod
+    def ShowResult(r, stderr=False):
+        if 'error' in r:
+            print(r['error'])
+            return 1
+        if stderr:
+            if 'compiler_output' in r:
+                print('compiler_output:')
+                print(text_transform(r['compiler_output']))
+            if 'compiler_error' in r:
+                sys.stderr.write(text_transform(r['compiler_error']))
+            if 'program_output' in r:
+                print('program_output:')
+                print(text_transform(r['program_output']))
+            if 'program_error' in r:
+                sys.stderr.write(text_transform(r['program_error']))
+        else:
+            if 'compiler_message' in r:
+                print('compiler_message:')
+                print(text_transform(r['compiler_message']))
+            if 'program_message' in r:
+                print('program_message:')
+                print(text_transform(r['program_message']))
+        if 'url' in r:
+            print('permlink: ' + r['permlink'])
+            print('url: ' + r['url'])
+        if 'signal' in r:
+            print('signal: ' + r['signal'])
+
+        if 'status' in r:
+            return int(r['status'])
+        return 1
+
+    @staticmethod
+    def GetResult(r, key):
+        if 'error' in r:
+            return 1, r['error']
+        elif key in r:
+            return 0, r[key]
+        return 0, ''
+
+    @staticmethod
+    def GetSwitches(compiler, retry, wait):
+        for d in Wandbox.Call(Wandbox.GetCompilerList, retry, wait):
+            if d['name'] == compiler:
+                if 'switches' in d:
+                    return d['switches']
+
+    @staticmethod
+    def GetDefaultOptions(compiler, retry, wait):
+        opt = []
+        for s in Wandbox.GetSwitches(compiler, retry, wait):
+            if s['type'] == 'select':
+                opt.append(s['default'])
+            elif s['type'] == 'single':
+                if s['default']:
+                    opt.append(s['name'])
+        return opt
 
 if __name__ == '__main__':
     with Wandbox() as w:

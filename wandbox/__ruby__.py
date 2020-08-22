@@ -13,10 +13,9 @@ class RubyRunner(Runner):
     def reset(self):
         self.required = []
 
-    def make_code(self, filepath, filename):
+    def make_code(self, file, filepath, filename):
         files = dict()
         code = ''
-        file = self.file_open(filepath, 'r')
         for line in file:
             m = self.REQUIRE_REGEX.match(line)
             if m:
@@ -29,7 +28,6 @@ class RubyRunner(Runner):
                     module = m.group(1).strip('\'"')
                     files.update(self.require(os.path.dirname(filepath), module.strip()))
             code += line
-        file.close()
         files[filename] = code
         return files
 

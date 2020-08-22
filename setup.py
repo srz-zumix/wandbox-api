@@ -54,7 +54,8 @@ setup(
             'wandbox-pypy = wandbox.__python__:pypy',
             'wandbox-ruby = wandbox.__ruby__:main',
             'wandbox-mruby = wandbox.__ruby__:mruby',
-            'wandbox-go = wandbox.__go__:main'
+            'wandbox-go = wandbox.__go__:main',
+            'wandbox-ssl = wandbox.__openssl__:main'
         ]
     }
     , install_requires=['requests']

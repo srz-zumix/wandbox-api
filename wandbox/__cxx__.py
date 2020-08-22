@@ -13,10 +13,9 @@ class CxxRunner(Runner):
         self.expand = False
         self.includes = []
 
-    def make_code(self, filepath, filename):
+    def make_code(self, file, filepath, filename):
         files = dict()
         code = ''
-        file = self.file_open(filepath, 'r')
         for line in file:
             m = self.EXPAND_INCLUDE_REGEX.match(line)
             if m:
@@ -35,7 +34,6 @@ class CxxRunner(Runner):
                             expand_include_file_codes = self.open_code(include_path, include_path)
                             files.update(expand_include_file_codes)
             code += line
-        file.close()
         files[filename] = code
         return files
 
