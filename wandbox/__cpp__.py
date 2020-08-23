@@ -21,7 +21,7 @@ class CppCLI(CLI):
         )
 
     def get_runner(self, args, options):
-        return CxxRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait, False)
+        return CxxRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait, False, False)
 
     def setup_runner(self, args, enable_options, disable_options, runner):
 

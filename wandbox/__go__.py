@@ -16,6 +16,7 @@ class GoCLI(CLI):
 
     def setup_runner(self, args, enable_options, disable_options, runner):
         self.check_bool_option(args, 'gcflags-m', enable_options, disable_options, 'go-')
+        runner.has_runtime_option_raw = False
 
         super(GoCLI, self).setup_runner(args, list(set(enable_options)), disable_options, runner)
 

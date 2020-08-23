@@ -37,25 +37,28 @@ setup(
     ]
     , entry_points={
         'console_scripts': [
-            'wandbox     = wandbox.__main__:main',
-            'wandbox-cc  = wandbox.__cc__:main',
-            'wandbox-gcc = wandbox.__cc__:gcc',
-            'wandbox-clang = wandbox.__cc__:clang',
-            'wandbox-cxx = wandbox.__cxx__:main',
-            'wandbox-g++ = wandbox.__cxx__:gcc',
-            'wandbox-clang++ = wandbox.__cxx__:clang',
-            'wandbox-CPP = wandbox.__cpp__:main',
-            'wandbox-gcc-PP = wandbox.__cpp__:gcc',
+            'wandbox          = wandbox.__main__:main',
+            'wandbox-cc       = wandbox.__cc__:main',
+            'wandbox-gcc      = wandbox.__cc__:gcc',
+            'wandbox-clang    = wandbox.__cc__:clang',
+            'wandbox-cxx      = wandbox.__cxx__:main',
+            'wandbox-g++      = wandbox.__cxx__:gcc',
+            'wandbox-clang++  = wandbox.__cxx__:clang',
+            'wandbox-CPP      = wandbox.__cpp__:main',
+            'wandbox-gcc-PP   = wandbox.__cpp__:gcc',
             'wandbox-clang-PP = wandbox.__cpp__:clang',
-            'wandbox-cs = wandbox.__csharp__:main',
-            'wandbox-python = wandbox.__python__:main',
-            'wandbox-python2 = wandbox.__python__:python2',
-            'wandbox-python3 = wandbox.__python__:python3',
-            'wandbox-pypy = wandbox.__python__:pypy',
-            'wandbox-ruby = wandbox.__ruby__:main',
-            'wandbox-mruby = wandbox.__ruby__:mruby',
-            'wandbox-go = wandbox.__go__:main',
-            'wandbox-ssl = wandbox.__openssl__:main'
+            'wandbox-cs       = wandbox.__csharp__:main',
+            'wandbox-python   = wandbox.__python__:main',
+            'wandbox-python2  = wandbox.__python__:python2',
+            'wandbox-python3  = wandbox.__python__:python3',
+            'wandbox-pypy     = wandbox.__python__:pypy',
+            'wandbox-ruby     = wandbox.__ruby__:main',
+            'wandbox-mruby    = wandbox.__ruby__:mruby',
+            'wandbox-go       = wandbox.__go__:main',
+            'wandbox-js       = wandbox.__js__:main',
+            'wandbox-node     = wandbox.__js__:node',
+            'wandbox-spidermonkey = wandbox.__js__:spidermonkey',
+            'wandbox-ssl      = wandbox.__openssl__:main'
         ]
     }
     , install_requires=['requests']

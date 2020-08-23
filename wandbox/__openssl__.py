@@ -15,6 +15,11 @@ class OpenSSLCLI:
             self.output = None
             super(OpenSSLCLI.InnerCLI, self).__init__('OpenSSL', 'openssl-head', False)
 
+        def setup_runner(self, args, enable_options, disable_options, runner):
+            runner.has_compiler_option_raw = False
+            runner.has_runtime_option_raw = False
+            super(OpenSSLCLI.InnerCLI, self).setup_runner(args, enable_options, disable_options, runner)
+
         def on_run_response(self, response):
             if self.output:
                 with open(self.output, 'w') as file:

@@ -31,8 +31,9 @@ class RubyRunner(Runner):
         files[filename] = code
         return files
 
-    def require(self, path, module_name):
+    def require(self, path, module_name_):
         files = dict()
+        module_name = os.path.normpath(module_name_)
         if module_name in self.required:
             return files
         module_file = module_name + '.rb'

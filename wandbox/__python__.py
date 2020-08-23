@@ -104,8 +104,9 @@ class PythonRunner(Runner):
         files[filename] = code
         return files
 
-    def make_from_package(self, dirpath, dirname):
+    def make_from_package(self, dirpath, dirname_):
         files = dict()
+        dirname = os.path.normpath(dirname_)
         if dirpath in self.imports:
             return files
         if os.path.exists(dirpath):

@@ -18,7 +18,7 @@ class Runner:
     """wandbox Runner class"""
 
     def __init__(self, lang, compiler, save, encoding, retry, retry_wait,
-                    has_compiler_option_raw=True, prefix_chars='-'):
+                    has_compiler_option_raw=True, has_runtime_option_raw=True, prefix_chars='-'):
         self.wandbox = Wandbox()
         if lang is None:
             raise Exception('language is required')
@@ -34,6 +34,7 @@ class Runner:
         self.switches = None
         self.wandbox.permanent_link(save)
         self.has_compiler_option_raw = has_compiler_option_raw
+        self.has_runtime_option_raw = has_runtime_option_raw
 
     def get_switches(self):
         if not self.switches:
@@ -73,6 +74,12 @@ class Runner:
         if self.has_compiler_option_raw:
             self.wandbox.add_compiler_options(option)
 
+    def add_commandline_options(self, option):
+        if self.has_compiler_option_raw:
+            self.wandbox.add_compiler_options(option)
+        elif self.has_runtime_option_raw:
+            self.wandbox.add_runtime_options(option)
+
     def build_compiler_options(self, options):
         codes = []
         if options[-1] == '-':
@@ -81,12 +88,12 @@ class Runner:
 
         for opt in options:
             if opt[0] in self.prefix_chars:
-                self.add_compiler_options(opt)
+                self.add_commandline_options(opt)
             else:
                 if os.path.isfile(opt):
                     codes.append(opt)
                 else:
-                    self.add_compiler_options(opt)
+                    self.add_commandline_options(opt)
         if len(codes) == 0:
             raise Exception('error: No input source file or not exist')
         main_filepath = codes[0]
