@@ -52,10 +52,10 @@ class JsRunner(Runner):
 class JsCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(JsCLI, self).__init__('JavaScript', compiler, False)
+        super(JsCLI, self).__init__('JavaScript', compiler, False, False)
 
     def get_runner(self, args, options):
-        return JsRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait, False)
+        return JsRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
 
 def js(compiler=None):

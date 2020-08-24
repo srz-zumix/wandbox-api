@@ -17,8 +17,7 @@ from .wandbox import Wandbox
 class Runner:
     """wandbox Runner class"""
 
-    def __init__(self, lang, compiler, save, encoding, retry, retry_wait,
-                    has_compiler_option_raw=True, has_runtime_option_raw=True, prefix_chars='-'):
+    def __init__(self, lang, compiler, save, encoding, retry, retry_wait, prefix_chars='-'):
         self.wandbox = Wandbox()
         if lang is None:
             raise Exception('language is required')
@@ -33,8 +32,8 @@ class Runner:
         self.encoding = encoding
         self.switches = None
         self.wandbox.permanent_link(save)
-        self.has_compiler_option_raw = has_compiler_option_raw
-        self.has_runtime_option_raw = has_runtime_option_raw
+        self.has_compiler_option_raw = True
+        self.has_runtime_option_raw = True
 
     def get_switches(self):
         if not self.switches:

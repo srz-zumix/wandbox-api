@@ -5,7 +5,7 @@ from .__cxx__ import CxxRunner
 class CppCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(CppCLI, self).__init__('CPP', compiler, False)
+        super(CppCLI, self).__init__('CPP', compiler)
         self.cxx_setup('CPP', compiler)
 
     def cxx_setup(self, lang, compiler):
@@ -21,7 +21,7 @@ class CppCLI(CLI):
         )
 
     def get_runner(self, args, options):
-        return CxxRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait, False, False)
+        return CxxRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
     def setup_runner(self, args, enable_options, disable_options, runner):
 

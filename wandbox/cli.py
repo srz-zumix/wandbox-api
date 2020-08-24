@@ -26,8 +26,13 @@ def get_compiler_list(retry, wait):
 class CLI:
     """wandbox CLI class"""
 
-    def __init__(self, lang=None, compiler=None, has_option=True):
+    def __init__(self, lang=None, compiler=None,
+            has_option=True, has_compiler_option_raw=True, has_runtime_option_raw=True):
         self.result_key = None
+        self.language = lang
+        self.has_option = has_option
+        self.has_compiler_option_raw = has_compiler_option_raw
+        self.has_runtime_option_raw = has_runtime_option_raw
         self.setup(lang, compiler, has_option)
 
     def command_list(self, args):
@@ -122,8 +127,11 @@ class CLI:
 
     def setup_runner(self, args, enable_options, disable_options, runner):
         runner.reset()
+        runner.has_compiler_option_raw = self.has_compiler_option_raw
+        runner.has_runtime_option_raw = self.has_runtime_option_raw
         runner.set_stdin(args.stdin)
-        runner.set_runtime_options(args.runtime_options)
+        if self.has_runtime_option_raw:
+            runner.set_runtime_options(args.runtime_options)
         runner.build_options(enable_options, disable_options, not args.no_default)
         runner.build_compiler_options(args.sources + args.compile_options)
 
@@ -185,13 +193,14 @@ class CLI:
             default=[],
             help=SUPPRESS if not has_option else 'used options for a compiler'
         )
-        self.parser.add_argument(
-            '-r',
-            '--runtime-options',
-            action='append',
-            default=[],
-            help='runtime options'
-        )
+        if self.has_runtime_option_raw:
+            self.parser.add_argument(
+                '-r',
+                '--runtime-options',
+                action='append',
+                default=[],
+                help='runtime options'
+            )
         self.parser.add_argument(
             '-n',
             '--dryrun',

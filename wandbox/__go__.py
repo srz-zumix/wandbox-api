@@ -4,7 +4,7 @@ from .cli import CLI
 class GoCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(GoCLI, self).__init__('Go', compiler, False)
+        super(GoCLI, self).__init__('Go', compiler)
         self.go_setup('Go', compiler)
 
     def go_setup(self, lang, compiler):

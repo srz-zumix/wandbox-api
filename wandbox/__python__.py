@@ -129,10 +129,10 @@ class PythonRunner(Runner):
 class PythonCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(PythonCLI, self).__init__('Python', compiler, False)
+        super(PythonCLI, self).__init__('Python', compiler, False, False)
 
     def get_runner(self, args, options):
-        return PythonRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait, False)
+        return PythonRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
 
 def python(compiler=None):

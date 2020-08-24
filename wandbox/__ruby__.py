@@ -47,10 +47,10 @@ class RubyRunner(Runner):
 class RubyCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(RubyCLI, self).__init__('Ruby', compiler, False)
+        super(RubyCLI, self).__init__('Ruby', compiler, False, False)
 
     def get_runner(self, args, options):
-        return RubyRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait, False)
+        return RubyRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
 
 def ruby(compiler=None):
