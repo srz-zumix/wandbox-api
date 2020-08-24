@@ -17,7 +17,8 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C++](#c)
 * [C](#c-1)
 * [CPP](#CPP)
-* [GO](#Go)
+* [Go](#Go)
+* [JavaScript](#JavaScript)
 * [Python](#Python)
 * [Ruby](#Ruby)
 * [OpenSSL](#OpenSSL)
@@ -146,6 +147,17 @@ Include files required for compilation are automatically added to the file list.
 
 * wandbox-go
   (wandbox -l Go)
+
+### Ruby
+
+Import files required for compilation are automatically added to the file list.
+
+* wandbox-js
+  (wandbox -l JavaScript)
+* wandbox-node  
+  (wandbox-js -c nodejs-head)
+* wandbox-spidermonkey  
+  (wandbox-js -c spidermonkey-45.0.2)
 
 ### Python
 
