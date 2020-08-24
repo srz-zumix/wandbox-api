@@ -1,8 +1,17 @@
 import sys
 import os
+# import json
 import wandbox
+from wandbox import Wandbox
+from wandbox import __cc__ as cc
+from wandbox import __cpp__ as cpp
+from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
 from wandbox import __go__ as go
+from wandbox import __js__ as js
+from wandbox import __openssl__ as openssl
+from wandbox import __python__ as python
+from wandbox import __ruby__ as ruby
 
 try:
     import unittest2 as unittest
@@ -115,6 +124,42 @@ class test_wandbox_go(wandbox_test_base):
             self.assertTrue('go-gcflags-m' in output)
         else:
             self.fail('SystemExit exception expected')
+
+
+class test_wandbox_options(wandbox_test_base):
+    list_json = None
+
+    @classmethod
+    def setUpClass(cls):
+        cls.list_json = Wandbox.GetCompilerList()
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_options_config(self):
+        l = test_wandbox_options.list_json
+        clis = [ cc.CcCLI(),
+            cpp.CppCLI(),
+            cs.CsCLI(),
+            cxx.CxxCLI(),
+            go.GoCLI(),
+            js.JsCLI(),
+            openssl.OpenSSLCLI.InnerCLI(),
+            python.PythonCLI(),
+            ruby.RubyCLI()
+        ]
+        for cli in clis:
+            with self.subTest(cli=cli):
+                ll = [x for x in l if cli.language == x['language']]
+                head = ll[0]
+                # print(json.dumps(head, indent=2))
+                self.assertEqual(cli.has_compiler_option_raw, head['compiler-option-raw'])
+                # self.assertEqual(cli.has_runtime_option_raw, head['runtime-option-raw'])
+                self.assertEqual(cli.has_runtime_option_raw, cli.language != "OpenSSL")
+                self.assertEqual(cli.has_option, len(head['switches']) != 0)
 
 
 if __name__ == '__main__':

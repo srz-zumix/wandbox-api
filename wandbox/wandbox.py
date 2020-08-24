@@ -165,6 +165,18 @@ class Wandbox:
         """
         self.parameter.update({'runtime-option-raw': options_str})
 
+    def add_runtime_options(self, options_str):
+        """
+        set runtime options
+        """
+        if 'runtime-option-raw' not in self.parameter:
+            self.runtime_options(options_str)
+        else:
+            option = self.parameter['runtime-option-raw']
+            option += '\n'
+            option += options_str
+            self.parameter.update({'runtime-option-raw': option})
+
     def permanent_link(self, enable):
         """
         wandbox permanet link to enable

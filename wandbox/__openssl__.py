@@ -13,7 +13,7 @@ class OpenSSLCLI:
 
         def __init__(self):
             self.output = None
-            super(OpenSSLCLI.InnerCLI, self).__init__('OpenSSL', 'openssl-head', False)
+            super(OpenSSLCLI.InnerCLI, self).__init__('OpenSSL', 'openssl-head', False, False, False)
 
         def on_run_response(self, response):
             if self.output:
