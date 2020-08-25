@@ -12,6 +12,7 @@ from wandbox import __js__ as js
 from wandbox import __openssl__ as openssl
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
+from wandbox import __tsc__ as tsc
 
 try:
     import unittest2 as unittest
@@ -149,7 +150,8 @@ class test_wandbox_options(wandbox_test_base):
             js.JsCLI(),
             openssl.OpenSSLCLI.InnerCLI(),
             python.PythonCLI(),
-            ruby.RubyCLI()
+            ruby.RubyCLI(),
+            tsc.TscCLI()
         ]
         for cli in clis:
             with self.subTest(cli=cli):
