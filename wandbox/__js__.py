@@ -10,16 +10,21 @@ class JsRunner(Runner):
     IMPORT_REGEX = re.compile(r'^\s*import\s+.*?\s+from\s+(.*?)[;|]$')
     REQUIRE_REGEX = re.compile(r'^\s.*?require\s+\((.*?)\)')
 
+    def __init__(self, lang, compiler, save, encoding, retry, retry_wait, prefix_chars='-'):
+        self.configs = ['package.json']
+        super(JsRunner, self).__init__(lang, compiler, save, encoding, retry, retry_wait, prefix_chars)
+
     def reset(self):
         self.imported = []
 
     def make_code(self, file, filepath, filename):
         files = dict()
         code = ''
-        package_json = os.path.join(os.path.dirname(filename), 'package.json')
-        package_json_path = os.path.join(os.path.dirname(filepath), package_json)
-        if os.path.exists(package_json_path):
-            files.update(self.import_from(os.path.dirname(package_json_path), package_json))
+        for config in self.configs:
+            config_path_name = os.path.join(os.path.dirname(filename), config)
+            config_path = os.path.join(os.path.dirname(filepath), config)
+            if os.path.exists(config_path):
+                files.update(self.import_from(os.path.dirname(config_path), config_path_name))
         for line in file:
             m = self.IMPORT_REGEX.match(line)
             if m:

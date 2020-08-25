@@ -58,6 +58,7 @@ setup(
             'wandbox-js       = wandbox.__js__:main',
             'wandbox-node     = wandbox.__js__:node',
             'wandbox-spidermonkey = wandbox.__js__:spidermonkey',
+            'wandbox-tsc      = wandbox.__tsc__:main',
             'wandbox-ssl      = wandbox.__openssl__:main'
         ]
     }
