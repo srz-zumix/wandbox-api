@@ -11,7 +11,7 @@ class JsRunner(Runner):
     REQUIRE_REGEX = re.compile(r'^\s.*?require\s+\((.*?)\)')
 
     def __init__(self, lang, compiler, save, encoding, retry, retry_wait, prefix_chars='-'):
-        self.configs = [ 'package.json' ]
+        self.configs = ['package.json']
         super(JsRunner, self).__init__(lang, compiler, save, encoding, retry, retry_wait, prefix_chars)
 
     def reset(self):
