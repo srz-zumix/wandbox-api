@@ -20,6 +20,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Go](#Go)
 * [JavaScript](#JavaScript)
 * [OpenSSL](#OpenSSL)
+* [Perl](#Perl)
 * [Python](#Python)
 * [Ruby](#Ruby)
 * [TypeScript](#TypeScript)
@@ -160,17 +161,6 @@ Import files/modules required for compilation are automatically added to the fil
 * wandbox-spidermonkey  
   (wandbox-js -c spidermonkey-45.0.2)
 
-### Ruby
-
-Import files required for compilation are automatically added to the file list.
-
-* wandbox-js
-  (wandbox -l JavaScript)
-* wandbox-node  
-  (wandbox-js -c nodejs-head)
-* wandbox-spidermonkey  
-  (wandbox-js -c spidermonkey-45.0.2)
-
 ### OpenSSL
 
 Even just having wandbox would be enough.
@@ -182,6 +172,13 @@ Even just having wandbox would be enough.
 > wandbox-ssl genrsa -out test.key 2048
 
 > wandbox-ssl rsa -in test.key -pubout -out test.key.pub
+
+### Perl
+
+Require files required for compilation are automatically added to the file list.
+
+* wandbox-perl
+  (wandbox -l Perl)
 
 ### Python
 

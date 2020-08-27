@@ -54,6 +54,7 @@ setup(
             'wandbox-pypy     = wandbox.__python__:pypy',
             'wandbox-ruby     = wandbox.__ruby__:main',
             'wandbox-mruby    = wandbox.__ruby__:mruby',
+            'wandbox-perl     = wandbox.__perl__:main',
             'wandbox-go       = wandbox.__go__:main',
             'wandbox-js       = wandbox.__js__:main',
             'wandbox-node     = wandbox.__js__:node',
