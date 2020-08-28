@@ -19,6 +19,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [CPP](#CPP)
 * [Go](#Go)
 * [JavaScript](#JavaScript)
+* [Nim](#Nim)
 * [OpenSSL](#OpenSSL)
 * [Perl](#Perl)
 * [Python](#Python)
@@ -160,6 +161,13 @@ Import files/modules required for compilation are automatically added to the fil
   (wandbox-js -c nodejs-head)
 * wandbox-spidermonkey  
   (wandbox-js -c spidermonkey-45.0.2)
+
+### Nim
+
+Import modules required for compilation are automatically added to the file list.
+
+* wandbox-nim
+  (wandbox -l Nim)
 
 ### OpenSSL
 
