@@ -124,7 +124,7 @@ optional arguments:
 
 > CXX="wandbox-gcc run" make
 
-[C++ Example](./sample/command/src/cxx)
+[C++ Example](./samples/command/src/cxx)
 
 ### C
 
@@ -139,7 +139,7 @@ Include files required for compilation are automatically added to the file list.
 
 #### C Example
 
-[C Example](./sample/command/src/cc)
+[C Example](./samples/command/src/cc)
 
 ### CPP
 
@@ -154,7 +154,7 @@ Include files required for compilation are automatically added to the file list.
 
 #### CPP Example
 
-[CPP Example](./sample/command/src/cpp)
+[CPP Example](./samples/command/src/cpp)
 
 ### Go
 
@@ -163,7 +163,7 @@ Include files required for compilation are automatically added to the file list.
 
 #### Go Example
 
-[Go Example](./sample/command/src/go)
+[Go Example](./samples/command/src/go)
 
 ### JavaScript
 
@@ -178,7 +178,7 @@ Import files/modules required for compilation are automatically added to the fil
 
 #### JavaScript Example
 
-[JavaScript Example](./sample/command/src/js)
+[JavaScript Example](./samples/command/src/js)
 
 ### Nim
 
@@ -189,7 +189,7 @@ Import modules required for compilation are automatically added to the file list
 
 #### Nim Example
 
-[Nim Example](./sample/command/src/nim)
+[Nim Example](./samples/command/src/nim)
 
 ### OpenSSL
 
@@ -203,7 +203,7 @@ Even just having wandbox would be enough.
 
 > wandbox-ssl rsa -in test.key -pubout -out test.key.pub
 
-[OpenSSL Example](./sample/command/src/openssl)
+[OpenSSL Example](./samples/command/src/openssl)
 
 ### Perl
 
@@ -214,7 +214,7 @@ Require files/modules required for compilation are automatically added to the fi
 
 #### Perl Example
 
-[Perl Example](./sample/command/src/perl)
+[Perl Example](./samples/command/src/perl)
 
 ### Python
 
@@ -241,7 +241,7 @@ If you open a file, add the file
 
 > wandbox-python -c cpython-head -r test run setup.py README.md
 
-[Python Example](./sample/command/src/python)
+[Python Example](./samples/command/src/python)
 
 ### Ruby
 
@@ -256,7 +256,7 @@ Require files required for compilation are automatically added to the file list.
 
 > wandbox-ruby run sample.rb
 
-[Ruby Example](./sample/command/src/ruby)
+[Ruby Example](./samples/command/src/ruby)
 
 ### TypeScript
 
@@ -267,4 +267,4 @@ Import files/modules required for compilation are automatically added to the fil
 
 #### TypeScript Example
 
-[TypeScript Example](./sample/command/src/ts)
+[TypeScript Example](./samples/command/src/ts)
