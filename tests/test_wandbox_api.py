@@ -10,6 +10,7 @@ from wandbox import __cxx__ as cxx
 from wandbox import __go__ as go
 from wandbox import __js__ as js
 from wandbox import __openssl__ as openssl
+from wandbox import __perl__ as perl
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
 from wandbox import __tsc__ as tsc
@@ -149,6 +150,7 @@ class test_wandbox_options(wandbox_test_base):
             go.GoCLI(),
             js.JsCLI(),
             openssl.OpenSSLCLI.InnerCLI(),
+            perl.PerlCLI(),
             python.PythonCLI(),
             ruby.RubyCLI(),
             tsc.TscCLI()
