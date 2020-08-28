@@ -175,7 +175,7 @@ Even just having wandbox would be enough.
 
 ### Perl
 
-Require files required for compilation are automatically added to the file list.
+Require files/modules required for compilation are automatically added to the file list.
 
 * wandbox-perl
   (wandbox -l Perl)
