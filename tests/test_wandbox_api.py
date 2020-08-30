@@ -3,6 +3,7 @@ import os
 # import json
 import wandbox
 from wandbox import Wandbox
+from wandbox import __bash__ as bash
 from wandbox import __cc__ as cc
 from wandbox import __cpp__ as cpp
 from wandbox import __csharp__ as cs
@@ -144,7 +145,9 @@ class test_wandbox_options(wandbox_test_base):
 
     def test_options_config(self):
         l = test_wandbox_options.list_json
-        clis = [ cc.CcCLI(),
+        clis = [
+            # bash.BashCLI.InnerCLI(),
+            cc.CcCLI(),
             cpp.CppCLI(),
             cs.CsCLI(),
             cxx.CxxCLI(),

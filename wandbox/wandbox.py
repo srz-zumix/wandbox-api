@@ -155,7 +155,8 @@ class Wandbox:
             self.compiler_options(options_str)
         else:
             option = self.parameter['compiler-option-raw']
-            option += '\n'
+            if len(option) > 0:
+                option += '\n'
             option += options_str
             self.parameter.update({'compiler-option-raw': option})
 
@@ -163,7 +164,11 @@ class Wandbox:
         """
         set runtime options
         """
-        self.parameter.update({'runtime-option-raw': options_str})
+        if options_str is None:
+            if 'runtime-option-raw' in self.parameter:
+                del self.parameter['runtime-option-raw']
+        else:
+            self.parameter.update({'runtime-option-raw': options_str})
 
     def add_runtime_options(self, options_str):
         """
@@ -173,7 +178,8 @@ class Wandbox:
             self.runtime_options(options_str)
         else:
             option = self.parameter['runtime-option-raw']
-            option += '\n'
+            if len(option) > 0:
+                option += '\n'
             option += options_str
             self.parameter.update({'runtime-option-raw': option})
 
