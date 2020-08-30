@@ -14,6 +14,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## CLI
 
+* [Bash](#bash)
 * [C++](#c)
 * [C](#c-1)
 * [CPP](#CPP)
@@ -63,6 +64,16 @@ optional arguments:
   --retry-wait SECONDS  wait time for retry when HTTPError occurs
   --retry COUNT         number of retries when HTTPError occurs
 ```
+
+### Bash
+
+Source files required for runtime are automatically added to the file list.
+
+* wandbox-bash
+
+#### Bash Example
+
+[Bash Example](./samples/command/src/bash)
 
 ### C++
 
@@ -167,7 +178,7 @@ Include files required for compilation are automatically added to the file list.
 
 ### JavaScript
 
-Import files/modules required for compilation are automatically added to the file list.
+Import files/modules required for runtime are automatically added to the file list.
 
 * wandbox-js
   (wandbox -l JavaScript)
@@ -207,7 +218,7 @@ Even just having wandbox would be enough.
 
 ### Perl
 
-Require files/modules required for compilation are automatically added to the file list.
+Require files/modules required for runtime are automatically added to the file list.
 
 * wandbox-perl
   (wandbox -l Perl)
@@ -218,7 +229,7 @@ Require files/modules required for compilation are automatically added to the fi
 
 ### Python
 
-Import files/modules required for compilation are automatically added to the file list.
+Import files/modules required for runtime are automatically added to the file list.
 
 * wandbox-python
   (wandbox -l Python)
@@ -245,7 +256,7 @@ If you open a file, add the file
 
 ### Ruby
 
-Require files required for compilation are automatically added to the file list.
+Require files required for runtime are automatically added to the file list.
 
 * wandbox-ruby
   (wandbox -l Ruby)
