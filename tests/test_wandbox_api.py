@@ -7,6 +7,7 @@ from wandbox import __cc__ as cc
 from wandbox import __cpp__ as cpp
 from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
+from wandbox import __elixir__ as elixir
 from wandbox import __go__ as go
 from wandbox import __js__ as js
 from wandbox import __nim__ as nim
@@ -148,6 +149,7 @@ class test_wandbox_options(wandbox_test_base):
             cpp.CppCLI(),
             cs.CsCLI(),
             cxx.CxxCLI(),
+            elixir.ElixirCLI(),
             go.GoCLI(),
             js.JsCLI(),
             nim.NimCLI(),

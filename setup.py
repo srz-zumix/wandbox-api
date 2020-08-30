@@ -48,6 +48,7 @@ setup(
             'wandbox-gcc-PP   = wandbox.__cpp__:gcc',
             'wandbox-clang-PP = wandbox.__cpp__:clang',
             'wandbox-cs       = wandbox.__csharp__:main',
+            'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-go       = wandbox.__go__:main',
             'wandbox-js       = wandbox.__js__:main',
             'wandbox-node     = wandbox.__js__:node',
