@@ -2,7 +2,6 @@ import re
 import os
 
 from argparse import ArgumentParser
-from argparse import SUPPRESS
 
 from .cli import CLI
 from .runner import Runner
