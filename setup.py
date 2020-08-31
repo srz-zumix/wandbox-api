@@ -38,6 +38,7 @@ setup(
     , entry_points={
         'console_scripts': [
             'wandbox          = wandbox.__main__:main',
+            'wandbox-bash     = wandbox.__bash__:main',
             'wandbox-cc       = wandbox.__cc__:main',
             'wandbox-gcc      = wandbox.__cc__:gcc',
             'wandbox-clang    = wandbox.__cc__:clang',
