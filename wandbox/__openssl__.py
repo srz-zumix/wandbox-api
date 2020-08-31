@@ -27,17 +27,6 @@ class OpenSSLCLI:
     def __init__(self):
         self.setup()
 
-    def command_run(self, args):
-        options = []
-        for o in args.options:
-            options.extend(o.split(','))
-        try:
-            self.run(args, options)
-        except Exception as e:
-            print(e)
-            self.print_help()
-            sys.exit(1)
-
     # command line option
     def setup(self):
         self.parser = ArgumentParser(add_help=False)
@@ -64,9 +53,6 @@ class OpenSSLCLI:
 
     def parse_command_line(self, argv):
         return self.parser.parse_known_args(argv)
-
-    def print_help(self):
-        self.parser.print_help()
 
     def execute(self):
         self.execute_with_args()
