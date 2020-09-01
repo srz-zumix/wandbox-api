@@ -1,4 +1,3 @@
-import re
 import os
 import sys
 from io import StringIO
@@ -54,7 +53,7 @@ class ElixirMixCLI(CLI):
 
 export LC_ALL=en_US.UTF-8
 export PATH=/opt/wandbox/{}/bin:$PATH
-ERLANG=`cat /opt/wandbox/{}/bin/run-elixir.sh | grep -oe 'erlang-[0-9\.]*'`
+ERLANG=`cat /opt/wandbox/{}/bin/run-elixir.sh | grep -oe 'erlang-[0-9\\.]*'`
 export PATH=/opt/wandbox/$ERLANG/bin:$PATH
 
 {} || echo Unsolved: \"erts_mmap: Failed to create super carrier of size 1024 MB\", Please tell me the solution.
@@ -73,9 +72,11 @@ def elixir(compiler=None):
     cli = ElixirCLI(compiler)
     cli.execute()
 
+
 def mix(compiler=None):
     cli = ElixirMixCLI(compiler)
     cli.execute()
+
 
 def main():
     elixir()
