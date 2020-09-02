@@ -181,6 +181,7 @@ Include files required for compilation are automatically added to the file list.
 
 * wandbox-elixir
   (wandbox -l Elixir)
+* wandbox-mix (Experimental)
 
 #### Elixir Example
 
