@@ -63,6 +63,7 @@ setup(
             'wandbox-pypy     = wandbox.__python__:pypy',
             'wandbox-ruby     = wandbox.__ruby__:main',
             'wandbox-mruby    = wandbox.__ruby__:mruby',
+            'wandbox-swift    = wandbox.__swift__:main',
             'wandbox-tsc      = wandbox.__tsc__:main',
             'wandbox-ssl      = wandbox.__openssl__:main'
         ]

@@ -18,6 +18,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C++](#c)
 * [C](#c-1)
 * [CPP](#CPP)
+* [C#](#CSharp)
 * [Elixir](#Elixir)
 * [Go](#Go)
 * [JavaScript](#JavaScript)
@@ -26,6 +27,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Perl](#Perl)
 * [Python](#Python)
 * [Ruby](#Ruby)
+* [Swift](#Swift)
 * [TypeScript](#TypeScript)
 
 ### wandbox
@@ -168,6 +170,15 @@ Include files required for compilation are automatically added to the file list.
 
 [CPP Example](./samples/command/src/cpp)
 
+### CSharp
+
+* wandbox-cs
+  (wandbox -l C#)
+
+#### CSharp Example
+
+[C# Example](./samples/command/src/csharp)
+
 ### Go
 
 * wandbox-go
@@ -279,6 +290,17 @@ Require files required for runtime are automatically added to the file list.
 > wandbox-ruby run sample.rb
 
 [Ruby Example](./samples/command/src/ruby)
+
+### Swift
+
+* wandbox-swift
+  (wandbox -l Swift)
+
+#### Swift Example
+
+> wandbox-swift run main.swift
+
+[Ruby Example](./samples/command/src/swift)
 
 ### TypeScript
 

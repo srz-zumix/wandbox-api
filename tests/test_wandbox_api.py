@@ -16,6 +16,7 @@ from wandbox import __openssl__ as openssl
 from wandbox import __perl__ as perl
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
+from wandbox import __swift__ as swift
 from wandbox import __tsc__ as tsc
 
 try:
@@ -160,6 +161,7 @@ class test_wandbox_options(wandbox_test_base):
             perl.PerlCLI(),
             python.PythonCLI(),
             ruby.RubyCLI(),
+            swift.SwiftCLI(),
             tsc.TscCLI()
         ]
         for cli in clis:
