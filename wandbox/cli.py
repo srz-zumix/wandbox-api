@@ -19,10 +19,6 @@ from argparse import ArgumentParser
 from argparse import SUPPRESS
 
 
-def get_compiler_list(retry, wait):
-    return Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
-
-
 class CLI:
     """wandbox CLI class"""
 
@@ -136,15 +132,21 @@ class CLI:
         runner.build_compiler_options(args.sources + args.compile_options)
 
     def run(self, args, options):
+        self.auto_setup_compiler(args)
+        runner = self.get_runner(args, options)
+        self.setup_runner(args, options, [], runner)
+        self.run_with_runner(args, runner)
+
+    def get_compiler_list(self, retry, wait):
+        return Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
+
+    def auto_setup_compiler(self, args):
         if args.language and args.compiler is None:
-            r = get_compiler_list(args.retry, args.retry_wait)
+            r = self.get_compiler_list(args.retry, args.retry_wait)
             for d in r:
                 if args.language == d['language']:
                     args.compiler = d['name']
                     break
-        runner = self.get_runner(args, options)
-        self.setup_runner(args, options, [], runner)
-        self.run_with_runner(args, runner)
 
     def run_with_runner(self, args, runner):
         if args.dryrun:
