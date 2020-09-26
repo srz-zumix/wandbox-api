@@ -69,6 +69,6 @@ setup(
         ]
     }
     , install_requires=['requests']
-    , tests_require=['tox', 'pytest']
+    , tests_require=['importlib-metadata<2,>=0.12', 'tox', 'pytest']
     , test_suite="tests.test_suite"
 )
