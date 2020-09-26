@@ -21,7 +21,17 @@ class SwiftCLI(CLI):
                 idx = options.index(x)
                 del options[idx]
                 options.extend([x, '-o', 'prog'])
+                break
         runner.build_compiler_options(options)
+
+    def auto_setup_compiler(self, args):
+        if args.language and args.compiler is None:
+            r = self.get_compiler_list(args.retry, args.retry_wait)
+            for d in r:
+                if args.language == d['language']:
+                    if 'head' not in d['name']:
+                        args.compiler = d['name']
+                        break
 
 
 def swift(compiler=None):
