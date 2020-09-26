@@ -7,4 +7,5 @@ local:
 	${GOBUILD} sample.go
 
 wandbox:
-	make -C . local --no-print-directory GOBUILD="wandbox-go --gcflags-m run"
+	make -C . local --no-print-directory GOBUILD="wandbox-go run"
+	# make -C . local --no-print-directory GOBUILD="wandbox-go --gcflags-m run"
