@@ -300,7 +300,7 @@ Require files required for runtime are automatically added to the file list.
 
 > wandbox-swift run main.swift
 
-[Ruby Example](./samples/command/src/swift)
+[Swift Example](./samples/command/src/swift)
 
 ### TypeScript
 
