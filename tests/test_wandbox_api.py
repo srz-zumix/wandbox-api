@@ -10,6 +10,7 @@ from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
 from wandbox import __elixir__ as elixir
 from wandbox import __go__ as go
+from wandbox import __java__ as java
 from wandbox import __js__ as js
 from wandbox import __nim__ as nim
 from wandbox import __openssl__ as openssl
@@ -155,6 +156,7 @@ class test_wandbox_options(wandbox_test_base):
             cxx.CxxCLI(),
             elixir.ElixirCLI(),
             go.GoCLI(),
+            java.JavaCLI(),
             js.JsCLI(),
             nim.NimCLI(),
             openssl.OpenSSLCLI.InnerCLI(),

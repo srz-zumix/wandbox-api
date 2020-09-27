@@ -198,6 +198,15 @@ Include files required for compilation are automatically added to the file list.
 
 [Elixir Example](./samples/command/src/elixir)
 
+### Java
+
+* wandbox-java
+  (wandbox -l Java)
+
+#### Java Example
+
+[Java Example](./samples/command/src/java)
+
 ### JavaScript
 
 Import files/modules required for runtime are automatically added to the file list.

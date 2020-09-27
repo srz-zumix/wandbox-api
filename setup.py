@@ -52,6 +52,7 @@ setup(
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
             'wandbox-go       = wandbox.__go__:main',
+            'wandbox-java     = wandbox.__java__:main',
             'wandbox-js       = wandbox.__js__:main',
             'wandbox-node     = wandbox.__js__:node',
             'wandbox-spidermonkey = wandbox.__js__:spidermonkey',
