@@ -7,19 +7,8 @@ class DmdCLI(CLI):
         super(DmdCLI, self).__init__('D', compiler, False)
 
 
-class DubCLI(CLI):
-
-    def __init__(self, compiler=None):
-        super(DubCLI, self).__init__('D', compiler, False)
-
-
 def dmd(compiler=None):
     cli = DmdCLI(compiler)
-    cli.execute()
-
-
-def dub(compiler=None):
-    cli = DubCLI(compiler)
     cli.execute()
 
 
