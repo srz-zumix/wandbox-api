@@ -50,7 +50,7 @@ setup(
             'wandbox-clang-PP = wandbox.__cpp__:clang',
             'wandbox-cs       = wandbox.__csharp__:main',
             'wandbox-dmd      = wandbox.__dmd__:main',
-            'wandbox-dub      = wandbox.__dmd__:dub',
+            'wandbox-dub      = wandbox.__dub__:main',
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
             'wandbox-go       = wandbox.__go__:main',
