@@ -3,6 +3,7 @@ import os
 from .cli import CLI
 from argparse import ArgumentParser
 
+
 class DubCLI(CLI):
 
     class InnerCLI(CLI):
@@ -48,7 +49,7 @@ class DubCLI(CLI):
         if os.path.exists(dirname):
             for f in os.listdir(dirname):
                 path = os.path.join(dirname, f)
-                name,ext = os.path.splitext(f)
+                name, ext = os.path.splitext(f)
                 if os.path.isfile(path) and ext == '.d':
                     run_options.append(path)
 
