@@ -19,6 +19,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C](#c-1)
 * [CPP](#CPP)
 * [C#](#CSharp)
+* [D](#D)
 * [Elixir](#Elixir)
 * [Go](#Go)
 * [JavaScript](#JavaScript)
@@ -179,14 +180,16 @@ Include files required for compilation are automatically added to the file list.
 
 [C# Example](./samples/command/src/csharp)
 
-### Go
+### D
 
-* wandbox-go
-  (wandbox -l Go)
+* wandbox-dmd
+  (wandbox -l D)
+* wandbox-dub
 
-#### Go Example
+#### D Example
 
-[Go Example](./samples/command/src/go)
+[D Example](./samples/command/src/dmd)
+[Dub Example](./samples/command/src/dub)
 
 ### Elixir
 
@@ -197,6 +200,15 @@ Include files required for compilation are automatically added to the file list.
 #### Elixir Example
 
 [Elixir Example](./samples/command/src/elixir)
+
+### Go
+
+* wandbox-go
+  (wandbox -l Go)
+
+#### Go Example
+
+[Go Example](./samples/command/src/go)
 
 ### Java
 
