@@ -54,6 +54,7 @@ setup(
             'wandbox-dub      = wandbox.__dub__:main',
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
+            'wandbox-erlang   = wandbox.__erlang__:main',
             'wandbox-go       = wandbox.__go__:main',
             'wandbox-java     = wandbox.__java__:main',
             'wandbox-js       = wandbox.__js__:main',
