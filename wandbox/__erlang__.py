@@ -1,16 +1,10 @@
-import os
-import sys
-from io import StringIO
-
 from .cli import CLI
-from .runner import Runner
 
 
 class ErlangCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(ErlangCLI, self).__init__('Erlang', compiler, False, False)
-
+        super(ErlangCLI, self).__init__('Erlang', compiler, False)
 
 
 def erlang(compiler=None):
