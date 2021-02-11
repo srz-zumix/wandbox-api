@@ -10,6 +10,7 @@ from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
 from wandbox import __dmd__ as dmd
 from wandbox import __elixir__ as elixir
+from wandbox import __erlang__ as erlang
 from wandbox import __go__ as go
 from wandbox import __java__ as java
 from wandbox import __js__ as js
@@ -157,6 +158,7 @@ class test_wandbox_options(wandbox_test_base):
             cxx.CxxCLI(),
             dmd.DmdCLI(),
             elixir.ElixirCLI(),
+            erlang.ErlangCLI(),
             go.GoCLI(),
             java.JavaCLI(),
             js.JsCLI(),
