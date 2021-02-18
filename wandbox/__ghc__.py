@@ -1,12 +1,12 @@
 import glob
 import os
 import re
-import sys
 import yaml
 
 from argparse import ArgumentParser
 from .runner import Runner
 from .cli import CLI
+
 
 class GhcRunner(Runner):
 
@@ -39,7 +39,6 @@ class GhcRunner(Runner):
         return files
 
 
-
 class GhcCLI(CLI):
 
     def __init__(self, compiler=None):
@@ -49,7 +48,7 @@ class GhcCLI(CLI):
         return GhcRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
 
-class HaskellStackCLI(GhcCLI):
+class HaskellStackCLI:
 
     class InnerCLI(GhcCLI):
 
@@ -62,7 +61,7 @@ class HaskellStackCLI(GhcCLI):
             runner.set_search_path(self.libdirs)
             return runner
 
-    def __init__(self, compiler):
+    def __init__(self, compiler=None):
         self.setup(compiler)
 
     # command line option
@@ -93,7 +92,7 @@ class HaskellStackCLI(GhcCLI):
             description='build and run command (run command alias)',
             help='build and run command (run command alias). see `build +h`'
         )
-        passthrough_cmds = [ run_cmd, build_cmd ]
+        passthrough_cmds = [run_cmd, build_cmd]
         for passthrough_cmd in passthrough_cmds:
             passthrough_cmd.set_defaults(handler=self.command_run)
             passthrough_cmd.add_argument(
@@ -136,7 +135,7 @@ class HaskellStackCLI(GhcCLI):
 
             dirs = config['library']['source-dirs']
             if isinstance(dirs, str):
-                dirs = [ dirs ]
+                dirs = [dirs]
             for dir in dirs:
                 cmd.libdirs.append(dir)
                 for x in glob.glob(os.path.join(dir, '*.hs')):

@@ -45,7 +45,7 @@ class DubCLI(CLI):
         opts, args = self.parse_command_line(args)
         cmd = DubCLI.InnerCLI(opts.compiler)
         run_options = ['run']
-        cli_options = [ args ]
+        cli_options = args
         if opts.dryrun:
             cli_options.append('--dryrun')
         dirname = './source'

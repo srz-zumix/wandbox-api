@@ -309,7 +309,7 @@ class CLI:
         #     description='build and run command (run command alias)',
         #     help='build and run command (run command alias). see `build +h`'
         # )
-        passthrough_cmds = [ run_cmd ]
+        passthrough_cmds = [run_cmd]
         for passthrough_cmd in passthrough_cmds:
             passthrough_cmd.set_defaults(handler=self.command_run)
             passthrough_cmd.add_argument(
