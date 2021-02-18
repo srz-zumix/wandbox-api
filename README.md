@@ -65,6 +65,7 @@ optional arguments:
   -n, --dryrun          dryrun
   -s, --save            generate permanent link.
   --encoding ENCODING   set encoding
+  --no-head             ignore head compiler version (at auto setup)
   --no-default          no set default options
   --stdin STDIN         set stdin
   --retry-wait SECONDS  wait time for retry when HTTPError occurs
@@ -120,6 +121,7 @@ optional arguments:
   -n, --dryrun          dryrun
   -s, --save            generate permanent link.
   --encoding ENCODING   set encoding
+  --no-head             ignore head compiler version (at auto setup)
   --no-default          no set default options
   --stdin STDIN         set stdin
   --retry-wait SECONDS  wait time for retry when HTTPError occurs
@@ -147,11 +149,11 @@ optional arguments:
 
 Include files required for compilation are automatically added to the file list.
 
-* wandbox-cc
+* wandbox-cc  
   (wandbox -l C)
 * wandbox-gcc  
   (wandbox-cc -c gcc-head-c)
-* wandbox-clang
+* wandbox-clang  
   (wandbox-cc -c clang-head-c)
 
 #### C Example
@@ -162,11 +164,11 @@ Include files required for compilation are automatically added to the file list.
 
 Include files required for compilation are automatically added to the file list.
 
-* wandbox-CPP
+* wandbox-CPP  
   (wandbox -l CPP)
 * wandbox-gcc-PP  
   (wandbox-CPP -c gcc-head-pp)
-* wandbox-clang-PP
+* wandbox-clang-PP  
   (wandbox-CPP -c clang-head-pp)
 
 #### CPP Example
@@ -175,7 +177,7 @@ Include files required for compilation are automatically added to the file list.
 
 ### CSharp
 
-* wandbox-cs
+* wandbox-cs  
   (wandbox -l C#)
 
 #### CSharp Example
@@ -184,7 +186,7 @@ Include files required for compilation are automatically added to the file list.
 
 ### D
 
-* wandbox-dmd
+* wandbox-dmd  
   (wandbox -l D)
 * wandbox-dub
 
@@ -195,7 +197,7 @@ Include files required for compilation are automatically added to the file list.
 
 ### Elixir
 
-* wandbox-elixir
+* wandbox-elixir  
   (wandbox -l Elixir)
 * wandbox-mix (Experimental)
 
@@ -205,7 +207,7 @@ Include files required for compilation are automatically added to the file list.
 
 ### Go
 
-* wandbox-go
+* wandbox-go  
   (wandbox -l Go)
 
 #### Go Example
@@ -214,16 +216,19 @@ Include files required for compilation are automatically added to the file list.
 
 ### Haskell
 
-* wandbox-ghc
+* wandbox-ghc  
   (wandbox -l Haskell)
+* wandbox-stack
 
 #### Haskell Example
 
 [Haskell Example](./samples/command/src/haskell)
 
+[Haskell Stack Example](./samples/command/src/haskell-stack)
+
 ### Java
 
-* wandbox-java
+* wandbox-java  
   (wandbox -l Java)
 
 #### Java Example
@@ -234,7 +239,7 @@ Include files required for compilation are automatically added to the file list.
 
 Import files/modules required for runtime are automatically added to the file list.
 
-* wandbox-js
+* wandbox-js  
   (wandbox -l JavaScript)
 * wandbox-node  
   (wandbox-js -c nodejs-head)
@@ -249,7 +254,7 @@ Import files/modules required for runtime are automatically added to the file li
 
 Import modules required for compilation are automatically added to the file list.
 
-* wandbox-nim
+* wandbox-nim  
   (wandbox -l Nim)
 
 #### Nim Example
@@ -274,7 +279,7 @@ Even just having wandbox would be enough.
 
 Require files/modules required for runtime are automatically added to the file list.
 
-* wandbox-perl
+* wandbox-perl  
   (wandbox -l Perl)
 
 #### Perl Example
@@ -285,13 +290,13 @@ Require files/modules required for runtime are automatically added to the file l
 
 Import files/modules required for runtime are automatically added to the file list.
 
-* wandbox-python
+* wandbox-python  
   (wandbox -l Python)
 * wandbox-python2  
   (wandbox-cxx -c cpython-2.7-head)
 * wandbox-python3  
   (wandbox-cxx -c cpython-head)
-* wandbox-pypy
+* wandbox-pypy  
   (wandbox-cxx -c pypy-head)
 
 #### Python Example
@@ -312,7 +317,7 @@ If you open a file, add the file
 
 Require files required for runtime are automatically added to the file list.
 
-* wandbox-ruby
+* wandbox-ruby  
   (wandbox -l Ruby)
 * wandbox-mruby  
   (wandbox-ruby -c mruby-head)
@@ -325,7 +330,7 @@ Require files required for runtime are automatically added to the file list.
 
 ### Swift
 
-* wandbox-swift
+* wandbox-swift  
   (wandbox -l Swift)
 
 #### Swift Example
@@ -338,7 +343,7 @@ Require files required for runtime are automatically added to the file list.
 
 Import files/modules required for compilation are automatically added to the file list.
 
-* wandbox-tsc
+* wandbox-tsc  
   (wandbox -l TypeScript)
 
 #### TypeScript Example

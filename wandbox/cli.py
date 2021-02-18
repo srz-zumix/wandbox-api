@@ -212,11 +212,6 @@ class CLI:
             help='dryrun'
         )
         self.parser.add_argument(
-            '--no-head',
-            action='store_true',
-            help='ignore head compiler version (at auto setup)'
-        )
-        self.parser.add_argument(
             '-s',
             '--save',
             action='store_true',
@@ -226,6 +221,11 @@ class CLI:
             '--encoding',
             # default='utf-8-sig',
             help='set encoding'
+        )
+        self.parser.add_argument(
+            '--no-head',
+            action='store_true',
+            help='ignore head compiler version (at auto setup)'
         )
         self.parser.add_argument(
             '--no-default',
