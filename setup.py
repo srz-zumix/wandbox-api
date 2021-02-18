@@ -55,6 +55,8 @@ setup(
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
             'wandbox-erlang   = wandbox.__erlang__:main',
+            'wandbox-ghc      = wandbox.__ghc__:main',
+            'wandbox-stack    = wandbox.__ghc__:haskell_stack',
             'wandbox-go       = wandbox.__go__:main',
             'wandbox-java     = wandbox.__java__:main',
             'wandbox-js       = wandbox.__js__:main',
@@ -73,7 +75,7 @@ setup(
             'wandbox-ssl      = wandbox.__openssl__:main'
         ]
     }
-    , install_requires=['requests']
+    , install_requires=['requests', 'pyyaml']
     , tests_require=['importlib-metadata<2,>=0.12', 'tox', 'pytest']
     , test_suite="tests.test_suite"
 )

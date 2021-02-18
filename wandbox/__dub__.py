@@ -33,7 +33,10 @@ class DubCLI(CLI):
         )
 
     def parse_command_line(self, argv):
-        return self.parser.parse_known_args(argv)
+        opts, args = self.parser.parse_known_args(argv)
+        if 'WANDBOX_DRYRUN' in os.environ:
+            opts.dryrun = True
+        return opts, args
 
     def execute(self):
         self.execute_with_args()
@@ -42,7 +45,7 @@ class DubCLI(CLI):
         opts, args = self.parse_command_line(args)
         cmd = DubCLI.InnerCLI(opts.compiler)
         run_options = ['run']
-        cli_options = []
+        cli_options = [ args ]
         if opts.dryrun:
             cli_options.append('--dryrun')
         dirname = './source'

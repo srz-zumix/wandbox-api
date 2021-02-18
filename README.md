@@ -22,6 +22,8 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [D](#D)
 * [Elixir](#Elixir)
 * [Go](#Go)
+* [Haskell](#Haskell)
+* [Java](#Java)
 * [JavaScript](#JavaScript)
 * [Nim](#Nim)
 * [OpenSSL](#OpenSSL)
@@ -210,6 +212,15 @@ Include files required for compilation are automatically added to the file list.
 
 [Go Example](./samples/command/src/go)
 
+### Haskell
+
+* wandbox-ghc
+  (wandbox -l Haskell)
+
+#### Haskell Example
+
+[Haskell Example](./samples/command/src/haskell)
+
 ### Java
 
 * wandbox-java
@@ -333,3 +344,7 @@ Import files/modules required for compilation are automatically added to the fil
 #### TypeScript Example
 
 [TypeScript Example](./samples/command/src/ts)
+
+## CONTRIBUTING
+
+[CONTRIBUTING](./CONTRIBUTING.md)

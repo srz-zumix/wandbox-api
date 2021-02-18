@@ -145,6 +145,8 @@ class CLI:
             r = self.get_compiler_list(args.retry, args.retry_wait)
             for d in r:
                 if args.language == d['language']:
+                    if args.no_head and 'head' in d['name']:
+                        continue
                     args.compiler = d['name']
                     break
 
@@ -208,6 +210,11 @@ class CLI:
             '--dryrun',
             action='store_true',
             help='dryrun'
+        )
+        self.parser.add_argument(
+            '--no-head',
+            action='store_true',
+            help='ignore head compiler version (at auto setup)'
         )
         self.parser.add_argument(
             '-s',
@@ -290,25 +297,33 @@ class CLI:
             help='permlink id'
         )
 
-        passthrough_cmd = subparser.add_parser(
+        run_cmd = subparser.add_parser(
             'run',
             prefix_chars='+',
             description='build and run command',
             help='build and run command. see `run +h`'
         )
-        passthrough_cmd.set_defaults(handler=self.command_run)
-        passthrough_cmd.add_argument(
-            'sources',
-            metavar='SOURCE',
-            nargs='+',
-            help='source files'
-        )
-        passthrough_cmd.add_argument(
-            'compile_options',
-            metavar='COMPILE_OPTIONS',
-            nargs='*',
-            help='comiple options'
-        )
+        # build_cmd = subparser.add_parser(
+        #     'build',
+        #     prefix_chars='+',
+        #     description='build and run command (run command alias)',
+        #     help='build and run command (run command alias). see `build +h`'
+        # )
+        passthrough_cmds = [ run_cmd ]
+        for passthrough_cmd in passthrough_cmds:
+            passthrough_cmd.set_defaults(handler=self.command_run)
+            passthrough_cmd.add_argument(
+                'sources',
+                metavar='SOURCE',
+                nargs='+',
+                help='source files'
+            )
+            passthrough_cmd.add_argument(
+                'compile_options',
+                metavar='COMPILE_OPTIONS',
+                nargs='*',
+                help='comiple options'
+            )
 
         subcommands = self.parser.format_usage().split('{')[1].split('}')[0]
         help_cmd = subparser.add_parser('help', help='show subcommand help. see `help -h`')
