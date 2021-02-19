@@ -4,7 +4,7 @@ from .cli import CLI
 from argparse import ArgumentParser
 
 
-class DubCLI(CLI):
+class DubCLI:
 
     class InnerCLI(CLI):
 
@@ -32,17 +32,43 @@ class DubCLI(CLI):
             help='dryrun'
         )
 
+        subparser = self.parser.add_subparsers()
+        run_cmd = subparser.add_parser(
+            'run',
+            prefix_chars='+',
+            description='build and run command',
+            help='build and run command. see `run +h`'
+        )
+        passthrough_cmds = [run_cmd]
+        for passthrough_cmd in passthrough_cmds:
+            passthrough_cmd.set_defaults(handler=self.command_run)
+            passthrough_cmd.add_argument(
+                'options',
+                metavar='OPTIONS',
+                nargs='*',
+                help='options'
+            )
+
     def parse_command_line(self, argv):
-        return self.parser.parse_known_args(argv)
+        opts, args = self.parser.parse_known_args(argv)
+        if 'WANDBOX_DRYRUN' in os.environ:
+            opts.dryrun = True
+        return opts, args
 
     def execute(self):
         self.execute_with_args()
 
     def execute_with_args(self, args=None):
         opts, args = self.parse_command_line(args)
+        if hasattr(opts, 'handler'):
+            opts.handler(opts, args)
+        else:
+            self.print_help()
+
+    def command_run(self, opts, args):
         cmd = DubCLI.InnerCLI(opts.compiler)
         run_options = ['run']
-        cli_options = []
+        cli_options = args
         if opts.dryrun:
             cli_options.append('--dryrun')
         dirname = './source'
