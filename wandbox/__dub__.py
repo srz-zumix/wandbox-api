@@ -4,7 +4,7 @@ from .cli import CLI
 from argparse import ArgumentParser
 
 
-class DubCLI(CLI):
+class DubCLI:
 
     class InnerCLI(CLI):
 
