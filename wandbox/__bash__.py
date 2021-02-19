@@ -78,7 +78,7 @@ class BashCLI:
         opts, args = self.parse_command_line(args)
         cmd = BashCLI.InnerCLI()
         run_options = ['run'] + args
-        cli_options = args
+        cli_options = []
         if opts.dryrun:
             cli_options.append('--dryrun')
         cmd.execute_with_args(cli_options + run_options)
