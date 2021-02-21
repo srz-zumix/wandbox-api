@@ -32,7 +32,7 @@ class PhpRunner(Runner):
         if os.path.exists(file_path):
             return file_name
         for ipath in self.incdirs:
-            file_path = os.path.join(path, file_name)
+            file_path = os.path.join(ipath, file_name)
             if os.path.exists(file_path):
                 return file_name
         return None
