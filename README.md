@@ -38,12 +38,12 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 ```sh
 usage: wandbox [-h] [-v] [-l LANGUAGE] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT]
-               {list,compiler,versions,lang,option,permlink,run,help} ...
+               {list,compilers,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
-  {list,compiler,versions,lang,option,permlink,run,help}
+  {list,compilers,versions,lang,option,permlink,run,help}
     list                show list api response. see `list -h`
-    compiler            show support compilers. see `compiler -h`
+    compilers           show support compilers. see `compilers -h`
     versions            show support compilers. see `versions -h`
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
@@ -96,12 +96,12 @@ Include files required for compilation are automatically added to the file list.
 usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                    [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT] [--std VERSION]
                    [--boost VERSION] [--no-warning] [--optimize] [--cpp-pedantic PEDANTIC] [--cpp-verbose] [--sprout] [--msgpack]
-                   {list,compiler,versions,lang,option,permlink,run,help} ...
+                   {list,compilers,versions,lang,option,permlink,run,help} ...
 
 positional arguments:
-  {list,compiler,versions,lang,option,permlink,run,help}
+  {list,compilers,versions,lang,option,permlink,run,help}
     list                show list api response. see `list -h`
-    compiler            show support compilers. see `compiler -h`
+    compilers           show support compilers. see `compilers -h`
     versions            show support compilers. see `versions -h`
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`

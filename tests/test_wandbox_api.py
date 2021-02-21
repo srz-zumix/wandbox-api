@@ -17,6 +17,7 @@ from wandbox import __java__ as java
 from wandbox import __js__ as js
 from wandbox import __nim__ as nim
 from wandbox import __openssl__ as openssl
+from wandbox import __php__ as php
 from wandbox import __perl__ as perl
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
@@ -166,6 +167,7 @@ class test_wandbox_options(wandbox_test_base):
             js.JsCLI(),
             nim.NimCLI(),
             openssl.OpenSSLCLI.InnerCLI(),
+            php.PhpCLI(),
             perl.PerlCLI(),
             python.PythonCLI(),
             ruby.RubyCLI(),

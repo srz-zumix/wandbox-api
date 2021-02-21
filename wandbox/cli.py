@@ -32,7 +32,7 @@ class CLI:
         self.setup(lang, compiler, has_option)
 
     def command_list(self, args):
-        r = get_compiler_list(args.retry, args.retry_wait)
+        r = self.get_compiler_list(args.retry, args.retry_wait)
         if args.language:
             r = [x for x in r if args.language == x['language']]
         if args.compiler:
@@ -43,12 +43,12 @@ class CLI:
         if args.language:
             print(args.language)
         else:
-            r = get_compiler_list(args.retry, args.retry_wait)
+            r = self.get_compiler_list(args.retry, args.retry_wait)
             langs = map(lambda x: x['language'], r)
             print('\n'.join(sorted(set(langs))))
 
     def command_compiler(self, args):
-        r = get_compiler_list(args.retry, args.retry_wait)
+        r = self.get_compiler_list(args.retry, args.retry_wait)
         for d in r:
             if args.language:
                 if args.language == d['language']:
@@ -63,7 +63,7 @@ class CLI:
         return '{0}{1} (default)'.format(' ' * indent, name)
 
     def command_options(self, args):
-        r = get_compiler_list(args.retry, args.retry_wait)
+        r = self.get_compiler_list(args.retry, args.retry_wait)
         for d in r:
             prefix = ''
             indent = 0
@@ -262,14 +262,18 @@ class CLI:
         compiler_cmd = subparser.add_parser(
             'compiler',
             description='show support compilers',
-            help='show support compilers. see `compiler -h`')
-        compiler_cmd.set_defaults(handler=self.command_compiler)
-
-        compiler_cmd = subparser.add_parser(
+            help=SUPPRESS)
+        compilers_cmd = subparser.add_parser(
+            'compilers',
+            description='show support compilers',
+            help='show support compilers. see `compilers -h`')
+        versions_cmd = subparser.add_parser(
             'versions',
             description='show support compilers',
             help='show support compilers. see `versions -h`')
-        compiler_cmd.set_defaults(handler=self.command_compiler)
+        compilers_cmds = [compiler_cmd, compilers_cmd, versions_cmd]
+        for compiler_cmd_ in compilers_cmds:
+            compiler_cmd_.set_defaults(handler=self.command_compiler)
 
         lang_cmd = subparser.add_parser(
             'lang',
