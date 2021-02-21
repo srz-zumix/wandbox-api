@@ -37,7 +37,6 @@ class PhpRunner(Runner):
                 return file_name
         return None
 
-
     def require(self, path, file_name_):
         files = dict()
         file_name = os.path.normpath(file_name_)
