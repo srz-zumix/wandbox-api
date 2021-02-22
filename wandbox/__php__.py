@@ -7,7 +7,10 @@ from .runner import Runner
 
 class PhpRunner(Runner):
 
-    REQUIRE_INCLUDE_REGEX = re.compile(r'.*(require|require_once|include|include_once)\s*[\'"\(\)](.*?)[\'"\(\)]\s*;$')
+    REQUIRE_INCLUDE_REGEX = re.compile(r'.*(require|require_once|include|include_once)\s*[\'"\(\)](.*?)[\'"\(\)]\s*;')
+
+    SET_INCLUDE_PATH_REGEX = re.compile(r'set_include_path\s*\((.*)\)\s*;')
+    INIT_SET_INCLUDE_PATH_REGEX = re.compile(r'ini_set\s*\([\'"]include_path[\'"]\s*,\s*(.*)\)\s*;')
 
     def reset(self):
         self.required = []
@@ -18,23 +21,54 @@ class PhpRunner(Runner):
         code = ''
         for line in file:
             m = self.REQUIRE_INCLUDE_REGEX.match(line)
+            dir = os.path.dirname(filepath)
             if m:
                 path = m.group(2).strip('\'"()')
-                files.update(self.require(os.path.dirname(filepath), path.strip()))
+                files.update(self.require(dir, path.strip()))
+            else:
+                m = self.SET_INCLUDE_PATH_REGEX.match(line)
+                if m:
+                    self.parse_include_path(dir, m.group(1))
+                else:
+                    m = self.INIT_SET_INCLUDE_PATH_REGEX.match(line)
+                    if m:
+                        self.parse_include_path(dir, m.group(1))
             code += line
         files[filename] = code
         return files
+
+    def parse_include_path(self, dir, tokens):
+        strings = tokens.split('.')
+        path = ""
+        for s in strings:
+            s = s.strip().strip('\'"()')
+            if s == 'PATH_SEPARATOR':
+                self.add_include_path(dir, path)
+                path = ""
+            else:
+                path += s
+        if len(path) > 0:
+            self.add_include_path(dir, path)
+
+    def add_include_path(self, dir, token):
+        paths = re.split('[:;]', token)
+        for path in paths:
+            if not path.startswith('/'):
+                path = os.path.join(dir, path)
+            if os.path.exists(path):
+                if path not in self.incdirs:
+                    self.incdirs.append(path)
 
     def require_resolve_path(self, path, file_name):
         if os.path.exists(file_name):
             return file_name
         file_path = os.path.join(path, file_name)
         if os.path.exists(file_path):
-            return file_name
+            return file_path
         for ipath in self.incdirs:
             file_path = os.path.join(ipath, file_name)
             if os.path.exists(file_path):
-                return file_name
+                return file_path
         return None
 
     def require(self, path, file_name_):
