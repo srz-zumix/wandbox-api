@@ -28,6 +28,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Nim](#Nim)
 * [OpenSSL](#OpenSSL)
 * [Perl](#Perl)
+* [PHP](#PHP)
 * [Python](#Python)
 * [Ruby](#Ruby)
 * [Swift](#Swift)
@@ -285,6 +286,17 @@ Require files/modules required for runtime are automatically added to the file l
 #### Perl Example
 
 [Perl Example](./samples/command/src/perl)
+
+### PHP
+
+Require/Include files required for runtime are automatically added to the file list.
+
+* wandbox-php  
+  (wandbox -l PHP)
+
+#### PHP Example
+
+[PHP Example](./samples/command/src/php)
 
 ### Python
 
