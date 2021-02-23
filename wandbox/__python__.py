@@ -38,7 +38,6 @@ class SetUpVisitor(ast.NodeVisitor):
                             self.append_testsuite(keyword.value.value)
 
 
-
 class PythonRunner(Runner):
 
     IMPORT_REGEX = re.compile(r'^\s*import\s*(.*?)(\s*as\s*\S*|)$')

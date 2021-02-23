@@ -1,19 +1,29 @@
 from .cli import CLI
 
 
-class DmdCLI(CLI):
+class DCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(DmdCLI, self).__init__('D', compiler, False)
+        super(DCLI, self).__init__('D', compiler, False)
 
 
 def dmd(compiler=None):
-    cli = DmdCLI(compiler)
+    cli = DCLI(compiler)
     cli.execute()
 
 
 def main():
     dmd()
+
+
+def gdmd():
+    cli = DCLI('gdc-*')
+    cli.execute()
+
+
+def ldmd2():
+    cli = DCLI('ldc-*')
+    cli.execute()
 
 
 if __name__ == '__main__':

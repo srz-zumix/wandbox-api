@@ -188,7 +188,11 @@ Include files required for compilation are automatically added to the file list.
 ### D
 
 * wandbox-dmd  
-  (wandbox -l D)
+  (wandbox -l D -c dmd-*)
+* wandbox-gdc  
+  (wandbox -l D -c gdc-*)
+* wandbox-ldc  
+  (wandbox -l D -c ldc-*)
 * wandbox-dub
 
 #### D Example

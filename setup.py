@@ -14,6 +14,8 @@ for line in f:
         author_ = [x for x in re.split(r"[ =']", line) if x][1]
 f.close()
 
+test_deps = ['importlib-metadata<2,>=0.12', 'tox', 'pytest']
+
 setup(
     name = "wandbox-api"
     , version = version_
@@ -50,7 +52,9 @@ setup(
             'wandbox-gcc-PP   = wandbox.__cpp__:gcc',
             'wandbox-clang-PP = wandbox.__cpp__:clang',
             'wandbox-cs       = wandbox.__csharp__:main',
-            'wandbox-dmd      = wandbox.__dmd__:main',
+            'wandbox-dmd      = wandbox.__dmd__:dmd',
+            'wandbox-gdmd     = wandbox.__dmd__:gdmd',
+            'wandbox-ldmd2    = wandbox.__dmd__:ldmd2',
             'wandbox-dub      = wandbox.__dub__:main',
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
@@ -77,6 +81,9 @@ setup(
         ]
     }
     , install_requires=['requests', 'pyyaml']
-    , tests_require=['importlib-metadata<2,>=0.12', 'tox', 'pytest']
+    , tests_require=test_deps
     , test_suite="tests.test_suite"
+    , extras_require={
+        'test': test_deps
+    }
 )
