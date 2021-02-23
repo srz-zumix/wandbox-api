@@ -11,6 +11,7 @@ import os
 import sys
 import json
 import traceback
+import fnmatch
 
 from . import __version__ as VERSION
 from .wandbox import Wandbox
@@ -36,7 +37,7 @@ class CLI:
         if args.language:
             r = [x for x in r if args.language == x['language']]
         if args.compiler:
-            r = [x for x in r if args.compiler == x['name']]
+            r = [x for x in r if fnmatch.fnmatch(x['name'], args.compiler)]
         print(json.dumps(r, indent=2))
 
     def command_lang(self, args):
@@ -73,7 +74,7 @@ class CLI:
             else:
                 prefix = '{0}: '.format(d['language'])
             if args.compiler:
-                if args.compiler != d['name']:
+                if not fnmatch.fnmatch(d['name'], args.compiler):
                     continue
             else:
                 prefix = '{0}: '.format(d['name'])
@@ -141,14 +142,21 @@ class CLI:
         return Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
 
     def auto_setup_compiler(self, args):
-        if args.language and args.compiler is None:
-            r = self.get_compiler_list(args.retry, args.retry_wait)
-            for d in r:
-                if args.language == d['language']:
-                    if args.no_head and 'head' in d['name']:
-                        continue
-                    args.compiler = d['name']
-                    break
+        cond = '*'
+        if args.compiler:
+            if fnmatch.translate(args.compiler) == args.compiler:
+                return
+            cond = args.compiler
+        r = self.get_compiler_list(args.retry, args.retry_wait)
+        for d in r:
+            if args.language and args.language != d['language']:
+                continue
+            if args.no_head and 'head' in d['name']:
+                continue
+            if fnmatch.fnmatch(d['name'], cond):
+                args.language = d['language']
+                args.compiler = d['name']
+                break
 
     def run_with_runner(self, args, runner):
         if args.dryrun:
@@ -188,7 +196,7 @@ class CLI:
             '-c',
             '--compiler',
             default=compiler,
-            help=SUPPRESS if compiler else 'specify compiler'
+            help=SUPPRESS if compiler else 'specify compiler (can use fnmatch, use first match compiler. e.g. clang-3.9.*[!c] => clang-3.9.1)'
         )
         self.parser.add_argument(
             '-x',

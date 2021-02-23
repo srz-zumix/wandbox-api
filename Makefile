@@ -3,10 +3,10 @@
 
 defaut: help
 
-install: ## install self
+install: wandbox/*.py ## install self
 	python setup.py install
 
-test: ## commands test
+test: install ## commands test
 	make -C samples/command
 
 pytest: ## python test

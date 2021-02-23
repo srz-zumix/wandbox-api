@@ -3,12 +3,13 @@ import os
 # import json
 import wandbox
 from wandbox import Wandbox
+from wandbox import cli as wandbox_cli
 from wandbox import __bash__ as bash
 from wandbox import __cc__ as cc
 from wandbox import __cpp__ as cpp
 from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
-from wandbox import __dmd__ as dmd
+from wandbox import __d__ as d
 from wandbox import __elixir__ as elixir
 from wandbox import __erlang__ as erlang
 from wandbox import __ghc__ as ghc
@@ -58,8 +59,34 @@ class wandbox_test_base(unittest.TestCase):
         value = self.capture.getvalue()
         return value
 
-
 run_cxx_options = ['run', os.path.join(src_path, 'cxx/sample.cpp'), os.path.join(src_path, 'cxx/test.cpp'), '-I' + os.path.join(src_path, 'cxx')]
+
+class test_wandbox_cli(wandbox_test_base):
+
+    def setUp(self):
+        return super(test_wandbox_cli, self).setUp()
+
+    def tearDown(self):
+        return super(test_wandbox_cli, self).tearDown()
+
+    def wandbox_run(self, opt):
+        cli = wandbox_cli.CLI()
+        eprint(opt)
+        cli.execute_with_args(opt)
+
+    def test_wildcard(self):
+        try:
+            opt = [ '--dryrun', '--compiler=clang-3.*[!c]' ]
+            opt.extend(run_cxx_options)
+            self.wandbox_run(opt)
+        except SystemExit as e:
+            output = self.stdoout()
+            eprint(output)
+            self.assertEqual(e.code, 0)
+            self.assertTrue('clang-3.9.1' in output)
+        else:
+            self.fail('SystemExit exception expected')
+
 
 class test_wandbox_cxx(wandbox_test_base):
 
@@ -158,7 +185,7 @@ class test_wandbox_options(wandbox_test_base):
             cpp.CppCLI(),
             cs.CsCLI(),
             cxx.CxxCLI(),
-            dmd.DmdCLI(),
+            d.DCLI(),
             elixir.ElixirCLI(),
             erlang.ErlangCLI(),
             go.GoCLI(),
