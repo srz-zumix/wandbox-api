@@ -9,7 +9,7 @@ from wandbox import __cc__ as cc
 from wandbox import __cpp__ as cpp
 from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
-from wandbox import __d__ as d
+from wandbox import __dmd__ as dmd
 from wandbox import __elixir__ as elixir
 from wandbox import __erlang__ as erlang
 from wandbox import __ghc__ as ghc
@@ -185,7 +185,7 @@ class test_wandbox_options(wandbox_test_base):
             cpp.CppCLI(),
             cs.CsCLI(),
             cxx.CxxCLI(),
-            d.DCLI(),
+            dmd.DCLI(),
             elixir.ElixirCLI(),
             erlang.ErlangCLI(),
             go.GoCLI(),

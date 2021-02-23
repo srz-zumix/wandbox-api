@@ -16,12 +16,12 @@ def main():
     dmd()
 
 
-def gdc():
+def gdmd():
     cli = DCLI('gdc-*')
     cli.execute()
 
 
-def ldc():
+def ldmd2():
     cli = DCLI('ldc-*')
     cli.execute()
 
