@@ -196,7 +196,8 @@ class CLI:
             '-c',
             '--compiler',
             default=compiler,
-            help=SUPPRESS if compiler else 'specify compiler (can use fnmatch, use first match compiler. e.g. clang-3.9.*[!c] => clang-3.9.1)'
+            help=SUPPRESS if compiler else
+                'specify compiler (can use fnmatch, use first match compiler. e.g. clang-3.9.*[!c] => clang-3.9.1)'
         )
         self.parser.add_argument(
             '-x',
