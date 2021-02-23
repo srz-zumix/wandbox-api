@@ -38,6 +38,10 @@ class GhcRunner(Runner):
         # TODO
         return files
 
+    def build_compiler_options(self, options):
+        super(GhcRunner, self).build_compiler_options(options)
+        self.add_commandline_options('-dynamic')
+
 
 class GhcCLI(CLI):
 
