@@ -2,8 +2,7 @@
 # Makefile
 
 GHC:=ghc
-# NOTE: head version is not work
-WANDBOX_CLI_OPTIONS:=--no-head
+# WANDBOX_CLI_OPTIONS:=--no-head
 
 local:
 	${GHC} sample.hs

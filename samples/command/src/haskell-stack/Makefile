@@ -2,8 +2,7 @@
 # Makefile
 
 STACK_RUN:=stack run
-# NOTE: head version is not work
-WANDBOX_CLI_OPTIONS:=--no-head
+# WANDBOX_CLI_OPTIONS:=--no-head
 
 local:
 	${STACK_RUN}

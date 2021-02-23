@@ -189,9 +189,9 @@ Include files required for compilation are automatically added to the file list.
 
 * wandbox-dmd  
   (wandbox -l D -c dmd-*)
-* wandbox-gdc  
+* wandbox-gdmd  
   (wandbox -l D -c gdc-*)
-* wandbox-ldc  
+* wandbox-ldmd2  
   (wandbox -l D -c ldc-*)
 * wandbox-dub
 
@@ -224,6 +224,8 @@ Include files required for compilation are automatically added to the file list.
 * wandbox-ghc  
   (wandbox -l Haskell)
 * wandbox-stack
+
+Note: wandbox-ghc/wandbox-stack add -dynamic compiler option. (output file size workarround.)
 
 #### Haskell Example
 
