@@ -54,7 +54,7 @@ class CLI:
             if args.language:
                 if args.language == d['language']:
                     if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
-                    print(d['name'])
+                        print(d['name'])
             else:
                 print('{0}: {1}'.format(d['language'], d['name']))
 
