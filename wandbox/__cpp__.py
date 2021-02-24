@@ -46,11 +46,11 @@ def main():
 
 
 def gcc():
-    cpp('gcc-head-pp')
+    cpp('gcc-*-pp')
 
 
 def clang():
-    cpp('clang-head-pp')
+    cpp('clang-*-pp')
 
 
 if __name__ == '__main__':
