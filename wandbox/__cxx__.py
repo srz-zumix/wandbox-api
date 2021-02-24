@@ -135,11 +135,11 @@ def main():
 
 
 def gcc():
-    cxx('gcc-head')
+    cxx('gcc-*')
 
 
 def clang():
-    cxx('clang-head')
+    cxx('clang-*')
 
 
 if __name__ == '__main__':

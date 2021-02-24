@@ -87,11 +87,12 @@ Source files required for runtime are automatically added to the file list.
 
 Include files required for compilation are automatically added to the file list.
 
-* wandbox-cxx
+* wandbox-cxx  
+  (wandbox -l C++)
 * wandbox-g++  
-  (wandbox-cxx -c gcc-head)
+  (wandbox -l C++ -c gcc-*)
 * wandbox-clang++  
-  (wandbox-cxx -c clang-head)
+  (wandbox -l C++ -c clang-*)
 
 ```sh
 usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
@@ -153,9 +154,9 @@ Include files required for compilation are automatically added to the file list.
 * wandbox-cc  
   (wandbox -l C)
 * wandbox-gcc  
-  (wandbox-cc -c gcc-head-c)
+  (wandbox -l C -c gcc-*-c)
 * wandbox-clang  
-  (wandbox-cc -c clang-head-c)
+  (wandbox -l C -c clang-*-c)
 
 #### C Example
 
@@ -168,9 +169,9 @@ Include files required for compilation are automatically added to the file list.
 * wandbox-CPP  
   (wandbox -l CPP)
 * wandbox-gcc-PP  
-  (wandbox-CPP -c gcc-head-pp)
+  (wandbox -l CPP -c gcc-*-pp)
 * wandbox-clang-PP  
-  (wandbox-CPP -c clang-head-pp)
+  (wandbox -l CPP -c clang-*-pp)
 
 #### CPP Example
 
@@ -249,9 +250,9 @@ Import files/modules required for runtime are automatically added to the file li
 * wandbox-js  
   (wandbox -l JavaScript)
 * wandbox-node  
-  (wandbox-js -c nodejs-head)
+  (wandbox -l JavaScript-c nodejs-*)
 * wandbox-spidermonkey  
-  (wandbox-js -c spidermonkey-45.0.2)
+  (wandbox -l JavaScript -c spidermonkey-*)
 
 #### JavaScript Example
 
@@ -311,11 +312,11 @@ Import files/modules required for runtime are automatically added to the file li
 * wandbox-python  
   (wandbox -l Python)
 * wandbox-python2  
-  (wandbox-cxx -c cpython-2.7-head)
+  (wandbox -l Python -c cpython-2.7-*)
 * wandbox-python3  
-  (wandbox-cxx -c cpython-head)
+  (wandbox -l Python -c cpython-*)
 * wandbox-pypy  
-  (wandbox-cxx -c pypy-head)
+  (wandbox -l Python -c pypy-*)
 
 #### Python Example
 
@@ -338,7 +339,7 @@ Require files required for runtime are automatically added to the file list.
 * wandbox-ruby  
   (wandbox -l Ruby)
 * wandbox-mruby  
-  (wandbox-ruby -c mruby-head)
+  (wandbox -l Ruby -c mruby-*)
 
 #### Ruby Example
 

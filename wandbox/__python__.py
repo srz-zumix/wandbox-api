@@ -144,15 +144,15 @@ def main():
 
 
 def python2():
-    python('cpython-2.7-head')
+    python('cpython-2.7-*')
 
 
 def python3():
-    python('cpython-head')
+    python('cpython-*')
 
 
 def pypy():
-    python('pypy-head')
+    python('pypy-*')
 
 
 if __name__ == '__main__':

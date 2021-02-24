@@ -77,11 +77,11 @@ def main():
 
 
 def gcc():
-    cc('gcc-head-c')
+    cc('gcc-*-c')
 
 
 def clang():
-    cc('clang-head-c')
+    cc('clang-*-c')
 
 
 if __name__ == '__main__':

@@ -53,7 +53,8 @@ class CLI:
         for d in r:
             if args.language:
                 if args.language == d['language']:
-                    print(d['name'])
+                    if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
+                        print(d['name'])
             else:
                 print('{0}: {1}'.format(d['language'], d['name']))
 

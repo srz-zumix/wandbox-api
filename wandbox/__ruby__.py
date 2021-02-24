@@ -63,7 +63,7 @@ def main():
 
 
 def mruby():
-    ruby('mruby-head')
+    ruby('mruby-*')
 
 
 if __name__ == '__main__':

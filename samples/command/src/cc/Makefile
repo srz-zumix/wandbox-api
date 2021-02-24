@@ -6,4 +6,5 @@ local:
 	${CC} sample.c test.c
 
 wandbox:
-	CC="wandbox-cc -c gcc-head run" make -C . local --no-print-directory
+	CC="wandbox-gcc   run" make -C . local --no-print-directory
+	CC="wandbox-clang run" make -C . local --no-print-directory

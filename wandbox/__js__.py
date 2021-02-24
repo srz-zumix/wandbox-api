@@ -73,11 +73,11 @@ def main():
 
 
 def node():
-    js('nodejs-head')
+    js('nodejs-*')
 
 
 def spidermonkey():
-    js('spidermonkey-45.0.2')
+    js('spidermonkey-*')
 
 
 if __name__ == '__main__':
