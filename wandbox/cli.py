@@ -437,7 +437,7 @@ class CLI:
         self.auto_setup_compiler(args)
         compiler = self.find_compilers(r, args)
         if len(compiler) != 1:
-            raise "Detected multiple compilers. Please specify so that it becomes one."
+            raise Exception('Detected multiple compilers. Please specify so that it becomes one.')
         template_name = compiler[0]['templates'][0]
         template = self.get_template(template_name, args.retry, args.retry_wait)
         return template['code']
