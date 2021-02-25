@@ -96,8 +96,8 @@ class test_wandbox_cxx(wandbox_test_base):
     def tearDown(self):
         return super(test_wandbox_cxx, self).tearDown()
 
-    def wandbox_cxx(self, opt):
-        opt.extend(run_cxx_options)
+    def wandbox_cxx(self, opt, extend_opts=run_cxx_options):
+        opt.extend(extend_opts)
         cli = cxx.CxxCLI("gcc-head")
         cli.execute_with_args(opt)
 
@@ -135,6 +135,17 @@ class test_wandbox_cxx(wandbox_test_base):
             output = self.stdoout()
             eprint(output)
             self.assertTrue('warning' in output)
+        else:
+            self.fail('SystemExit exception expected')
+
+    def test_run_template(self):
+        try:
+            self.wandbox_cxx([ '--dryrun' ], ['run-template'])
+        except SystemExit as e:
+            self.assertEqual(e.code, 0)
+            output = self.stdoout()
+            eprint(output)
+            self.assertTrue('Hello, Wandbox!' in output)
         else:
             self.fail('SystemExit exception expected')
 

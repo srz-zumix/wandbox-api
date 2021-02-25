@@ -109,6 +109,19 @@ class CLI:
         b = Wandbox.ShowResult(r['result'])
         sys.exit(b)
 
+    def command_template(self, args):
+        print(self.get_template_code(args))
+
+    def command_run_template(self, args):
+        setattr(args, 'sources', ['-'])
+        sys.stdin = self.get_template_code(args)
+        options = []
+        for o in args.options:
+            options.extend(o.split(','))
+        runner = self.get_runner(args, options)
+        self.setup_runner(args, options, [], runner)
+        self.run_with_runner(args, runner)
+
     def command_run(self, args):
         options = []
         for o in args.options:
@@ -141,6 +154,9 @@ class CLI:
 
     def get_compiler_list(self, retry, wait):
         return Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
+
+    def get_template(self, name, retry, wait):
+        return Wandbox.Call(lambda : Wandbox.GetTemplate(name), retry, wait)
 
     def auto_setup_compiler(self, args):
         cond = '*'
@@ -339,6 +355,27 @@ class CLI:
                 help='comiple options'
             )
 
+        template_cmd = subparser.add_parser(
+            'template',
+            description='get template code',
+            help='get wandbox template code. see `template -h`'
+        )
+        template_cmd.set_defaults(handler=self.command_template)
+
+        run_template_cmd = subparser.add_parser(
+            'run-template',
+            prefix_chars='+',
+            description='run wandbox template code',
+            help='run wandbox template code. see `run-template +h`'
+        )
+        run_template_cmd.set_defaults(handler=self.command_run_template)
+        run_template_cmd.add_argument(
+            'compile_options',
+            metavar='COMPILE_OPTIONS',
+            nargs='*',
+            help='comiple options'
+        )
+
         subcommands = self.parser.format_usage().split('{')[1].split('}')[0]
         help_cmd = subparser.add_parser('help', help='show subcommand help. see `help -h`')
         help_cmd.set_defaults(handler=self.command_help)
@@ -382,3 +419,25 @@ class CLI:
         if hasattr(args, attr_name):
             if getattr(args, attr_name):
                 options.append(opt_name)
+
+    def find_compilers(self, list_json, args):
+        find = []
+        for d in list_json:
+            if args.language:
+                if args.language == d['language']:
+                    if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
+                        find.append(d)
+            else:
+                find.append(d)
+        return find
+
+    def get_template_code(self, args):
+        r = self.get_compiler_list(args.retry, args.retry_wait)
+        setattr(args, 'sources', ['-'])
+        self.auto_setup_compiler(args)
+        compiler = self.find_compilers(r, args)
+        if len(compiler) != 1:
+            raise "Detected multiple compilers. Please specify so that it becomes one."
+        template_name = compiler[0]['templates'][0]
+        template = self.get_template(template_name, args.retry, args.retry_wait)
+        return template['code']
