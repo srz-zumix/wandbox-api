@@ -72,6 +72,15 @@ class Wandbox:
         response.raise_for_status()
         return response.json()
 
+    @staticmethod
+    def GetTemplate(name):
+        """
+        get template
+        """
+        response = requests.get(Wandbox.api_url + '/template/' + name, timeout=3.0)
+        response.raise_for_status()
+        return response.json()
+
     @property
     def timeout(self):
         return self.timeout_

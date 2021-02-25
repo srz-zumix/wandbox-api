@@ -39,7 +39,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 ```sh
 usage: wandbox [-h] [-v] [-l LANGUAGE] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT]
-               {list,compilers,versions,lang,option,permlink,run,help} ...
+               {list,compilers,versions,lang,option,permlink,run,template,run-template,help} ...
 
 positional arguments:
   {list,compilers,versions,lang,option,permlink,run,help}
@@ -50,6 +50,8 @@ positional arguments:
     option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
     run                 build and run command. see `run +h`
+    template            get wandbox template code. see `template -h`
+    run-template        run wandbox template code. see `run-template +h`
     help                show subcommand help. see `help -h`
 
 optional arguments:
@@ -98,7 +100,7 @@ Include files required for compilation are automatically added to the file list.
 usage: wandbox-cxx [-h] [-v] [-c COMPILER] [-x OPTIONS] [-r RUNTIME_OPTIONS] [-n] [-s] [--encoding ENCODING]
                    [--no-default] [--stdin STDIN] [--retry-wait SECONDS] [--retry COUNT] [--std VERSION]
                    [--boost VERSION] [--no-warning] [--optimize] [--cpp-pedantic PEDANTIC] [--cpp-verbose] [--sprout] [--msgpack]
-                   {list,compilers,versions,lang,option,permlink,run,help} ...
+                   {list,compilers,versions,lang,option,permlink,run,template,run-template,help} ...
 
 positional arguments:
   {list,compilers,versions,lang,option,permlink,run,help}
@@ -109,6 +111,8 @@ positional arguments:
     option              show compiler options. see `option -h`
     permlink            get permlink. see `permlink -h`
     run                 build and run command. see `run +h`
+    template            get wandbox template code. see `template -h`
+    run-template        run wandbox template code. see `run-template +h`
     help                show subcommand help. see `help -h`
 
 optional arguments:
