@@ -18,6 +18,7 @@ from .wandbox import Wandbox
 from .runner import Runner
 from argparse import ArgumentParser
 from argparse import SUPPRESS
+from io import StringIO
 
 
 class CLI:
@@ -56,7 +57,8 @@ class CLI:
                     if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
                         print(d['name'])
             else:
-                print('{0}: {1}'.format(d['language'], d['name']))
+                if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
+                    print('{0}: {1}'.format(d['language'], d['name']))
 
     def format_indent(self, value, indent=0):
         return '{0}{1}'.format(' ' * indent, value)
@@ -114,7 +116,7 @@ class CLI:
 
     def command_run_template(self, args):
         setattr(args, 'sources', ['-'])
-        sys.stdin = self.get_template_code(args)
+        sys.stdin = StringIO(self.get_template_code(args))
         options = []
         for o in args.options:
             options.extend(o.split(','))
@@ -423,17 +425,14 @@ class CLI:
     def find_compilers(self, list_json, args):
         find = []
         for d in list_json:
-            if args.language:
-                if args.language == d['language']:
-                    if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
-                        find.append(d)
-            else:
+            if args.language and args.language != d['language']:
+                continue
+            if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
                 find.append(d)
         return find
 
     def get_template_code(self, args):
         r = self.get_compiler_list(args.retry, args.retry_wait)
-        setattr(args, 'sources', ['-'])
         self.auto_setup_compiler(args)
         compiler = self.find_compilers(r, args)
         if len(compiler) != 1:
