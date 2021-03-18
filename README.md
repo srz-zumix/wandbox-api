@@ -66,6 +66,7 @@ optional arguments:
   -r RUNTIME_OPTIONS, --runtime-options RUNTIME_OPTIONS
                         runtime options
   -n, --dryrun          dryrun
+  -V, --verbose         verbose log
   -s, --save            generate permanent link.
   --encoding ENCODING   set encoding
   --no-head             ignore head compiler version (at auto setup)
@@ -125,6 +126,7 @@ optional arguments:
   -r RUNTIME_OPTIONS, --runtime-options RUNTIME_OPTIONS
                         runtime options
   -n, --dryrun          dryrun
+  -V, --verbose         verbose log
   -s, --save            generate permanent link.
   --encoding ENCODING   set encoding
   --no-head             ignore head compiler version (at auto setup)

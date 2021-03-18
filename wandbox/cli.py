@@ -55,7 +55,10 @@ class CLI:
             if args.language:
                 if args.language == d['language']:
                     if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
-                        print(d['name'])
+                        if args.verbose:
+                            print('{0}: {1}'.format(d['language'], d['name']))
+                        else:
+                            print(d['name'])
             else:
                 if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
                     print('{0}: {1}'.format(d['language'], d['name']))
@@ -238,6 +241,12 @@ class CLI:
             '--dryrun',
             action='store_true',
             help='dryrun'
+        )
+        self.parser.add_argument(
+            '-V',
+            '--verbose',
+            action='store_true',
+            help='verbose log'
         )
         self.parser.add_argument(
             '-s',
