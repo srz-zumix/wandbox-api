@@ -12,6 +12,7 @@ import sys
 import json
 import traceback
 import fnmatch
+import operator
 
 from . import __version__ as VERSION
 from .wandbox import Wandbox
@@ -51,6 +52,7 @@ class CLI:
 
     def command_compiler(self, args):
         r = self.get_compiler_list(args.retry, args.retry_wait)
+        r = sorted(r, key=operator.itemgetter('language'))
         for d in r:
             if args.language:
                 if args.language == d['language']:
