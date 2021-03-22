@@ -463,7 +463,8 @@ class CLI:
     def find_compiler(self, list_json, args):
         compiler = self.find_compilers(list_json, args)
         if len(compiler) != 1:
-            raise Exception('Detected multiple compilers. Please specify so that it becomes one. --language=' + str(args.language) + ' --compiler=' + str(args.compiler))
+            raise Exception('Detected multiple compilers. Please specify so that it becomes one. --language='
+                                + str(args.language) + ' --compiler=' + str(args.compiler))
         return compiler[0]
 
     def get_template_code(self, args):
