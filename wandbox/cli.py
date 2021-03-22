@@ -27,6 +27,7 @@ class CLI:
 
     def __init__(self, lang=None, compiler=None,
             has_option=True, has_compiler_option_raw=True, has_runtime_option_raw=True):
+        self.compiler_list = None
         self.result_key = None
         self.language = lang
         self.has_option = has_option
@@ -52,7 +53,6 @@ class CLI:
 
     def command_compiler(self, args):
         r = self.get_compiler_list(args.retry, args.retry_wait)
-        r = sorted(r, key=operator.itemgetter('language'))
         for d in r:
             if args.language:
                 if args.language == d['language']:
@@ -108,6 +108,12 @@ class CLI:
                         else:
                             print(self.format_indent(s['name'], indent))
 
+    def command_version(self, args):
+        self.auto_setup_compiler(args)
+        r = self.get_compiler_list(args.retry, args.retry_wait)
+        compiler = self.find_compiler(r, args)
+        print(compiler['version'])
+
     def command_permlink(self, args):
         r = Wandbox.Call(lambda : Wandbox.GetPermlink(args.id[0]), args.retry, args.retry_wait)
         p = r['parameter']
@@ -160,7 +166,11 @@ class CLI:
         self.run_with_runner(args, runner)
 
     def get_compiler_list(self, retry, wait):
-        return Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
+        if self.compiler_list is None:
+            r = Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
+            r = sorted(r, key=operator.itemgetter('language'))
+            self.compiler_list = r
+        return self.compiler_list
 
     def get_template(self, name, retry, wait):
         return Wandbox.Call(lambda : Wandbox.GetTemplate(name), retry, wait)
@@ -171,6 +181,8 @@ class CLI:
             if fnmatch.translate(args.compiler) == args.compiler:
                 return
             cond = args.compiler
+        elif args.language is None:
+            return
         r = self.get_compiler_list(args.retry, args.retry_wait)
         for d in r:
             if args.language and args.language != d['language']:
@@ -328,6 +340,12 @@ class CLI:
         )
         option_cmd.set_defaults(handler=self.command_options)
 
+        version_cmd = subparser.add_parser(
+            'version',
+            description='show compiler version from version-command',
+            help='show compiler version from version-command. see `version -h`')
+        version_cmd.set_defaults(handler=self.command_version)
+
         permlink_cmd = subparser.add_parser(
             'permlink',
             description='get permlink',
@@ -442,12 +460,16 @@ class CLI:
                 find.append(d)
         return find
 
+    def find_compiler(self, list_json, args):
+        compiler = self.find_compilers(list_json, args)
+        if len(compiler) != 1:
+            raise Exception('Detected multiple compilers. Please specify so that it becomes one. --language=' + str(args.language) + ' --compiler=' + str(args.compiler))
+        return compiler[0]
+
     def get_template_code(self, args):
         r = self.get_compiler_list(args.retry, args.retry_wait)
         self.auto_setup_compiler(args)
-        compiler = self.find_compilers(r, args)
-        if len(compiler) != 1:
-            raise Exception('Detected multiple compilers. Please specify so that it becomes one.')
-        template_name = compiler[0]['templates'][0]
+        compiler = self.find_compiler(r, args)
+        template_name = compiler['templates'][0]
         template = self.get_template(template_name, args.retry, args.retry_wait)
         return template['code']
