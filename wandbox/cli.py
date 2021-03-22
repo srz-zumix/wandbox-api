@@ -310,10 +310,6 @@ class CLI:
         )
         list_cmd.set_defaults(handler=self.command_list)
 
-        compiler_cmd = subparser.add_parser(
-            'compiler',
-            description='show support compilers',
-            help=SUPPRESS)
         compilers_cmd = subparser.add_parser(
             'compilers',
             description='show support compilers',
@@ -322,7 +318,7 @@ class CLI:
             'versions',
             description='show support compilers',
             help='show support compilers. see `versions -h`')
-        compilers_cmds = [compiler_cmd, compilers_cmd, versions_cmd]
+        compilers_cmds = [compilers_cmd, versions_cmd]
         for compiler_cmd_ in compilers_cmds:
             compiler_cmd_.set_defaults(handler=self.command_compiler)
 
