@@ -16,6 +16,7 @@ from wandbox import __ghc__ as ghc
 from wandbox import __go__ as go
 from wandbox import __java__ as java
 from wandbox import __js__ as js
+from wandbox import __lua__ as lua
 from wandbox import __nim__ as nim
 from wandbox import __openssl__ as openssl
 from wandbox import __php__ as php
@@ -203,6 +204,7 @@ class test_wandbox_options(wandbox_test_base):
             ghc.GhcCLI(),
             java.JavaCLI(),
             js.JsCLI(),
+            lua.LuaCLI(),
             nim.NimCLI(),
             openssl.OpenSSLCLI.InnerCLI(),
             php.PhpCLI(),
