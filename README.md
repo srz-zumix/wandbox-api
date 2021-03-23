@@ -25,6 +25,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Haskell](#Haskell)
 * [Java](#Java)
 * [JavaScript](#JavaScript)
+* [Lua](#Lua)
 * [Nim](#Nim)
 * [OpenSSL](#OpenSSL)
 * [Perl](#Perl)
@@ -265,6 +266,19 @@ Import files/modules required for runtime are automatically added to the file li
 #### JavaScript Example
 
 [JavaScript Example](./samples/command/src/js)
+
+### Lua
+
+Import files/modules required for compilation are automatically added to the file list.
+
+* wandbox-lua  
+  (wandbox -l Lua)
+* wandbox-luajit  
+  (wandbox -l Lua -c luajit-*)
+
+#### Lua Example
+
+[Lua Example](./samples/command/src/lua)
 
 ### Nim
 
