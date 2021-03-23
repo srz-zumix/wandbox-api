@@ -66,6 +66,8 @@ setup(
             'wandbox-js       = wandbox.__js__:main',
             'wandbox-node     = wandbox.__js__:node',
             'wandbox-spidermonkey = wandbox.__js__:spidermonkey',
+            'wandbox-lua      = wandbox.__lua__:main',
+            'wandbox-luajit   = wandbox.__lua__:luajit',
             'wandbox-nim      = wandbox.__nim__:main',
             'wandbox-perl     = wandbox.__perl__:main',
             'wandbox-php      = wandbox.__php__:main',
