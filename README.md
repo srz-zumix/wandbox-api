@@ -48,6 +48,7 @@ positional arguments:
     versions            show support compilers. see `versions -h`
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
+    version             show compiler version from version-command. see `version -h`
     permlink            get permlink. see `permlink -h`
     run                 build and run command. see `run +h`
     template            get wandbox template code. see `template -h`
@@ -110,6 +111,7 @@ positional arguments:
     versions            show support compilers. see `versions -h`
     lang                show support languages. see `lang -h`
     option              show compiler options. see `option -h`
+    version             show compiler version from version-command. see `version -h`
     permlink            get permlink. see `permlink -h`
     run                 build and run command. see `run +h`
     template            get wandbox template code. see `template -h`
