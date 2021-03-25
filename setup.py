@@ -51,6 +51,7 @@ setup(
             'wandbox-CPP      = wandbox.__cpp__:main',
             'wandbox-gcc-PP   = wandbox.__cpp__:gcc',
             'wandbox-clang-PP = wandbox.__cpp__:clang',
+            'wandbox-coffee   = wandbox.__coffee__:main',
             'wandbox-cs       = wandbox.__csharp__:main',
             'wandbox-dmd      = wandbox.__dmd__:dmd',
             'wandbox-gdmd     = wandbox.__dmd__:gdmd',
