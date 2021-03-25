@@ -19,6 +19,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C](#c-1)
 * [CPP](#CPP)
 * [C#](#CSharp)
+* [CoffeeScript](#CoffeeScript)
 * [D](#D)
 * [Elixir](#Elixir)
 * [Go](#Go)
@@ -194,6 +195,15 @@ Include files required for compilation are automatically added to the file list.
 #### CSharp Example
 
 [C# Example](./samples/command/src/csharp)
+
+### CoffeeScript
+
+* wandbox-coffee  
+  (wandbox -l CoffeeScript)
+
+#### CoffeeScript Example
+
+[CoffeeScript Example](./samples/command/src/coffee)
 
 ### D
 

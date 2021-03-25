@@ -7,6 +7,7 @@ from wandbox import cli as wandbox_cli
 from wandbox import __bash__ as bash
 from wandbox import __cc__ as cc
 from wandbox import __cpp__ as cpp
+from wandbox import __coffee__ as coffee
 from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
 from wandbox import __dmd__ as dmd
@@ -195,8 +196,9 @@ class test_wandbox_options(wandbox_test_base):
             # bash.BashCLI.InnerCLI(),
             cc.CcCLI(),
             cpp.CppCLI(),
-            cs.CsCLI(),
             cxx.CxxCLI(),
+            coffee.CoffeeCLI(),
+            cs.CsCLI(),
             dmd.DCLI(),
             elixir.ElixirCLI(),
             erlang.ErlangCLI(),
