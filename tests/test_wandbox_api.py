@@ -8,6 +8,7 @@ from wandbox import __bash__ as bash
 from wandbox import __cc__ as cc
 from wandbox import __cpp__ as cpp
 from wandbox import __coffee__ as coffee
+from wandbox import __crystal__ as crystal
 from wandbox import __csharp__ as cs
 from wandbox import __cxx__ as cxx
 from wandbox import __dmd__ as dmd
@@ -198,6 +199,7 @@ class test_wandbox_options(wandbox_test_base):
             cpp.CppCLI(),
             cxx.CxxCLI(),
             coffee.CoffeeCLI(),
+            crystal.CrystalCLI(),
             cs.CsCLI(),
             dmd.DCLI(),
             elixir.ElixirCLI(),
