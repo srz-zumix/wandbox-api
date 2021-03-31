@@ -20,6 +20,7 @@ from wandbox import __java__ as java
 from wandbox import __js__ as js
 from wandbox import __lua__ as lua
 from wandbox import __nim__ as nim
+from wandbox import __ocaml__ as ocaml
 from wandbox import __openssl__ as openssl
 from wandbox import __php__ as php
 from wandbox import __perl__ as perl
@@ -210,6 +211,7 @@ class test_wandbox_options(wandbox_test_base):
             js.JsCLI(),
             lua.LuaCLI(),
             nim.NimCLI(),
+            ocaml.OCamlCLI(),
             openssl.OpenSSLCLI.InnerCLI(),
             php.PhpCLI(),
             perl.PerlCLI(),

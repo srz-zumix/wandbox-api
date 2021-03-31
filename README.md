@@ -29,6 +29,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [JavaScript](#JavaScript)
 * [Lua](#Lua)
 * [Nim](#Nim)
+* [OCaml](#OCaml)
 * [OpenSSL](#OpenSSL)
 * [Perl](#Perl)
 * [PHP](#PHP)
@@ -208,6 +209,8 @@ Include files required for compilation are automatically added to the file list.
 
 ### Crystal
 
+Import modules required for compilation are automatically added to the file list.
+
 * wandbox-crystal  
   (wandbox -l Crystal)
 
@@ -310,6 +313,15 @@ Import modules required for compilation are automatically added to the file list
 #### Nim Example
 
 [Nim Example](./samples/command/src/nim)
+
+### OCaml
+
+* wandbox-ocamlopt  
+  (wandbox -l OCaml)
+
+#### OCaml Example
+
+[OCaml Example](./samples/command/src/ocaml)
 
 ### OpenSSL
 
