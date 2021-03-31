@@ -2,8 +2,6 @@
 
 print_endline "Hello, Wandbox!";;
 
-Test1.hello ();;
-
 (* OCaml language references:
    https://ocaml.org/
  *)

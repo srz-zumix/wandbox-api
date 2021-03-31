@@ -61,6 +61,7 @@ setup(
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
             'wandbox-erlang   = wandbox.__erlang__:main',
+            'wandbox-fsharpc  = wandbox.__fsharp__:main',
             'wandbox-ghc      = wandbox.__ghc__:main',
             'wandbox-stack    = wandbox.__ghc__:haskell_stack',
             'wandbox-go       = wandbox.__go__:main',

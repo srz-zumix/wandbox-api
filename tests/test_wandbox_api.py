@@ -14,6 +14,7 @@ from wandbox import __cxx__ as cxx
 from wandbox import __dmd__ as dmd
 from wandbox import __elixir__ as elixir
 from wandbox import __erlang__ as erlang
+from wandbox import __fsharp__ as fs
 from wandbox import __ghc__ as ghc
 from wandbox import __go__ as go
 from wandbox import __java__ as java
@@ -205,6 +206,7 @@ class test_wandbox_options(wandbox_test_base):
             dmd.DCLI(),
             elixir.ElixirCLI(),
             erlang.ErlangCLI(),
+            fs.FsCLI(),
             go.GoCLI(),
             ghc.GhcCLI(),
             java.JavaCLI(),

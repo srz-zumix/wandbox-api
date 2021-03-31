@@ -23,6 +23,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Crystal](#Crystal)
 * [D](#D)
 * [Elixir](#Elixir)
+* [F#](#FSharp)
 * [Go](#Go)
 * [Haskell](#Haskell)
 * [Java](#Java)
@@ -242,6 +243,15 @@ Import modules required for compilation are automatically added to the file list
 #### Elixir Example
 
 [Elixir Example](./samples/command/src/elixir)
+
+### FSharp
+
+* wandbox-fsharpc  
+  (wandbox -l F#)
+
+#### FSharp Example
+
+[F# Example](./samples/command/src/fsharp)
 
 ### Go
 
