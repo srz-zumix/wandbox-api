@@ -28,6 +28,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Haskell](#Haskell)
 * [Java](#Java)
 * [JavaScript](#JavaScript)
+* [Lisp](#Lisp)
 * [Lua](#Lua)
 * [Nim](#Nim)
 * [OCaml](#OCaml)
@@ -299,6 +300,17 @@ Import files/modules required for runtime are automatically added to the file li
 #### JavaScript Example
 
 [JavaScript Example](./samples/command/src/js)
+
+### Lisp
+
+* wandbox-sbcl  
+  (wandbox -l Lisp)
+* wandbox-clisp  
+  (wandbox -l Lisp -c clisp-*)
+
+#### Lisp Example
+
+[Lisp Example](./samples/command/src/lisp)
 
 ### Lua
 
