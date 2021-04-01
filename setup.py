@@ -75,6 +75,7 @@ setup(
             'wandbox-luajit   = wandbox.__lua__:luajit',
             'wandbox-nim      = wandbox.__nim__:main',
             'wandbox-ocamlopt = wandbox.__ocaml__:main',
+            'wandbox-fpc      = wandbox.__pascal__:main',
             'wandbox-perl     = wandbox.__perl__:main',
             'wandbox-php      = wandbox.__php__:main',
             'wandbox-python   = wandbox.__python__:main',

@@ -33,6 +33,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Nim](#Nim)
 * [OCaml](#OCaml)
 * [OpenSSL](#OpenSSL)
+* [Pascal](#Pascal)
 * [Perl](#Perl)
 * [PHP](#PHP)
 * [Python](#Python)
@@ -358,6 +359,17 @@ Even just having wandbox would be enough.
 > wandbox-ssl rsa -in test.key -pubout -out test.key.pub
 
 [OpenSSL Example](./samples/command/src/openssl)
+
+### Pascal
+
+Include files required for runtime are automatically added to the file list.
+
+* wandbox-fpc  
+  (wandbox -l Pascal)
+
+#### Pascal Example
+
+[Pascal Example](./samples/command/src/pascal)
 
 ### Perl
 
