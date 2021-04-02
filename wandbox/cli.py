@@ -12,11 +12,11 @@ import sys
 import json
 import traceback
 import fnmatch
-import operator
 
 from . import __version__ as VERSION
 from .wandbox import Wandbox
 from .runner import Runner
+from .wrapper import Wrapper
 from argparse import ArgumentParser
 from argparse import SUPPRESS
 from io import StringIO
@@ -27,6 +27,7 @@ class CLI:
 
     def __init__(self, lang=None, compiler=None,
             has_option=True, has_compiler_option_raw=True, has_runtime_option_raw=True):
+        self.wrapper = Wrapper()
         self.compiler_list = None
         self.result_key = None
         self.language = lang
@@ -44,69 +45,13 @@ class CLI:
         print(json.dumps(r, indent=2))
 
     def command_lang(self, args):
-        if args.language:
-            print(args.language)
-        else:
-            r = self.get_compiler_list(args.retry, args.retry_wait)
-            langs = map(lambda x: x['language'], r)
-            print('\n'.join(sorted(set(langs))))
+        self.wrapper.languages(args.language, args.retry, args.retry_wait, args.verbose)
 
     def command_compiler(self, args):
-        r = self.get_compiler_list(args.retry, args.retry_wait)
-        for d in r:
-            if args.language:
-                if args.language == d['language']:
-                    if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
-                        if args.verbose:
-                            print('{0}: {1}'.format(d['language'], d['name']))
-                        else:
-                            print(d['name'])
-            else:
-                if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
-                    print('{0}: {1}'.format(d['language'], d['name']))
-
-    def format_indent(self, value, indent=0):
-        return '{0}{1}'.format(' ' * indent, value)
-
-    def format_default(self, name, indent=0):
-        return '{0}{1} (default)'.format(' ' * indent, name)
+        self.wrapper.compilers(args.language, args.compiler, args.retry, args.retry_wait, args.verbose)
 
     def command_options(self, args):
-        r = self.get_compiler_list(args.retry, args.retry_wait)
-        for d in r:
-            prefix = ''
-            indent = 0
-            if args.language:
-                if args.language != d['language']:
-                    continue
-            else:
-                prefix = '{0}: '.format(d['language'])
-            if args.compiler:
-                if not fnmatch.fnmatch(d['name'], args.compiler):
-                    continue
-            else:
-                prefix = '{0}: '.format(d['name'])
-                indent = 2
-            if 'switches' in d:
-                switches = d['switches']
-                print(prefix)
-                for s in switches:
-                    if s['type'] == 'select':
-                        default_option = s['default']
-                        if 'name' in s:
-                            print(self.format_indent(s['name'], indent))
-                        else:
-                            print(self.format_default(default_option, indent))
-                        for o in s['options']:
-                            if (o['name'] == default_option) and ('name' in s):
-                                print(self.format_default(o['name'], indent + 2))
-                            else:
-                                print(self.format_indent(o['name'], indent + 2))
-                    elif s['type'] == 'single':
-                        if s['default']:
-                            print(self.format_default(s['name'], indent))
-                        else:
-                            print(self.format_indent(s['name'], indent))
+        self.wrapper.options(args.language, args.compiler, args.retry, args.retry_wait, args.verbose)
 
     def command_version(self, args):
         self.auto_setup_compiler(args)
@@ -166,33 +111,17 @@ class CLI:
         self.run_with_runner(args, runner)
 
     def get_compiler_list(self, retry, wait):
-        if self.compiler_list is None:
-            r = Wandbox.Call(Wandbox.GetCompilerList, retry, wait)
-            r = sorted(r, key=operator.itemgetter('language'))
-            self.compiler_list = r
-        return self.compiler_list
+        return self.wrapper.get_compiler_list(retry, wait)
 
     def get_template(self, name, retry, wait):
         return Wandbox.Call(lambda : Wandbox.GetTemplate(name), retry, wait)
 
     def auto_setup_compiler(self, args):
-        cond = '*'
-        if args.compiler:
-            if fnmatch.translate(args.compiler) == args.compiler:
-                return
-            cond = args.compiler
-        elif args.language is None:
-            return
-        r = self.get_compiler_list(args.retry, args.retry_wait)
-        for d in r:
-            if args.language and args.language != d['language']:
-                continue
-            if args.no_head and 'head' in d['name']:
-                continue
-            if fnmatch.fnmatch(d['name'], cond):
-                args.language = d['language']
-                args.compiler = d['name']
-                break
+        l,c = self.wrapper.resolve_compiler(args.language, args.compiler, args.retry, args.retry_wait, args.no_head)
+        if l:
+            args.language = l
+        if c:
+            args.compiler = c
 
     def run_with_runner(self, args, runner):
         if args.dryrun:
@@ -447,26 +376,6 @@ class CLI:
             if getattr(args, attr_name):
                 options.append(opt_name)
 
-    def find_compilers(self, list_json, args):
-        find = []
-        for d in list_json:
-            if args.language and args.language != d['language']:
-                continue
-            if (args.compiler is None) or (fnmatch.fnmatch(d['name'], args.compiler)):
-                find.append(d)
-        return find
-
-    def find_compiler(self, list_json, args):
-        compiler = self.find_compilers(list_json, args)
-        if len(compiler) != 1:
-            raise Exception('Detected multiple compilers. Please specify so that it becomes one. --language='
-                                + str(args.language) + ' --compiler=' + str(args.compiler))
-        return compiler[0]
-
     def get_template_code(self, args):
-        r = self.get_compiler_list(args.retry, args.retry_wait)
         self.auto_setup_compiler(args)
-        compiler = self.find_compiler(r, args)
-        template_name = compiler['templates'][0]
-        template = self.get_template(template_name, args.retry, args.retry_wait)
-        return template['code']
+        return self.wrapper.get_template_code(args.language, args.compiler, args.retry, args.retry_wait)
