@@ -54,3 +54,8 @@ docs/_build/
 # PyBuilder
 target/
 tmp/
+
+# binary files
+*.o
+*.exe
+*.dll
