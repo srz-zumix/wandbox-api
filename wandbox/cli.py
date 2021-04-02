@@ -113,11 +113,8 @@ class CLI:
     def get_compiler_list(self, retry, wait):
         return self.wrapper.get_compiler_list(retry, wait)
 
-    def get_template(self, name, retry, wait):
-        return Wandbox.Call(lambda : Wandbox.GetTemplate(name), retry, wait)
-
     def auto_setup_compiler(self, args):
-        l,c = self.wrapper.resolve_compiler(args.language, args.compiler, args.retry, args.retry_wait, args.no_head)
+        l, c = self.wrapper.resolve_compiler(args.language, args.compiler, args.retry, args.retry_wait, args.no_head)
         if l:
             args.language = l
         if c:

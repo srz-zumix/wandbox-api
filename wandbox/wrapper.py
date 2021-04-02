@@ -93,12 +93,10 @@ class Wrapper:
         cond = '*'
         if compiler:
             if fnmatch.translate(compiler) == compiler:
-                return None,None
+                return None, None
             cond = compiler
         elif language is None:
-            return None,None
-        l = language
-        c = compiler
+            return None, None
         r = self.get_compiler_list(retry, retry_wait)
         for d in r:
             if language and language != d['language']:
@@ -106,10 +104,8 @@ class Wrapper:
             if no_head and 'head' in d['name']:
                 continue
             if fnmatch.fnmatch(d['name'], cond):
-                l = d['language']
-                c = d['name']
-                break
-        return l,c
+                return d['language'], d['name']
+        return None, None
 
     def find_compilers(self, list_json, language, compiler):
         find = []
@@ -127,10 +123,12 @@ class Wrapper:
                                 + str(language) + ' --compiler=' + str(compiler))
         return compiler[0]
 
+    def get_template(self, name, retry, retry_wait):
+        return Wandbox.Call(lambda : Wandbox.GetTemplate(name), retry, retry_wait)
+
     def get_template_code(self, language, compiler, retry, retry_wait):
         r = self.get_compiler_list(retry, retry_wait)
         compiler = self.find_compiler(r, language, compiler)
         template_name = compiler['templates'][0]
         template = self.get_template(template_name, retry, retry_wait)
         return template['code']
-
