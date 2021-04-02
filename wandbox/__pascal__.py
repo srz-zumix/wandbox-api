@@ -51,7 +51,7 @@ class PascalRunner(Runner):
         module_path = os.path.normpath(os.path.join(path, module_name))
         if os.path.exists(module_path):
             return module_path, module_name
-        for ext in ['.pas', '.pp', '.inc' ]:
+        for ext in ['.pas', '.pp', '.inc']:
             module_file = module_name + ext
             module_path = os.path.normpath(os.path.join(path, module_file))
             if os.path.exists(module_path):
