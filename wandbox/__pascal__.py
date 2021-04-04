@@ -22,7 +22,7 @@ class PascalRunner(Runner):
             if uses is not None:
                 uses += line
                 if ';' in uses:
-                    files.update(self.parse_uses(filepath, uses))
+                    files.update(self.parse_uses(os.path.dirname(filepath), uses))
                     uses = None
             m = self.INCLUDE_REGEX.match(line)
             if m:
@@ -38,15 +38,13 @@ class PascalRunner(Runner):
 
     def parse_uses(self, filepath, uses):
         files = dict()
-        print(uses)
         for token in uses.split(','):
             module_name = token.strip().strip(';')
             m = self.USES_IN_REGEX.match(module_name)
             if m:
                 module_name = m.group(1).strip('\'"')
             if module_name:
-                print(module_name)
-                files.update(self.include(os.path.dirname(filepath), module_name))
+                files.update(self.include(filepath, module_name))
         return files
 
     def find_file(self, path, module_name):
@@ -67,6 +65,7 @@ class PascalRunner(Runner):
             return files
         module_path, module_file = self.find_file(path, module_name)
         if module_path:
+            print(module_path)
             self.included.append(module_name)
             files.update(self.open_code(module_path, module_file))
         return files
