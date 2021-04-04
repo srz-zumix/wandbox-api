@@ -19,6 +19,7 @@ from wandbox import __ghc__ as ghc
 from wandbox import __go__ as go
 from wandbox import __java__ as java
 from wandbox import __js__ as js
+from wandbox import __julia__ as julia
 from wandbox import __lisp__ as lisp
 from wandbox import __lua__ as lua
 from wandbox import __nim__ as nim
@@ -219,6 +220,7 @@ class test_wandbox_options(wandbox_test_base):
             ghc.GhcCLI(),
             java.JavaCLI(),
             js.JsCLI(),
+            julia.JuliaCLI(),
             lisp.LispCLI(),
             lua.LuaCLI(),
             nim.NimCLI(),
