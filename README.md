@@ -39,6 +39,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [PHP](#PHP)
 * [Python](#Python)
 * [Ruby](#Ruby)
+* [SQL](#SQL)
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
 
@@ -435,6 +436,19 @@ Require files required for runtime are automatically added to the file list.
 > wandbox-ruby run sample.rb
 
 [Ruby Example](./samples/command/src/ruby)
+
+### SQL
+
+* wandbox-sqlite  
+  (wandbox -l SQL)
+* wandbox-sqlite3  
+  (wandbox -l SQL)
+
+#### SQL Example
+
+> wandbox-sqlite3 run SELECT 'Hello, Wandbox!';
+
+[SQL Example](./samples/command/src/sql)
 
 ### Swift
 
