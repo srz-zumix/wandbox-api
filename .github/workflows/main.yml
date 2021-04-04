@@ -22,7 +22,8 @@ jobs:
 
   test:
     runs-on: ubuntu-18.04
-    container: python:3.8-alpine
+    container:
+      image: python:3.8-alpine
       credentials:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
