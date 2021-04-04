@@ -94,6 +94,12 @@ class test_wandbox_cli(wandbox_test_base):
         else:
             self.fail('SystemExit exception expected')
 
+    def test_version(self):
+        opt = [ '-l=C++', '-c=clang-3.9.1', 'version' ]
+        self.wandbox_run(opt)
+        output = self.stdoout()
+        eprint(output)
+        self.assertEqual('3.9.1', output.strip())
 
 class test_wandbox_cxx(wandbox_test_base):
 

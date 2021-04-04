@@ -56,7 +56,7 @@ class CLI:
     def command_version(self, args):
         self.auto_setup_compiler(args)
         r = self.get_compiler_list(args.retry, args.retry_wait)
-        compiler = self.find_compiler(r, args)
+        compiler = self.wrapper.find_compiler(r, args.language, args.compiler)
         print(compiler['version'])
 
     def command_permlink(self, args):
