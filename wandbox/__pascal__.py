@@ -1,6 +1,7 @@
 import re
 import os
 
+from .utils import case_insensitive_glob
 from .cli import CLI
 from .runner import Runner
 
@@ -54,9 +55,9 @@ class PascalRunner(Runner):
         for ext in ['.pas', '.pp', '.inc']:
             module_file = module_name + ext
             module_path = os.path.normpath(os.path.join(path, module_file))
-            print(module_path)
-            if os.path.exists(module_path):
-                return module_path, module_file
+            m = case_insensitive_glob(path, module_file)
+            if len(m) == 1:
+                return m[0], os.path.basename(m[0])
         return None, None
 
     def include(self, path, module_name_):
