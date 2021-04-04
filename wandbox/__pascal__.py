@@ -55,6 +55,7 @@ class PascalRunner(Runner):
             module_file = module_name + ext
             module_path = os.path.normpath(os.path.join(path, module_file))
             if os.path.exists(module_path):
+                print(module_file)
                 return module_path, module_file
         return None, None
 
