@@ -38,12 +38,14 @@ class PascalRunner(Runner):
 
     def parse_uses(self, filepath, uses):
         files = dict()
+        print(uses)
         for token in uses.split(','):
             module_name = token.strip().strip(';')
             m = self.USES_IN_REGEX.match(module_name)
             if m:
                 module_name = m.group(1).strip('\'"')
             if module_name:
+                print(module_name)
                 files.update(self.include(os.path.dirname(filepath), module_name))
         return files
 
@@ -55,7 +57,6 @@ class PascalRunner(Runner):
             module_file = module_name + ext
             module_path = os.path.normpath(os.path.join(path, module_file))
             if os.path.exists(module_path):
-                print(module_file)
                 return module_path, module_file
         return None, None
 
