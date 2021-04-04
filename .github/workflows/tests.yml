@@ -1,0 +1,25 @@
+name: Compile each language tests
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    container:
+      image: python:3.8-alpine
+      credentials:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@master
+    - name: setup
+      run: |
+        apk add make
+    - name: test
+      run: |
+        make install
+        make test
+
