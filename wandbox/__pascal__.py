@@ -54,6 +54,7 @@ class PascalRunner(Runner):
         for ext in ['.pas', '.pp', '.inc']:
             module_file = module_name + ext
             module_path = os.path.normpath(os.path.join(path, module_file))
+            print(module_path)
             if os.path.exists(module_path):
                 return module_path, module_file
         return None, None
@@ -65,7 +66,6 @@ class PascalRunner(Runner):
             return files
         module_path, module_file = self.find_file(path, module_name)
         if module_path:
-            print(module_path)
             self.included.append(module_name)
             files.update(self.open_code(module_path, module_file))
         return files
