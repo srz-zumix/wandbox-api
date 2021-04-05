@@ -39,6 +39,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [PHP](#PHP)
 * [Python](#Python)
 * [Ruby](#Ruby)
+* [Rust](#Rust)
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
 
@@ -435,6 +436,20 @@ Require files required for runtime are automatically added to the file list.
 > wandbox-ruby run sample.rb
 
 [Ruby Example](./samples/command/src/ruby)
+
+### Rust
+
+Module files required for runtime are automatically added to the file list.
+
+* wandbox-rustc  
+  (wandbox -l Rust)
+* wandbox-cargo
+
+#### Rust Example
+
+> wandbox-cargo run
+
+[Rust Example](./samples/command/src/rust)
 
 ### Swift
 
