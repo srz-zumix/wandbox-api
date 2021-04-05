@@ -30,6 +30,7 @@ from wandbox import __perl__ as perl
 from wandbox import __php__ as php
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
+from wandbox import __rust__ as rust
 from wandbox import __swift__ as swift
 from wandbox import __tsc__ as tsc
 
@@ -231,6 +232,7 @@ class test_wandbox_options(wandbox_test_base):
             php.PhpCLI(),
             python.PythonCLI(),
             ruby.RubyCLI(),
+            rust.RustCLI(),
             swift.SwiftCLI(),
             tsc.TscCLI()
         ]

@@ -85,12 +85,14 @@ setup(
             'wandbox-pypy     = wandbox.__python__:pypy',
             'wandbox-ruby     = wandbox.__ruby__:main',
             'wandbox-mruby    = wandbox.__ruby__:mruby',
+            'wandbox-rustc    = wandbox.__rust__:main',
+            'wandbox-cargo    = wandbox.__rust__:cargo',
             'wandbox-swift    = wandbox.__swift__:main',
             'wandbox-tsc      = wandbox.__tsc__:main',
             'wandbox-ssl      = wandbox.__openssl__:main'
         ]
     }
-    , install_requires=['requests', 'pyyaml']
+    , install_requires=['requests', 'pyyaml', 'toml']
     , tests_require=test_deps
     , test_suite="tests.test_suite"
     , extras_require={
