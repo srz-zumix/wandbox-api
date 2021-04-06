@@ -194,8 +194,6 @@ class CargoCLI:
             sys.exit(exit_code)
 
 
-
-
 def rust(compiler=None):
     cli = RustCLI(compiler)
     cli.execute()
