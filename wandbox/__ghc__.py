@@ -112,6 +112,9 @@ class HaskellStackCLI:
             opts.dryrun = True
         return opts, args
 
+    def print_help(self):
+        self.parser.print_help()
+
     def execute(self):
         self.execute_with_args()
 

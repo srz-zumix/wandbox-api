@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import toml
 
 from argparse import ArgumentParser
@@ -75,25 +76,57 @@ class CargoCLI:
             action='store_true',
             help='dryrun'
         )
+        self.parser.add_argument(
+            '-q',
+            '--quiet',
+            action='store_true',
+            help='No output printed to stdout'
+        )
+        self.parser.add_argument(
+            '-v',
+            '--verbose',
+            action='store_true',
+            help='Use verbose output'
+        )
+        self.parser.add_argument(
+            '--explain',
+            metavar='CODE',
+            action='append',
+            default=[],
+            help='Run `rustc --explain CODE`'
+        )
 
         subparser = self.parser.add_subparsers()
         run_cmd = subparser.add_parser(
             'run',
-            description='build and run command',
-            help='build and run command. see `run +h`'
-        )
-        run_cmd.add_argument(
-            '--bin',
-            help='Run the specified binary.'
+            aliases=['r'],
+            description='Run a binary or example of the local package',
+            help='Run a binary or example of the local package. see `run -h`'
         )
         build_cmd = subparser.add_parser(
             'build',
-            description='build and run command (run command alias)',
-            help='build and run command (run command alias). see `build +h`'
+            aliases=['b'],
+            description='Run a binary or example of the local package (run command alias)',
+            help='Run a binary or example of the local package (run command alias). see `build -h`'
         )
-        passthrough_cmds = [run_cmd, build_cmd]
+        check_cmd = subparser.add_parser(
+            'check',
+            aliases=['c'],
+            description='Run a binary or example of the local package (run command alias)',
+            help='Run a binary or example of the local package (run command alias). see `check -h`'
+        )
+        passthrough_cmds = [run_cmd, build_cmd, check_cmd]
         for passthrough_cmd in passthrough_cmds:
             passthrough_cmd.set_defaults(handler=self.command_run)
+            passthrough_cmd.add_argument(
+                '--bin',
+                help='Run the specified binary.'
+            )
+            passthrough_cmd.add_argument(
+                '--bins',
+                action='store_true',
+                help='Run the all binares.'
+            )
             passthrough_cmd.add_argument(
                 'options',
                 metavar='OPTIONS',
@@ -106,6 +139,9 @@ class CargoCLI:
         if 'WANDBOX_DRYRUN' in os.environ:
             opts.dryrun = True
         return opts, args
+
+    def print_help(self):
+        self.parser.print_help()
 
     def execute(self):
         self.execute_with_args()
@@ -132,16 +168,30 @@ class CargoCLI:
             else:
                 if 'default-run' in package:
                     target_bin = package['default-run']
-            src = 'src/main.rs'
-            if target_bin:
+            for explain in opts.explain:
+                run_options.append("--explain")
+                run_options.append(explain)
+            if opts.verbose:
+                run_options.append("--verbose")
+            srcs = []
+            if opts.bins:
                 for bin in config['bin']:
-                    if bin['name'] == target_bin:
-                        src = bin['path']
+                    srcs.append(bin['path'])
             else:
-                pass
-            run_options.append(src)
-
-        cmd.execute_with_args(cli_options + run_options)
+                src = 'src/main.rs'
+                if target_bin:
+                    for bin in config['bin']:
+                        if bin['name'] == target_bin:
+                            src = bin['path']
+                srcs.append(src)
+            for src in srcs:
+                exit_code = 0
+                try:
+                    cmd.execute_with_args(cli_options + run_options + [src])
+                except SystemExit as e:
+                    if e.code != 0:
+                        exit_code = e.code
+            sys.exit(exit_code)
 
 
 def rust(compiler=None):
