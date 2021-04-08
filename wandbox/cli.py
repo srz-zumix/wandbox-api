@@ -26,7 +26,8 @@ class CLI:
     """wandbox CLI class"""
 
     def __init__(self, lang=None, compiler=None,
-            has_option=True, has_compiler_option_raw=True, has_runtime_option_raw=True):
+            has_option=True, has_compiler_option_raw=True, has_runtime_option_raw=True,
+            run_prefix_chars='+'):
         self.wrapper = Wrapper()
         self.compiler_list = None
         self.result_key = None
@@ -34,6 +35,7 @@ class CLI:
         self.has_option = has_option
         self.has_compiler_option_raw = has_compiler_option_raw
         self.has_runtime_option_raw = has_runtime_option_raw
+        self.run_prefix_chars = run_prefix_chars
         self.setup(lang, compiler, has_option)
 
     def command_list(self, args):
@@ -282,15 +284,15 @@ class CLI:
 
         run_cmd = subparser.add_parser(
             'run',
-            prefix_chars='+',
+            prefix_chars=self.run_prefix_chars,
             description='build and run command',
-            help='build and run command. see `run +h`'
+            help='build and run command. see `run {0}h`'.format(self.run_prefix_chars)
         )
         # build_cmd = subparser.add_parser(
         #     'build',
-        #     prefix_chars='+',
+        #     prefix_chars=self.run_prefix_chars,
         #     description='build and run command (run command alias)',
-        #     help='build and run command (run command alias). see `build +h`'
+        #     help='build and run command (run command alias). see `build {0}h`'.format(self.run_prefix_chars)
         # )
         passthrough_cmds = [run_cmd]
         for passthrough_cmd in passthrough_cmds:
@@ -317,9 +319,9 @@ class CLI:
 
         run_template_cmd = subparser.add_parser(
             'run-template',
-            prefix_chars='+',
+            prefix_chars=self.run_prefix_chars,
             description='run wandbox template code',
-            help='run wandbox template code. see `run-template +h`'
+            help='run wandbox template code. see `run-template {0}h`'.format(self.run_prefix_chars)
         )
         run_template_cmd.set_defaults(handler=self.command_run_template)
         run_template_cmd.add_argument(

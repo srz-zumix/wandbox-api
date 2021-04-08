@@ -33,6 +33,7 @@ from wandbox import __ruby__ as ruby
 from wandbox import __rust__ as rust
 from wandbox import __swift__ as swift
 from wandbox import __tsc__ as tsc
+from wandbox import __vim__ as vim
 
 try:
     import unittest2 as unittest
@@ -234,7 +235,8 @@ class test_wandbox_options(wandbox_test_base):
             ruby.RubyCLI(),
             rust.RustCLI(),
             swift.SwiftCLI(),
-            tsc.TscCLI()
+            tsc.TscCLI(),
+            vim.VimCLI()
         ]
         for cli in clis:
             with self.subTest(cli=cli):
