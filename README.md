@@ -43,6 +43,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Rust](#Rust)
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
+* [Vim script](#Vim-script)
 
 ### wandbox
 
@@ -488,6 +489,15 @@ Import files/modules required for compilation are automatically added to the fil
 #### TypeScript Example
 
 [TypeScript Example](./samples/command/src/ts)
+
+### Vim script
+
+* wandbox-vim  
+  (wandbox -l "Vim script")
+
+#### Vim script Example
+
+[Vim script Example](./samples/command/src/vim)
 
 ## CONTRIBUTING
 
