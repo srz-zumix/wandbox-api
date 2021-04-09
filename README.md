@@ -37,6 +37,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Pascal](#Pascal)
 * [Perl](#Perl)
 * [PHP](#PHP)
+* [Pony](#Pony)
 * [Python](#Python)
 * [Ruby](#Ruby)
 * [Rust](#Rust)
@@ -394,6 +395,21 @@ Require/Include files required for runtime are automatically added to the file l
 #### PHP Example
 
 [PHP Example](./samples/command/src/php)
+
+### Pony
+
+Build directory files are automatically added to the file list.
+
+* wandbox-ponyc  
+  (wandbox -l Pony)
+
+#### Pony Example
+
+> wandbox-ponyc run ./sample ./sample2
+
+wandbox-ponyc builds ./sample and ./sample2, Then execute ./sample2
+
+[Pony Example](./samples/command/src/pony)
 
 ### Python
 
