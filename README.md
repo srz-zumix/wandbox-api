@@ -15,20 +15,24 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## CLI
 
-* [Bash](#bash)
-* [C++](#c)
-* [C](#c-1)
+* [Bash](#Bash)
+* [C](#C)
+* [C#](#C-1)
+* [C++](#C-2)
+* CMake
 * [CPP](#CPP)
 * [CoffeeScript](#CoffeeScript)
-* [C#](#CSharp)
 * [Crystal](#Crystal)
 * [D](#D)
 * [Elixir](#Elixir)
-* [F#](#FSharp)
+* [F#](#F)
 * [Go](#Go)
+* Groovy
 * [Haskell](#Haskell)
 * [Java](#Java)
 * [JavaScript](#JavaScript)
+* [Julia](#Julia)
+* Lazy K
 * [Lisp](#Lisp)
 * [Lua](#Lua)
 * [Nim](#Nim)
@@ -39,8 +43,12 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [PHP](#PHP)
 * [Pony](#Pony)
 * [Python](#Python)
+* R
+* Rill
 * [Ruby](#Ruby)
 * [Rust](#Rust)
+* Scala
+* SQL
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
 * [Vim script](#Vim-script)
@@ -97,6 +105,30 @@ Source files required for runtime are automatically added to the file list.
 #### Bash Example
 
 [Bash Example](./samples/command/src/bash)
+
+### C
+
+Include files required for compilation are automatically added to the file list.
+
+* wandbox-cc  
+  (wandbox -l C)
+* wandbox-gcc  
+  (wandbox -l C -c gcc-*-c)
+* wandbox-clang  
+  (wandbox -l C -c clang-*-c)
+
+#### C Example
+
+[C Example](./samples/command/src/cc)
+
+### C#
+
+* wandbox-cs  
+  (wandbox -l C#)
+
+#### C# Example
+
+[C# Example](./samples/command/src/csharp)
 
 ### C++
 
@@ -166,21 +198,6 @@ optional arguments:
 
 [C++ Example](./samples/command/src/cxx)
 
-### C
-
-Include files required for compilation are automatically added to the file list.
-
-* wandbox-cc  
-  (wandbox -l C)
-* wandbox-gcc  
-  (wandbox -l C -c gcc-*-c)
-* wandbox-clang  
-  (wandbox -l C -c clang-*-c)
-
-#### C Example
-
-[C Example](./samples/command/src/cc)
-
 ### CPP
 
 Include files required for compilation are automatically added to the file list.
@@ -204,15 +221,6 @@ Include files required for compilation are automatically added to the file list.
 #### CoffeeScript Example
 
 [CoffeeScript Example](./samples/command/src/coffee)
-
-### CSharp
-
-* wandbox-cs  
-  (wandbox -l C#)
-
-#### CSharp Example
-
-[C# Example](./samples/command/src/csharp)
 
 ### Crystal
 
@@ -250,12 +258,12 @@ Import modules required for compilation are automatically added to the file list
 
 [Elixir Example](./samples/command/src/elixir)
 
-### FSharp
+### F#
 
 * wandbox-fsharpc  
   (wandbox -l F#)
 
-#### FSharp Example
+#### F# Example
 
 [F# Example](./samples/command/src/fsharp)
 
@@ -305,6 +313,15 @@ Import files/modules required for runtime are automatically added to the file li
 #### JavaScript Example
 
 [JavaScript Example](./samples/command/src/js)
+
+### Julia
+
+* wandbox-julia  
+  (wandbox -l Julia)
+
+#### Julia Example
+
+[Julia Example](./samples/command/src/julia)
 
 ### Lisp
 
