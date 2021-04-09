@@ -79,6 +79,7 @@ setup(
             'wandbox-fpc      = wandbox.__pascal__:main',
             'wandbox-perl     = wandbox.__perl__:main',
             'wandbox-php      = wandbox.__php__:main',
+            'wandbox-ponyc    = wandbox.__pony__:main',
             'wandbox-python   = wandbox.__python__:main',
             'wandbox-python2  = wandbox.__python__:python2',
             'wandbox-python3  = wandbox.__python__:python3',
