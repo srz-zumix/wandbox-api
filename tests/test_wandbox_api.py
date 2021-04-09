@@ -28,6 +28,7 @@ from wandbox import __openssl__ as openssl
 from wandbox import __pascal__ as pascal
 from wandbox import __perl__ as perl
 from wandbox import __php__ as php
+from wandbox import __pony__ as pony
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
 from wandbox import __rust__ as rust
@@ -231,6 +232,7 @@ class test_wandbox_options(wandbox_test_base):
             pascal.PascalCLI(),
             perl.PerlCLI(),
             php.PhpCLI(),
+            pony.PonyCLI(),
             python.PythonCLI(),
             ruby.RubyCLI(),
             rust.RustCLI(),
