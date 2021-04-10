@@ -27,7 +27,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Elixir](#Elixir)
 * [F#](#F)
 * [Go](#Go)
-* Groovy
+* [Groovy](#Groovy)
 * [Haskell](#Haskell)
 * [Java](#Java)
 * [JavaScript](#JavaScript)
@@ -275,6 +275,15 @@ Import modules required for compilation are automatically added to the file list
 #### Go Example
 
 [Go Example](./samples/command/src/go)
+
+### Groovy
+
+* wandbox-groovy  
+  (wandbox -l Groovy)
+
+#### Groovy Example
+
+[Groovy Example](./samples/command/src/groovy)
 
 ### Haskell
 
