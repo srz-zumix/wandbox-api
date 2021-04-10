@@ -65,6 +65,7 @@ setup(
             'wandbox-ghc      = wandbox.__ghc__:main',
             'wandbox-stack    = wandbox.__ghc__:haskell_stack',
             'wandbox-go       = wandbox.__go__:main',
+            'wandbox-groovy   = wandbox.__groovy__:main',
             'wandbox-java     = wandbox.__java__:main',
             'wandbox-js       = wandbox.__js__:main',
             'wandbox-node     = wandbox.__js__:node',

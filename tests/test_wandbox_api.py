@@ -17,6 +17,7 @@ from wandbox import __erlang__ as erlang
 from wandbox import __fsharp__ as fs
 from wandbox import __ghc__ as ghc
 from wandbox import __go__ as go
+from wandbox import __groovy__ as groovy
 from wandbox import __java__ as java
 from wandbox import __js__ as js
 from wandbox import __julia__ as julia
@@ -219,8 +220,9 @@ class test_wandbox_options(wandbox_test_base):
             elixir.ElixirCLI(),
             erlang.ErlangCLI(),
             fs.FsCLI(),
-            go.GoCLI(),
             ghc.GhcCLI(),
+            go.GoCLI(),
+            groovy.GroovyCLI(),
             java.JavaCLI(),
             js.JsCLI(),
             julia.JuliaCLI(),
