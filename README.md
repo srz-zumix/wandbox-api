@@ -43,7 +43,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [PHP](#PHP)
 * [Pony](#Pony)
 * [Python](#Python)
-* R
+* [R](#R)
 * Rill
 * [Ruby](#Ruby)
 * [Rust](#Rust)
@@ -464,6 +464,17 @@ If you open a file, add the file
 > wandbox-python -c cpython-head -r test run setup.py README.md
 
 [Python Example](./samples/command/src/python)
+
+### R
+
+Source files are automatically added to the file list.
+
+* wandbox-rscript  
+  (wandbox -l R)
+
+#### R Example
+
+[R Example](./samples/command/src/r)
 
 ### Ruby
 
