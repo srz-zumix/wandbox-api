@@ -90,6 +90,7 @@ setup(
             'wandbox-mruby    = wandbox.__ruby__:mruby',
             'wandbox-rustc    = wandbox.__rust__:main',
             'wandbox-cargo    = wandbox.__rust__:cargo',
+            'wandbox-scalac   = wandbox.__scala__:main',
             'wandbox-sqlite   = wandbox.__sql__:main',
             'wandbox-sqlite3  = wandbox.__sql__:main',
             'wandbox-swift    = wandbox.__swift__:main',
