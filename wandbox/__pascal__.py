@@ -1,6 +1,7 @@
 import re
 import os
 
+from .utils import case_insensitive_glob
 from .cli import CLI
 from .runner import Runner
 
@@ -22,7 +23,7 @@ class PascalRunner(Runner):
             if uses is not None:
                 uses += line
                 if ';' in uses:
-                    files.update(self.parse_uses(filepath, uses))
+                    files.update(self.parse_uses(os.path.dirname(filepath), uses))
                     uses = None
             m = self.INCLUDE_REGEX.match(line)
             if m:
@@ -44,7 +45,7 @@ class PascalRunner(Runner):
             if m:
                 module_name = m.group(1).strip('\'"')
             if module_name:
-                files.update(self.include(os.path.dirname(filepath), module_name))
+                files.update(self.include(filepath, module_name))
         return files
 
     def find_file(self, path, module_name):
@@ -53,9 +54,9 @@ class PascalRunner(Runner):
             return module_path, module_name
         for ext in ['.pas', '.pp', '.inc']:
             module_file = module_name + ext
-            module_path = os.path.normpath(os.path.join(path, module_file))
-            if os.path.exists(module_path):
-                return module_path, module_file
+            m = case_insensitive_glob(path, module_file)
+            if len(m) == 1:
+                return m[0], os.path.basename(m[0])
         return None, None
 
     def include(self, path, module_name_):

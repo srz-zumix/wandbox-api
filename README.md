@@ -15,20 +15,24 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## CLI
 
-* [Bash](#bash)
-* [C++](#c)
-* [C](#c-1)
+* [Bash](#Bash)
+* [C](#C)
+* [C#](#C-1)
+* [C++](#C-2)
+* CMake
 * [CPP](#CPP)
 * [CoffeeScript](#CoffeeScript)
-* [C#](#CSharp)
 * [Crystal](#Crystal)
 * [D](#D)
 * [Elixir](#Elixir)
-* [F#](#FSharp)
+* [F#](#F)
 * [Go](#Go)
+* [Groovy](#Groovy)
 * [Haskell](#Haskell)
 * [Java](#Java)
 * [JavaScript](#JavaScript)
+* [Julia](#Julia)
+* Lazy K
 * [Lisp](#Lisp)
 * [Lua](#Lua)
 * [Nim](#Nim)
@@ -37,11 +41,17 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Pascal](#Pascal)
 * [Perl](#Perl)
 * [PHP](#PHP)
+* [Pony](#Pony)
 * [Python](#Python)
+* R
+* Rill
 * [Ruby](#Ruby)
+* [Rust](#Rust)
+* Scala
 * [SQL](#SQL)
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
+* [Vim script](#Vim-script)
 
 ### wandbox
 
@@ -95,6 +105,30 @@ Source files required for runtime are automatically added to the file list.
 #### Bash Example
 
 [Bash Example](./samples/command/src/bash)
+
+### C
+
+Include files required for compilation are automatically added to the file list.
+
+* wandbox-cc  
+  (wandbox -l C)
+* wandbox-gcc  
+  (wandbox -l C -c gcc-*-c)
+* wandbox-clang  
+  (wandbox -l C -c clang-*-c)
+
+#### C Example
+
+[C Example](./samples/command/src/cc)
+
+### C#
+
+* wandbox-cs  
+  (wandbox -l C#)
+
+#### C# Example
+
+[C# Example](./samples/command/src/csharp)
 
 ### C++
 
@@ -164,21 +198,6 @@ optional arguments:
 
 [C++ Example](./samples/command/src/cxx)
 
-### C
-
-Include files required for compilation are automatically added to the file list.
-
-* wandbox-cc  
-  (wandbox -l C)
-* wandbox-gcc  
-  (wandbox -l C -c gcc-*-c)
-* wandbox-clang  
-  (wandbox -l C -c clang-*-c)
-
-#### C Example
-
-[C Example](./samples/command/src/cc)
-
 ### CPP
 
 Include files required for compilation are automatically added to the file list.
@@ -202,15 +221,6 @@ Include files required for compilation are automatically added to the file list.
 #### CoffeeScript Example
 
 [CoffeeScript Example](./samples/command/src/coffee)
-
-### CSharp
-
-* wandbox-cs  
-  (wandbox -l C#)
-
-#### CSharp Example
-
-[C# Example](./samples/command/src/csharp)
 
 ### Crystal
 
@@ -248,12 +258,12 @@ Import modules required for compilation are automatically added to the file list
 
 [Elixir Example](./samples/command/src/elixir)
 
-### FSharp
+### F#
 
 * wandbox-fsharpc  
   (wandbox -l F#)
 
-#### FSharp Example
+#### F# Example
 
 [F# Example](./samples/command/src/fsharp)
 
@@ -265,6 +275,15 @@ Import modules required for compilation are automatically added to the file list
 #### Go Example
 
 [Go Example](./samples/command/src/go)
+
+### Groovy
+
+* wandbox-groovy  
+  (wandbox -l Groovy)
+
+#### Groovy Example
+
+[Groovy Example](./samples/command/src/groovy)
 
 ### Haskell
 
@@ -303,6 +322,15 @@ Import files/modules required for runtime are automatically added to the file li
 #### JavaScript Example
 
 [JavaScript Example](./samples/command/src/js)
+
+### Julia
+
+* wandbox-julia  
+  (wandbox -l Julia)
+
+#### Julia Example
+
+[Julia Example](./samples/command/src/julia)
 
 ### Lisp
 
@@ -395,6 +423,21 @@ Require/Include files required for runtime are automatically added to the file l
 
 [PHP Example](./samples/command/src/php)
 
+### Pony
+
+Build directory files are automatically added to the file list.
+
+* wandbox-ponyc  
+  (wandbox -l Pony)
+
+#### Pony Example
+
+> wandbox-ponyc run ./sample ./sample2
+
+wandbox-ponyc builds ./sample and ./sample2, Then execute ./sample2
+
+[Pony Example](./samples/command/src/pony)
+
 ### Python
 
 Import files/modules required for runtime are automatically added to the file list.
@@ -437,6 +480,20 @@ Require files required for runtime are automatically added to the file list.
 
 [Ruby Example](./samples/command/src/ruby)
 
+### Rust
+
+Module files required for runtime are automatically added to the file list.
+
+* wandbox-rustc  
+  (wandbox -l Rust)
+* wandbox-cargo
+
+#### Rust Example
+
+> wandbox-cargo run
+
+[Rust Example](./samples/command/src/rust)
+
 ### SQL
 
 * wandbox-sqlite  
@@ -471,6 +528,15 @@ Import files/modules required for compilation are automatically added to the fil
 #### TypeScript Example
 
 [TypeScript Example](./samples/command/src/ts)
+
+### Vim script
+
+* wandbox-vim  
+  (wandbox -l "Vim script")
+
+#### Vim script Example
+
+[Vim script Example](./samples/command/src/vim)
 
 ## CONTRIBUTING
 

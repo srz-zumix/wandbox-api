@@ -8,7 +8,6 @@ Wandbox API Wrapper for Python
 """
 
 from .wandbox import Wandbox
-import operator
 import fnmatch
 
 
@@ -29,7 +28,7 @@ class Wrapper:
         else:
             r = self.get_compiler_list(retry, retry_wait)
             langs = map(lambda x: x['language'], r)
-            self.printer('\n'.join(sorted(set(langs))))
+            self.printer('\n'.join(sorted(set(langs), key=str.lower)))
 
     def compilers(self, language, compiler, retry, retry_wait, verbose=False):
         r = self.get_compiler_list(retry, retry_wait)
@@ -85,7 +84,7 @@ class Wrapper:
     def get_compiler_list(self, retry, retry_wait):
         if self.compiler_list is None:
             r = Wandbox.Call(Wandbox.GetCompilerList, retry, retry_wait)
-            r = sorted(r, key=operator.itemgetter('language'))
+            r = sorted(r, key=lambda val: val['language'].lower())
             self.compiler_list = r
         return self.compiler_list
 

@@ -17,8 +17,10 @@ from wandbox import __erlang__ as erlang
 from wandbox import __fsharp__ as fs
 from wandbox import __ghc__ as ghc
 from wandbox import __go__ as go
+from wandbox import __groovy__ as groovy
 from wandbox import __java__ as java
 from wandbox import __js__ as js
+from wandbox import __julia__ as julia
 from wandbox import __lisp__ as lisp
 from wandbox import __lua__ as lua
 from wandbox import __nim__ as nim
@@ -27,11 +29,14 @@ from wandbox import __openssl__ as openssl
 from wandbox import __pascal__ as pascal
 from wandbox import __perl__ as perl
 from wandbox import __php__ as php
+from wandbox import __pony__ as pony
 from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
+from wandbox import __rust__ as rust
 from wandbox import __sql__ as sql
 from wandbox import __swift__ as swift
 from wandbox import __tsc__ as tsc
+from wandbox import __vim__ as vim
 
 try:
     import unittest2 as unittest
@@ -216,10 +221,12 @@ class test_wandbox_options(wandbox_test_base):
             elixir.ElixirCLI(),
             erlang.ErlangCLI(),
             fs.FsCLI(),
-            go.GoCLI(),
             ghc.GhcCLI(),
+            go.GoCLI(),
+            groovy.GroovyCLI(),
             java.JavaCLI(),
             js.JsCLI(),
+            julia.JuliaCLI(),
             lisp.LispCLI(),
             lua.LuaCLI(),
             nim.NimCLI(),
@@ -228,11 +235,14 @@ class test_wandbox_options(wandbox_test_base):
             pascal.PascalCLI(),
             perl.PerlCLI(),
             php.PhpCLI(),
+            pony.PonyCLI(),
             python.PythonCLI(),
             ruby.RubyCLI(),
+            rust.RustCLI(),
             sql.SqlCLI.InnerCLI(),
             swift.SwiftCLI(),
-            tsc.TscCLI()
+            tsc.TscCLI(),
+            vim.VimCLI()
         ]
         for cli in clis:
             with self.subTest(cli=cli):
