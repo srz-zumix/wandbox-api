@@ -1,89 +1,43 @@
 import sys
 
-from argparse import ArgumentParser
-from argparse import SUPPRESS
-from io import StringIO
-
 from .cli import CLI
+from .runner import Runner
+
+dummy_src_option = '@@dummy_src_option'
 
 
-class SqlCLI:
+class SqlRunner(Runner):
 
-    class InnerCLI(CLI):
+    def build_compiler_options(self, options):
+        options.remove(dummy_src_option)
+        try:
+            super(SqlRunner, self).build_compiler_options(options)
+        except Exception:
+            options.append('-')
+            super(SqlRunner, self).build_compiler_options(options)
 
-        def __init__(self):
-            self.output = None
-            super(SqlCLI.InnerCLI, self).__init__('SQL', 'sql-head', False, False)
 
-        def on_run_response(self, response):
-            if self.output:
-                with open(self.output, 'w') as file:
-                    if 'program_output' in response:
-                        file.write(response['program_output'])
-                    else:
-                        file.write(response['program_message'])
-            return super(SqlCLI.InnerCLI, self).on_run_response(response)
+class SqlCLI(CLI):
 
-    def __init__(self):
-        self.setup()
+    def __init__(self, compiler=None):
+        super(SqlCLI, self).__init__('SQL', compiler, False, False)
 
-    # command line option
-    def setup(self):
-        self.parser = ArgumentParser(add_help=False)
-        self.parser.add_argument(
-            '-out',
-            help=SUPPRESS
-        )
-        self.parser.add_argument(
-            '-in',
-            dest='infile',
-            help=SUPPRESS
-        )
-        self.parser.add_argument(
-            'command',
-            nargs='?',
-            help=SUPPRESS
-        )
-        self.parser.add_argument(
-            '-n',
-            '--dryrun',
-            action='store_true',
-            help='dryrun'
-        )
-
-    def parse_command_line(self, argv):
-        return self.parser.parse_known_args(argv)
+    def get_runner(self, args, options):
+        return SqlRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
 
     def execute(self):
-        self.execute_with_args()
+        args = sys.argv[1:]
+        args.append(dummy_src_option)
+        self.execute_with_args(args)
 
-    def execute_with_args(self, args=None):
-        opts, args = self.parse_command_line(args)
-        cmd = SqlCLI.InnerCLI()
-        cmd.output = opts.out
-        if cmd.output:
-            cmd.result_key = 'program_error'
-        else:
-            cmd.result_key = 'program_message'
-        run_options = ['run']
-        cli_options = []
-        if opts.dryrun:
-            cli_options.append('--dryrun')
-        sslcmd = opts.command
-        sslopts = args
-        if opts.infile:
-            sslopts = ['-in', opts.infile] + sslopts
-            run_options.append(opts.infile)
-        command = ' '.join(['openssl', sslcmd] + sslopts)
-        code = StringIO(command)
-        sys.stdin = code
-        run_options.append('-')
-        cmd.execute_with_args(cli_options + run_options)
+
+def sql(compiler=None):
+    cli = SqlCLI(compiler)
+    cli.execute()
 
 
 def main():
-    cli = SqlCLI()
-    cli.execute()
+    sql()
 
 
 if __name__ == '__main__':

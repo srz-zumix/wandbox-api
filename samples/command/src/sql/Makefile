@@ -8,3 +8,4 @@ local:
 
 wandbox:
 	make -C . local --no-print-directory SQLITE="wandbox-sqlite3 run"
+	wandbox-sqlite3 run sample.sql

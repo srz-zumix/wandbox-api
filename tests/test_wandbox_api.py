@@ -241,7 +241,7 @@ class test_wandbox_options(wandbox_test_base):
             ruby.RubyCLI(),
             rust.RustCLI(),
             scala.ScalaCLI(),
-            sql.SqlCLI.InnerCLI(),
+            sql.SqlCLI(),
             swift.SwiftCLI(),
             tsc.TscCLI(),
             vim.VimCLI()
