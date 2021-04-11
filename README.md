@@ -19,7 +19,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C](#C)
 * [C#](#C-1)
 * [C++](#C-2)
-* CMake
+* [CMake](#CMake)
 * [CPP](#CPP)
 * [CoffeeScript](#CoffeeScript)
 * [Crystal](#Crystal)
