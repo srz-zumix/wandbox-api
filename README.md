@@ -47,7 +47,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * Rill
 * [Ruby](#Ruby)
 * [Rust](#Rust)
-* Scala
+* [Scala](#Scala)
 * SQL
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
@@ -493,6 +493,17 @@ Module files required for runtime are automatically added to the file list.
 > wandbox-cargo run
 
 [Rust Example](./samples/command/src/rust)
+
+### Scala
+
+* wandbox-scalac  
+  (wandbox -l Scala)
+
+#### Scala Example
+
+> wandbox-scalac run *.scala
+
+[Scala Example](./samples/command/src/scala)
 
 ### Swift
 
