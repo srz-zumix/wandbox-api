@@ -48,7 +48,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Ruby](#Ruby)
 * [Rust](#Rust)
 * [Scala](#Scala)
-* SQL
+* [SQL](#SQL)
 * [Swift](#Swift)
 * [TypeScript](#TypeScript)
 * [Vim script](#Vim-script)
@@ -504,6 +504,19 @@ Module files required for runtime are automatically added to the file list.
 > wandbox-scalac run *.scala
 
 [Scala Example](./samples/command/src/scala)
+
+### SQL
+
+* wandbox-sqlite  
+  (wandbox -l SQL)
+* wandbox-sqlite3  
+  (wandbox -l SQL)
+
+#### SQL Example
+
+> wandbox-sqlite3 run SELECT 'Hello, Wandbox!';
+
+[SQL Example](./samples/command/src/sql)
 
 ### Swift
 

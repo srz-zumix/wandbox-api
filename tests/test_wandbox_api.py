@@ -34,6 +34,7 @@ from wandbox import __python__ as python
 from wandbox import __ruby__ as ruby
 from wandbox import __rust__ as rust
 from wandbox import __scala__ as scala
+from wandbox import __sql__ as sql
 from wandbox import __swift__ as swift
 from wandbox import __tsc__ as tsc
 from wandbox import __vim__ as vim
@@ -240,6 +241,7 @@ class test_wandbox_options(wandbox_test_base):
             ruby.RubyCLI(),
             rust.RustCLI(),
             scala.ScalaCLI(),
+            sql.SqlCLI(),
             swift.SwiftCLI(),
             tsc.TscCLI(),
             vim.VimCLI()
