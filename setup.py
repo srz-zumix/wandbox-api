@@ -71,6 +71,7 @@ setup(
             'wandbox-node     = wandbox.__js__:node',
             'wandbox-spidermonkey = wandbox.__js__:spidermonkey',
             'wandbox-julia    = wandbox.__julia__:main',
+            'wandbox-lazyk    = wandbox.__lazyk__:main',
             'wandbox-sbcl     = wandbox.__lisp__:main',
             'wandbox-clisp    = wandbox.__lisp__:clisp',
             'wandbox-lua      = wandbox.__lua__:main',

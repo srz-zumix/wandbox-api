@@ -21,6 +21,7 @@ from wandbox import __groovy__ as groovy
 from wandbox import __java__ as java
 from wandbox import __js__ as js
 from wandbox import __julia__ as julia
+from wandbox import __lazyk__ as lazyk
 from wandbox import __lisp__ as lisp
 from wandbox import __lua__ as lua
 from wandbox import __nim__ as nim
@@ -229,6 +230,7 @@ class test_wandbox_options(wandbox_test_base):
             java.JavaCLI(),
             js.JsCLI(),
             julia.JuliaCLI(),
+            lazyk.LazyKCLI(),
             lisp.LispCLI(),
             lua.LuaCLI(),
             nim.NimCLI(),

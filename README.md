@@ -32,7 +32,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Java](#Java)
 * [JavaScript](#JavaScript)
 * [Julia](#Julia)
-* Lazy K
+* [Lazy K](#Lazy-K)
 * [Lisp](#Lisp)
 * [Lua](#Lua)
 * [Nim](#Nim)
@@ -331,6 +331,15 @@ Import files/modules required for runtime are automatically added to the file li
 #### Julia Example
 
 [Julia Example](./samples/command/src/julia)
+
+### Lazy K
+
+* wandbox-lazyk  
+  (wandbox -l "Lazy K")
+
+#### Lazy K Example
+
+[Lazy K Example](./samples/command/src/lazyk)
 
 ### Lisp
 
