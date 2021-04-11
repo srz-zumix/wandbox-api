@@ -19,7 +19,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [C](#C)
 * [C#](#C-1)
 * [C++](#C-2)
-* CMake
+* [CMake](#CMake)
 * [CPP](#CPP)
 * [CoffeeScript](#CoffeeScript)
 * [Crystal](#Crystal)
@@ -198,6 +198,17 @@ optional arguments:
 
 [C++ Example](./samples/command/src/cxx)
 
+### CMake
+
+Include files are automatically added to the file list.
+
+* wandbox-cmake  
+  (wandbox -l CMake)
+
+#### CMake Example
+
+[CMake Example](./samples/command/src/cmake)
+
 ### CPP
 
 Include files required for compilation are automatically added to the file list.
@@ -212,6 +223,7 @@ Include files required for compilation are automatically added to the file list.
 #### CPP Example
 
 [CPP Example](./samples/command/src/cpp)
+
 
 ### CoffeeScript
 
