@@ -34,6 +34,7 @@ from wandbox import __php__ as php
 from wandbox import __pony__ as pony
 from wandbox import __python__ as python
 from wandbox import __r__ as rscript
+from wandbox import __rill__ as rill
 from wandbox import __ruby__ as ruby
 from wandbox import __rust__ as rust
 from wandbox import __scala__ as scala
@@ -244,6 +245,7 @@ class test_wandbox_options(wandbox_test_base):
             pony.PonyCLI(),
             python.PythonCLI(),
             rscript.RscriptCLI(),
+            rill.RillCLI(),
             ruby.RubyCLI(),
             rust.RustCLI(),
             scala.ScalaCLI(),
