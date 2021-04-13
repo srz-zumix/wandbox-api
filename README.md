@@ -15,43 +15,22 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ## CLI
 
-* [Bash](#Bash)
-* [C](#C)
-* [C#](#C-1)
-* [C++](#C-2)
-* [CMake](#CMake)
-* [CPP](#CPP)
-* [CoffeeScript](#CoffeeScript)
-* [Crystal](#Crystal)
-* [D](#D)
-* [Elixir](#Elixir)
-* [F#](#F)
-* [Go](#Go)
-* [Groovy](#Groovy)
-* [Haskell](#Haskell)
-* [Java](#Java)
-* [JavaScript](#JavaScript)
-* [Julia](#Julia)
-* [Lazy K](#Lazy-K)
-* [Lisp](#Lisp)
-* [Lua](#Lua)
-* [Nim](#Nim)
-* [OCaml](#OCaml)
-* [OpenSSL](#OpenSSL)
-* [Pascal](#Pascal)
-* [Perl](#Perl)
-* [PHP](#PHP)
-* [Pony](#Pony)
-* [Python](#Python)
-* [R](#R)
-* [Rill](#Rill)
-* [Ruby](#Ruby)
-* [Rust](#Rust)
-* [Scala](#Scala)
-* [SQL](#SQL)
-* [Swift](#Swift)
-* [TypeScript](#TypeScript)
-* [Vim script](#Vim-script)
+[wandbox](#wandbox)
+
+### for Languages
+
+|                   |                     |                               |                           |
+|:------------------|:--------------------|:------------------------------|:--------------------------|
+| [Bash](#Bash)     | [C](#C)             | [C#](#C-1)                    | [C++](#C-2)               |
+| [CMake](#CMake)   | [CPP](#CPP)         | [CoffeeScript](#CoffeeScript) | [Crystal](#Crystal)       |
+| [D](#D)           | [Elixir](#Elixir)   | [F#](#F)                      | [Go](#Go)                 |
+| [Groovy](#Groovy) | [Haskell](#Haskell) | [Java](#Java)                 | [JavaScript](#JavaScript) |
+| [Julia](#Julia)   | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)                 | [Lua](#Lua)               |
+| [Nim](#Nim)       | [OCaml](#OCaml)     | [OpenSSL](#OpenSSL)           | [Pascal](#Pascal)         |
+| [Perl](#Perl)     | [PHP](#PHP)         | [Pony](#Pony)                 | [Python](#Python)         |
+| [R](#R)           | [Rill](#Rill)       | [Ruby](#Ruby)                 | [Rust](#Rust)             |
+| [Scala](#Scala)   | [SQL](#SQL)         | [Swift](#Swift)               | [TypeScript](#TypeScript) |
+| [Vim script](#Vim-script) ||||
 
 ### wandbox
 
@@ -96,6 +75,8 @@ optional arguments:
   --retry COUNT         number of retries when HTTPError occurs
 ```
 
+----
+
 ### Bash
 
 Source files required for runtime are automatically added to the file list.
@@ -105,6 +86,8 @@ Source files required for runtime are automatically added to the file list.
 #### Bash Example
 
 [Bash Example](./samples/command/src/bash)
+
+----
 
 ### C
 
@@ -121,6 +104,8 @@ Include files required for compilation are automatically added to the file list.
 
 [C Example](./samples/command/src/cc)
 
+----
+
 ### C#
 
 * wandbox-cs  
@@ -129,6 +114,8 @@ Include files required for compilation are automatically added to the file list.
 #### C# Example
 
 [C# Example](./samples/command/src/csharp)
+
+----
 
 ### C++
 
@@ -198,6 +185,8 @@ optional arguments:
 
 [C++ Example](./samples/command/src/cxx)
 
+----
+
 ### CMake
 
 Include files are automatically added to the file list.
@@ -208,6 +197,8 @@ Include files are automatically added to the file list.
 #### CMake Example
 
 [CMake Example](./samples/command/src/cmake)
+
+----
 
 ### CPP
 
@@ -224,6 +215,7 @@ Include files required for compilation are automatically added to the file list.
 
 [CPP Example](./samples/command/src/cpp)
 
+----
 
 ### CoffeeScript
 
@@ -233,6 +225,8 @@ Include files required for compilation are automatically added to the file list.
 #### CoffeeScript Example
 
 [CoffeeScript Example](./samples/command/src/coffee)
+
+----
 
 ### Crystal
 
@@ -244,6 +238,8 @@ Import modules required for compilation are automatically added to the file list
 #### Crystal Example
 
 [Crystal Example](./samples/command/src/crystal)
+
+----
 
 ### D
 
@@ -260,6 +256,8 @@ Import modules required for compilation are automatically added to the file list
 [D Example](./samples/command/src/dmd)
 [Dub Example](./samples/command/src/dub)
 
+----
+
 ### Elixir
 
 * wandbox-elixir  
@@ -270,6 +268,8 @@ Import modules required for compilation are automatically added to the file list
 
 [Elixir Example](./samples/command/src/elixir)
 
+----
+
 ### F#
 
 * wandbox-fsharpc  
@@ -278,6 +278,8 @@ Import modules required for compilation are automatically added to the file list
 #### F# Example
 
 [F# Example](./samples/command/src/fsharp)
+
+----
 
 ### Go
 
@@ -288,6 +290,8 @@ Import modules required for compilation are automatically added to the file list
 
 [Go Example](./samples/command/src/go)
 
+----
+
 ### Groovy
 
 * wandbox-groovy  
@@ -296,6 +300,8 @@ Import modules required for compilation are automatically added to the file list
 #### Groovy Example
 
 [Groovy Example](./samples/command/src/groovy)
+
+----
 
 ### Haskell
 
@@ -311,6 +317,8 @@ Note: wandbox-ghc/wandbox-stack add -dynamic compiler option. (output file size 
 
 [Haskell Stack Example](./samples/command/src/haskell-stack)
 
+----
+
 ### Java
 
 * wandbox-java  
@@ -319,6 +327,8 @@ Note: wandbox-ghc/wandbox-stack add -dynamic compiler option. (output file size 
 #### Java Example
 
 [Java Example](./samples/command/src/java)
+
+----
 
 ### JavaScript
 
@@ -335,6 +345,8 @@ Import files/modules required for runtime are automatically added to the file li
 
 [JavaScript Example](./samples/command/src/js)
 
+----
+
 ### Julia
 
 * wandbox-julia  
@@ -344,6 +356,8 @@ Import files/modules required for runtime are automatically added to the file li
 
 [Julia Example](./samples/command/src/julia)
 
+----
+
 ### Lazy K
 
 * wandbox-lazyk  
@@ -352,6 +366,8 @@ Import files/modules required for runtime are automatically added to the file li
 #### Lazy K Example
 
 [Lazy K Example](./samples/command/src/lazyk)
+
+----
 
 ### Lisp
 
@@ -363,6 +379,8 @@ Import files/modules required for runtime are automatically added to the file li
 #### Lisp Example
 
 [Lisp Example](./samples/command/src/lisp)
+
+----
 
 ### Lua
 
@@ -377,6 +395,8 @@ Import files/modules required for compilation are automatically added to the fil
 
 [Lua Example](./samples/command/src/lua)
 
+----
+
 ### Nim
 
 Import modules required for compilation are automatically added to the file list.
@@ -388,6 +408,8 @@ Import modules required for compilation are automatically added to the file list
 
 [Nim Example](./samples/command/src/nim)
 
+----
+
 ### OCaml
 
 * wandbox-ocamlopt  
@@ -396,6 +418,8 @@ Import modules required for compilation are automatically added to the file list
 #### OCaml Example
 
 [OCaml Example](./samples/command/src/ocaml)
+
+----
 
 ### OpenSSL
 
@@ -411,6 +435,8 @@ Even just having wandbox would be enough.
 
 [OpenSSL Example](./samples/command/src/openssl)
 
+----
+
 ### Pascal
 
 Include files required for runtime are automatically added to the file list.
@@ -421,6 +447,8 @@ Include files required for runtime are automatically added to the file list.
 #### Pascal Example
 
 [Pascal Example](./samples/command/src/pascal)
+
+----
 
 ### Perl
 
@@ -433,6 +461,8 @@ Require files/modules required for runtime are automatically added to the file l
 
 [Perl Example](./samples/command/src/perl)
 
+----
+
 ### PHP
 
 Require/Include files required for runtime are automatically added to the file list.
@@ -443,6 +473,8 @@ Require/Include files required for runtime are automatically added to the file l
 #### PHP Example
 
 [PHP Example](./samples/command/src/php)
+
+----
 
 ### Pony
 
@@ -458,6 +490,8 @@ Build directory files are automatically added to the file list.
 wandbox-ponyc builds ./sample and ./sample2, Then execute ./sample2
 
 [Pony Example](./samples/command/src/pony)
+
+----
 
 ### Python
 
@@ -486,6 +520,8 @@ If you open a file, add the file
 
 [Python Example](./samples/command/src/python)
 
+----
+
 ### R
 
 Source files are automatically added to the file list.
@@ -497,6 +533,8 @@ Source files are automatically added to the file list.
 
 [R Example](./samples/command/src/r)
 
+----
+
 ### Rill
 
 * wandbox-rillc  
@@ -505,6 +543,8 @@ Source files are automatically added to the file list.
 #### Rill Example
 
 [Rill Example](./samples/command/src/rill)
+
+----
 
 ### Ruby
 
@@ -521,6 +561,8 @@ Require files required for runtime are automatically added to the file list.
 
 [Ruby Example](./samples/command/src/ruby)
 
+----
+
 ### Rust
 
 Module files required for runtime are automatically added to the file list.
@@ -535,6 +577,8 @@ Module files required for runtime are automatically added to the file list.
 
 [Rust Example](./samples/command/src/rust)
 
+----
+
 ### Scala
 
 * wandbox-scalac  
@@ -545,6 +589,8 @@ Module files required for runtime are automatically added to the file list.
 > wandbox-scalac run *.scala
 
 [Scala Example](./samples/command/src/scala)
+
+----
 
 ### SQL
 
@@ -559,6 +605,8 @@ Module files required for runtime are automatically added to the file list.
 
 [SQL Example](./samples/command/src/sql)
 
+----
+
 ### Swift
 
 * wandbox-swift  
@@ -569,6 +617,8 @@ Module files required for runtime are automatically added to the file list.
 > wandbox-swift run main.swift
 
 [Swift Example](./samples/command/src/swift)
+
+----
 
 ### TypeScript
 
@@ -581,6 +631,8 @@ Import files/modules required for compilation are automatically added to the fil
 
 [TypeScript Example](./samples/command/src/ts)
 
+----
+
 ### Vim script
 
 * wandbox-vim  
@@ -589,6 +641,8 @@ Import files/modules required for compilation are automatically added to the fil
 #### Vim script Example
 
 [Vim script Example](./samples/command/src/vim)
+
+----
 
 ## CONTRIBUTING
 
