@@ -44,7 +44,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * [Pony](#Pony)
 * [Python](#Python)
 * [R](#R)
-* Rill
+* [Rill](#Rill)
 * [Ruby](#Ruby)
 * [Rust](#Rust)
 * [Scala](#Scala)
@@ -496,6 +496,15 @@ Source files are automatically added to the file list.
 #### R Example
 
 [R Example](./samples/command/src/r)
+
+### Rill
+
+* wandbox-rillc  
+  (wandbox -l Rill)
+
+#### Rill Example
+
+[Rill Example](./samples/command/src/rill)
 
 ### Ruby
 
