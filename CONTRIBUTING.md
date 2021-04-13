@@ -5,4 +5,4 @@
 1. make docker (run python container)
 1. apk add make
 1. make install
-1. make test
+1. make test && make tox
