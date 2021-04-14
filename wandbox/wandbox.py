@@ -301,7 +301,8 @@ class Wandbox:
         return 1
 
     @staticmethod
-    def GetResult(r, key):
+    def GetResult(response, key):
+        r = WandboxCompileResponse(response)
         if r.has_error():
             return 1, r.error()
         return 0, r.get_value(key)
