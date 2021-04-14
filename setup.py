@@ -102,7 +102,7 @@ setup(
             'wandbox-vim      = wandbox.__vim__:main',
         ]
     }
-    , install_requires=['requests', 'pyyaml', 'toml']
+    , install_requires=['requests', 'pyyaml', 'toml', 'ndjson']
     , tests_require=test_deps
     , test_suite="tests.test_suite"
     , extras_require={
