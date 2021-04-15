@@ -164,9 +164,9 @@ class WandboxCompileResponse:
 
         def types(self, name):
             if isinstance(name, list):
-                return [d for d in self.response if d['type'] in name ]
+                return [d for d in self.response if d['type'] in name]
             else:
-                return [d for d in self.response if d['type'] == name ]
+                return [d for d in self.response if d['type'] == name]
 
         def get_value(self, name):
             types = self.types(name)

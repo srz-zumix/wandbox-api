@@ -68,7 +68,7 @@ class Wandbox:
     @staticmethod
     def GetPermlink(link):
         """
-        get wandbox permanet link
+        get wandbox permanent link
         """
         response = requests.get(Wandbox.api_url + '/permlink/' + link, timeout=3.0)
         response.raise_for_status()
@@ -76,7 +76,7 @@ class Wandbox:
 
     def get_permlink(self, link):
         """
-        get wandbox permanet link
+        get wandbox permanent link
         .. deprecated:: 0.3.4
         """
         return Wandbox.GetPermlink(link)
@@ -104,7 +104,8 @@ class Wandbox:
         """
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         payload = json.dumps(self.parameter)
-        response = requests.post(self.api_url + '/compile.json', data=payload, headers=headers, timeout=self.timeout_)
+        url = self.api_url + '/compile.json'
+        response = requests.post(url, data=payload, headers=headers, timeout=self.timeout_)
         response.raise_for_status()
         try:
             return response.json()
@@ -118,7 +119,8 @@ class Wandbox:
         """
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         payload = json.dumps(self.parameter)
-        response = requests.post(self.api_url + '/compile.ndjson', data=payload, headers=headers, stream=True, timeout=self.timeout_)
+        url = self.api_url + '/compile.ndjson'
+        response = requests.post(url, data=payload, headers=headers, stream=True, timeout=self.timeout_)
         response.raise_for_status()
         try:
             return response.json(cls=ndjson.Decoder)
