@@ -5,6 +5,7 @@ from argparse import SUPPRESS
 from io import StringIO
 
 from .cli import CLI
+from .wandbox_compile_response import WandboxCompileResponse
 
 
 class OpenSSLCLI:
@@ -17,11 +18,12 @@ class OpenSSLCLI:
 
         def on_run_response(self, response):
             if self.output:
+                r = WandboxCompileResponse(response)
                 with open(self.output, 'w') as file:
-                    if 'program_output' in response:
-                        file.write(response['program_output'])
+                    if r.has_program_output():
+                        file.write(r.program_output())
                     else:
-                        file.write(response['program_message'])
+                        file.write(r.program_message())
             return super(OpenSSLCLI.InnerCLI, self).on_run_response(response)
 
     def __init__(self):
