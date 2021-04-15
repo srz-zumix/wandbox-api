@@ -90,6 +90,31 @@ class Wandbox:
         response.raise_for_status()
         return response.json()
 
+    def create_permlink(self, ndjson):
+        """
+        get run_ndjson permlink
+        """
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        params = {}
+        params.update({'compiler': self.parameter['compiler']})
+        params.update({'login': False})
+        params.update({'code': self.parameter['code']})
+        if 'codes' in self.parameter:
+            params.update({'codes': self.parameter['codes']})
+        if 'options' in self.parameter:
+            params.update({'options': self.parameter['options']})
+        if 'stdin' in self.parameter:
+            params.update({'stdin': self.parameter['stdin']})
+        if 'compiler-option-raw' in self.parameter:
+            params.update({'compiler-option-raw': self.parameter['compiler-option-raw']})
+        if 'runtime-option-raw' in self.parameter:
+            params.update({'runtime-option-raw': self.parameter['runtime-option-raw']})
+        params.update({'results': ndjson})
+        payload = json.dumps(params)
+        response = requests.post(self.api_url + '/permlink', data=payload, headers=headers, timeout=self.timeout_)
+        response.raise_for_status()
+        return response.json()
+
     @property
     def timeout(self):
         return self.timeout_
@@ -123,7 +148,13 @@ class Wandbox:
         response = requests.post(url, data=payload, headers=headers, stream=True, timeout=self.timeout_)
         response.raise_for_status()
         try:
-            return response.json(cls=ndjson.Decoder)
+            r = response.json(cls=ndjson.Decoder)
+            if 'save' in self.parameter:
+                if self.parameter['save']:
+                    permlink = self.create_permlink(r)
+                    r.append({'type': 'Url', 'data': permlink['url']})
+                    r.append({'type': 'Permlink', 'data': permlink['permlink']})
+            return r
         except Exception as e:
             response.status_code = 500
             raise RHTTPError(e, response=response)

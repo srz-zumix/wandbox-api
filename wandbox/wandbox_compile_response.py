@@ -145,16 +145,16 @@ class WandboxCompileResponse:
             return self.has_value('Signal')
 
         def url(self):
-            return self.get_value('url')
+            return self.get_value('Url')
 
         def has_url(self):
-            return self.has_value('url')
+            return self.has_value('Url')
 
         def permlink(self):
-            return self.get_value('permlink')
+            return self.get_value('Permlink')
 
         def has_permlink(self):
-            return self.has_value('permlink')
+            return self.has_value('Permlink')
 
         def status(self):
             return self.get_value('ExitCode')

@@ -126,7 +126,7 @@ class CLI:
         if args.dryrun:
             runner.dump()
             sys.exit(0)
-        r = runner.run()
+        r = runner.run_nd()
         exit_code = self.on_run_response(r)
         sys.exit(exit_code)
 
