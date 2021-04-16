@@ -90,6 +90,15 @@ class Wandbox:
         response.raise_for_status()
         return response.json()
 
+    @staticmethod
+    def GetUser(session):
+        """
+        get user
+        """
+        response = requests.get(Wandbox.api_url + '/user.json', params={'session': session}, timeout=3.0)
+        response.raise_for_status()
+        return response.json()
+
     def create_permlink(self, ndjson):
         """
         get run_ndjson permlink
