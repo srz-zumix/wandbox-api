@@ -14,7 +14,7 @@ build:
         before:
           - pip install -e.[test] && pip install tox-venv && make pyenv-versions && pyenv versions
         override:
-            - command: tox -e py35,py36,py37,flake8 .
+            - command: tox -e py36,py37,flake8 .
 
 filter:
     excluded_paths:
