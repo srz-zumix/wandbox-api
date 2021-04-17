@@ -1,6 +1,6 @@
 build:
     environment:
-        python: 3.6.0
+        python: 3.7.1
     nodes:
         tests: true
         analysis:
