@@ -35,4 +35,8 @@ docker-alpine:
 	# apk add make
 
 pyenv-versions:
-	pyenv versions | grep -v system | grep -o "[0-9]*\.[0-9]*\.[0-9a-z]*" > .python-version
+	pyenv versions | grep -v system | grep -o "3\.5\.[0-9a-z]*" | tail -1 >  .python-version
+	pyenv versions | grep -v system | grep -o "3\.6\.[0-9a-z]*" | tail -1 >> .python-version
+	pyenv versions | grep -v system | grep -o "3\.7\.[0-9a-z]*" | tail -1 >> .python-version
+	pyenv versions | grep -v system | grep -o "3\.8\.[0-9a-z]*" | tail -1 >> .python-version
+	pyenv versions | grep -v system | grep -o "3\.9\.[0-9a-z]*" | tail -1 >> .python-version

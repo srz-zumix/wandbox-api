@@ -1,6 +1,6 @@
 build:
     environment:
-        python: 3.7.1
+        python: 3.6.0
     nodes:
         tests: true
         analysis:
@@ -12,7 +12,9 @@ build:
                     - py-scrutinizer-run
     tests:
         before:
-          - pyenv versions
+          - pip install -e.[test] && pip install tox-venv && make pyenv-versions && pyenv versions
+        override:
+            - command: tox -e py35,py36,py37,flake8 .
 
 filter:
     excluded_paths:
