@@ -12,7 +12,7 @@ build:
                     - py-scrutinizer-run
     tests:
         before:
-          - pip install -e.[test] && pip install tox-venv && make pyenv-versions && pyenv versions
+          - pyenv versions
 
 filter:
     excluded_paths:
