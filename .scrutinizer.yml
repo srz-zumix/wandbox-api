@@ -1,0 +1,25 @@
+build:
+    environment:
+        python: 3.6.0
+    nodes:
+        tests: true
+        analysis:
+            tests:
+                override:
+                    -
+                        command: pylint-run
+                        use_website_config: true
+                    - py-scrutinizer-run
+    tests:
+        before:
+          - pip install -e.[test]
+
+filter:
+    excluded_paths:
+        - '*/test/*'
+
+checks:
+    python:
+        code_rating: true
+        duplicate_code: false
+        classes_valid_slots: true
