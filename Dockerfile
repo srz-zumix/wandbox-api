@@ -37,20 +37,20 @@ ENV PATH="/root/.pyenv/bin:${PATH}"
 RUN curl https://pyenv.run | bash && \
     echo "$(pyenv init -)" >> ~/.bashrc && \
     echo "$(pyenv virtualenv-init -)" >> ~/.bashrc
-RUN	pyenv install -s $(pyenv install -l | grep -e '\s3\.9[^0-9].*' | tail -1)
-RUN	pyenv install -s $(pyenv install -l | grep -e '\s3\.8[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.7[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.6[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.5[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.4[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.3[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.2[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.1[^0-9].*' | tail -1)
-RUN pyenv install -s $(pyenv install -l | grep -e '\s3\.0[^0-9].*' | tail -1)
+RUN	pyenv install -s "$(pyenv install -l | grep -e '\s3\.9[^0-9].*' | tail -1)"
+RUN	pyenv install -s "$(pyenv install -l | grep -e '\s3\.8[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.7[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.6[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.5[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.4[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.3[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.2[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.1[^0-9].*' | tail -1)"
+RUN pyenv install -s "$(pyenv install -l | grep -e '\s3\.0[^0-9].*' | tail -1)"
 
 RUN apt-get remove -y libssl1.0-dev && \
     apt-get update -q -y && \
     apt-get install -y libssl-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN pyenv install -s $(pyenv install -l | grep -v 'dev' | grep -e '\s3\.10[^0-9].*' | tail -1)
+RUN pyenv install -s "$(pyenv install -l | grep -v 'dev' | grep -e '\s3\.10[^0-9].*' | tail -1)"
