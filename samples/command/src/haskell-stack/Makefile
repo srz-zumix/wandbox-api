@@ -2,7 +2,8 @@
 # Makefile
 
 STACK_RUN:=stack run
-# WANDBOX_CLI_OPTIONS:=--no-head
+WANDBOX_CLI_OPTIONS:=--no-head
+# WANDBOX_CLI_OPTIONS:=-c "ghc-8.4*"
 
 local:
 	${STACK_RUN}

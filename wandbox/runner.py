@@ -119,6 +119,9 @@ class Runner:
         ro = ro.replace('\\n', '\n')
         self.wandbox.runtime_options(ro)
 
+    def run_nd(self):
+        return Wandbox.Call(lambda : self.wandbox.run_ndjson(), self.retry, self.retry_wait)
+
     def run(self):
         return Wandbox.Call(lambda : self.wandbox.run(), self.retry, self.retry_wait)
 

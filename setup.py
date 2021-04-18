@@ -14,7 +14,7 @@ for line in f:
         author_ = [x for x in re.split(r"[ =']", line) if x][1]
 f.close()
 
-test_deps = ['importlib-metadata<2,>=0.12', 'tox', 'pytest']
+test_deps = ['importlib-metadata<2,>=0.12', 'tox', 'tox-pyenv', 'pytest']
 
 setup(
     name = "wandbox-api"
@@ -102,10 +102,11 @@ setup(
             'wandbox-vim      = wandbox.__vim__:main',
         ]
     }
-    , install_requires=['requests', 'pyyaml', 'toml']
+    , install_requires=['requests', 'pyyaml', 'toml', 'ndjson']
     , tests_require=test_deps
     , test_suite="tests.test_suite"
     , extras_require={
         'test': test_deps
     }
+    , python_requires=">3.4"
 )

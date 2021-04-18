@@ -10,11 +10,13 @@ Wandbox API for Python
 import sys
 import requests
 import json
+import ndjson
 
 from time import sleep
 from requests.exceptions import HTTPError as RHTTPError
 from requests.exceptions import ConnectionError as RConnectionError
 from requests.exceptions import ConnectTimeout as RConnectTimeout
+from .wandbox_compile_response import WandboxCompileResponse
 
 
 def text_transform(value):
@@ -66,11 +68,18 @@ class Wandbox:
     @staticmethod
     def GetPermlink(link):
         """
-        get wandbox permanet link
+        get wandbox permanent link
         """
         response = requests.get(Wandbox.api_url + '/permlink/' + link, timeout=3.0)
         response.raise_for_status()
         return response.json()
+
+    def get_permlink(self, link):
+        """
+        get wandbox permanent link
+        .. deprecated:: 0.3.4
+        """
+        return Wandbox.GetPermlink(link)
 
     @staticmethod
     def GetTemplate(name):
@@ -78,6 +87,40 @@ class Wandbox:
         get template
         """
         response = requests.get(Wandbox.api_url + '/template/' + name, timeout=3.0)
+        response.raise_for_status()
+        return response.json()
+
+    @staticmethod
+    def GetUser(session):
+        """
+        get user
+        """
+        response = requests.get(Wandbox.api_url + '/user.json', params={'session': session}, timeout=3.0)
+        response.raise_for_status()
+        return response.json()
+
+    def create_permlink(self, ndjson):
+        """
+        get run_ndjson permlink
+        """
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        params = {}
+        params.update({'compiler': self.parameter['compiler']})
+        params.update({'login': False})
+        params.update({'code': self.parameter['code']})
+        if 'codes' in self.parameter:
+            params.update({'codes': self.parameter['codes']})
+        if 'options' in self.parameter:
+            params.update({'options': self.parameter['options']})
+        if 'stdin' in self.parameter:
+            params.update({'stdin': self.parameter['stdin']})
+        if 'compiler-option-raw' in self.parameter:
+            params.update({'compiler-option-raw': self.parameter['compiler-option-raw']})
+        if 'runtime-option-raw' in self.parameter:
+            params.update({'runtime-option-raw': self.parameter['runtime-option-raw']})
+        params.update({'results': ndjson})
+        payload = json.dumps(params)
+        response = requests.post(self.api_url + '/permlink', data=payload, headers=headers, timeout=self.timeout_)
         response.raise_for_status()
         return response.json()
 
@@ -89,24 +132,39 @@ class Wandbox:
     def timeout(self, v):
         self.timeout_ = v
 
-    def get_permlink(self, link):
-        """
-        get wandbox permanet link
-        .. deprecated:: 0.3.4
-        """
-        return Wandbox.GetPermlink(link)
-
     def run(self):
         """
         excute on wandbox
         """
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         payload = json.dumps(self.parameter)
-        response = requests.post(self.api_url + '/compile.json', data=payload, headers=headers, timeout=self.timeout_)
+        url = self.api_url + '/compile.json'
+        response = requests.post(url, data=payload, headers=headers, timeout=self.timeout_)
         response.raise_for_status()
         try:
             return response.json()
         except json.decoder.JSONDecodeError as e:
+            response.status_code = 500
+            raise RHTTPError(e, response=response)
+
+    def run_ndjson(self):
+        """
+        excute on wandbox (ndjson)
+        """
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        payload = json.dumps(self.parameter)
+        url = self.api_url + '/compile.ndjson'
+        response = requests.post(url, data=payload, headers=headers, stream=True, timeout=self.timeout_)
+        response.raise_for_status()
+        try:
+            r = response.json(cls=ndjson.Decoder)
+            if 'save' in self.parameter:
+                if self.parameter['save']:
+                    permlink = self.create_permlink(r)
+                    r.append({'type': 'Url', 'data': permlink['url']})
+                    r.append({'type': 'Permlink', 'data': permlink['permlink']})
+            return r
+        except Exception as e:
             response.status_code = 500
             raise RHTTPError(e, response=response)
 
@@ -238,8 +296,7 @@ class Wandbox:
             raise
 
     @staticmethod
-    def ShowParameter(response):
-        r = response
+    def ShowParameter(r):
         if 'compiler' in r:
             print('compiler:' + r['compiler'])
         if 'options' in r:
@@ -252,45 +309,45 @@ class Wandbox:
             print(r['created-at'])
 
     @staticmethod
-    def ShowResult(r, stderr=False):
-        if 'error' in r:
-            print(r['error'])
+    def ShowResult(response, stderr=False):
+        r = WandboxCompileResponse(response)
+        if r.has_error():
+            print(r.error())
             return 1
         if stderr:
-            if 'compiler_output' in r:
+            if r.has_compiler_output():
                 print('compiler_output:')
-                print(text_transform(r['compiler_output']))
-            if 'compiler_error' in r:
-                sys.stderr.write(text_transform(r['compiler_error']))
-            if 'program_output' in r:
+                print(text_transform(r.compiler_output()))
+            if r.has_compiler_error():
+                sys.stderr.write(text_transform(r.compiler_error()))
+            if r.has_program_output():
                 print('program_output:')
-                print(text_transform(r['program_output']))
-            if 'program_error' in r:
-                sys.stderr.write(text_transform(r['program_error']))
+                print(text_transform(r.program_output()))
+            if r.has_program_error():
+                sys.stderr.write(text_transform(r.program_error()))
         else:
-            if 'compiler_message' in r:
+            if r.has_compiler_message():
                 print('compiler_message:')
-                print(text_transform(r['compiler_message']))
-            if 'program_message' in r:
+                print(text_transform(r.compiler_message()))
+            if r.has_program_message():
                 print('program_message:')
-                print(text_transform(r['program_message']))
-        if 'url' in r:
-            print('permlink: ' + r['permlink'])
-            print('url: ' + r['url'])
-        if 'signal' in r:
-            print('signal: ' + r['signal'])
+                print(text_transform(r.program_message()))
+        if r.has_url():
+            print('permlink: ' + r.permlink())
+            print('url: ' + r.url())
+        if r.has_signal():
+            print('signal: ' + r.signal())
 
-        if 'status' in r:
-            return int(r['status'])
+        if r.has_status():
+            return int(r.status())
         return 1
 
     @staticmethod
-    def GetResult(r, key):
-        if 'error' in r:
-            return 1, r['error']
-        elif key in r:
-            return 0, r[key]
-        return 0, ''
+    def GetResult(response, key):
+        r = WandboxCompileResponse(response)
+        if r.has_error():
+            return 1, r.error()
+        return 0, r.get_value(key)
 
     @staticmethod
     def GetSwitches(compiler, retry, wait):

@@ -132,7 +132,7 @@ class HaskellStackCLI:
         if opts.dryrun:
             cli_options.append('--dryrun')
         with open('package.yaml', 'r') as yml:
-            config = yaml.load(yml)
+            config = yaml.safe_load(yml)
             exec_config = config['executables']['haskell-stack-exe']
             main = exec_config['main']
             main_dir = exec_config['source-dirs']
