@@ -131,3 +131,6 @@ class Wrapper:
         template_name = compiler['templates'][0]
         template = self.get_template(template_name, retry, retry_wait)
         return template['code']
+
+    def get_user(self, session, retry, retry_wait):
+        return Wandbox.Call(lambda : Wandbox.GetUser(session), retry, retry_wait)

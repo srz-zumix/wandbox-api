@@ -82,6 +82,9 @@ class CLI:
         self.setup_runner(args, options, [], runner)
         self.run_with_runner(args, runner)
 
+    def command_user(self, args):
+        print(self.get_user(args))
+
     def command_run(self, args):
         options = []
         for o in args.options:
@@ -331,6 +334,18 @@ class CLI:
             help='comiple options'
         )
 
+        user_cmd = subparser.add_parser(
+            'user',
+            description='get user info',
+            help='get wandbox user info. see `user -h`'
+        )
+        user_cmd.set_defaults(handler=self.command_user)
+        user_cmd.add_argument(
+            'session',
+            nargs=1,
+            help='session key passed by Wandbox'
+        )
+
         subcommands = self.parser.format_usage().split('{')[1].split('}')[0]
         help_cmd = subparser.add_parser('help', help='show subcommand help. see `help -h`')
         help_cmd.set_defaults(handler=self.command_help)
@@ -378,3 +393,6 @@ class CLI:
     def get_template_code(self, args):
         self.auto_setup_compiler(args)
         return self.wrapper.get_template_code(args.language, args.compiler, args.retry, args.retry_wait)
+
+    def get_user(self, args):
+        return self.wrapper.get_user(args.session, args.retry, args.retry_wait)
