@@ -59,8 +59,7 @@ class CLI:
         self.auto_setup_compiler(args)
         r = self.get_compiler_list(args.retry, args.retry_wait)
         compiler = self.wrapper.find_compiler(r, args.language, args.compiler)
-        # print(compiler['name'])
-        # print(compiler['version'])
+        print(compiler['version'])
 
     def command_permlink(self, args):
         r = Wandbox.Call(lambda : Wandbox.GetPermlink(args.id[0]), args.retry, args.retry_wait)
