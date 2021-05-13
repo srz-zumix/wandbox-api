@@ -116,11 +116,11 @@ class Wrapper:
         return find
 
     def find_compiler(self, list_json, language, compiler):
-        compiler = self.find_compilers(list_json, language, compiler)
-        if len(compiler) != 1:
+        compiler_list = self.find_compilers(list_json, language, compiler)
+        if len(compiler_list) != 1:
             raise Exception('Detected multiple compilers. Please specify so that it becomes one. --language='
                                 + str(language) + ' --compiler=' + str(compiler))
-        return compiler[0]
+        return compiler_list[0]
 
     def get_template(self, name, retry, retry_wait):
         return Wandbox.Call(lambda : Wandbox.GetTemplate(name), retry, retry_wait)
