@@ -80,6 +80,8 @@ class Wrapper:
                             self.printer(self.format_default(s['name'], indent))
                         else:
                             self.printer(self.format_indent(s['name'], indent))
+                else:
+                    self.printer(self.format_indent('nothing', indent))
 
     def get_compiler_list(self, retry, retry_wait):
         if self.compiler_list is None:
