@@ -8,6 +8,16 @@ import test6 except Hoge6, Fuga6
 from test7 import Test7, Fuga7
 import "subdir/test8"
 
+
+{.push header:"c/testA.c".}  # header : ... を省略する
+
+proc c_test1*()
+proc c_test2*()
+
+{.pop.}
+
+proc c_test3*(){.header:"c/testB.c"}
+
 echo "Hello, Wandbox!"
 Test1()
 Test2()
@@ -19,6 +29,10 @@ Test6()
 Test7()
 Fuga7()
 Test8()
+
+c_test1()
+c_test2()
+c_test3()
 
 # Nim language references:
 #   https://nim-lang.org/
