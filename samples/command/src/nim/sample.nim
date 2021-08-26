@@ -9,7 +9,7 @@ from test7 import Test7, Fuga7
 import "subdir/test8"
 
 
-{.push header:"c/testA.c".}  # header : ... を省略する
+{.push header:"c/testA.c".} # push test
 
 proc c_test1*()
 proc c_test2*()
