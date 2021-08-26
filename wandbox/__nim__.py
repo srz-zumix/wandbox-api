@@ -57,7 +57,6 @@ class NimRunner(Runner):
                 return self.cxx.open_code(module_path, filename)
         return dict()
 
-
     def get_from_imports(self, m, filepath):
         files = dict()
         module = m.group(1).strip('\'"')
