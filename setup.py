@@ -30,7 +30,7 @@ setup(
     , long_description = readme
     , long_description_content_type='text/markdown'
     , classifiers = [
-        "Development Status :: 4 - Beta"
+        "Development Status :: 5 - Production/Stable"
         , "Topic :: Utilities"
         , "License :: OSI Approved :: MIT License"
         , "Programming Language :: Python"
