@@ -61,6 +61,7 @@ setup(
             'wandbox-dub      = wandbox.__dub__:main',
             'wandbox-elixir   = wandbox.__elixir__:main',
             'wandbox-mix      = wandbox.__elixir__:mix',
+            'wandbox-erlc     = wandbox.__erlang__:main',
             'wandbox-erlang   = wandbox.__erlang__:main',
             'wandbox-fsharpc  = wandbox.__fsharp__:main',
             'wandbox-ghc      = wandbox.__ghc__:main',

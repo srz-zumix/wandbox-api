@@ -8,4 +8,4 @@ local:
 	#erl -noshell -s sample main -s init stop
 
 wandbox:
-	make -C . local --no-print-directory EALANG="wandbox-erlang run"
+	make -C . local --no-print-directory EALANG="wandbox-erlc run"
