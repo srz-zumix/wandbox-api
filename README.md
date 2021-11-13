@@ -12,7 +12,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 * related
   * [wandbox-builder](https://github.com/melpon/wandbox-builder)
   * [Wandbox Status](https://srz-zumix.github.io/wandbox-status/)
-  * [Wandbox News](https://srz-zumix.github.io/wandbox-news/)
+  * [Wandbox News](https://github.com/srz-zumix/wandbox-news/)
 
 ## Installation
 
