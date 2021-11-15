@@ -9,6 +9,11 @@
 [Wandbox](http://melpon.org/wandbox/) is a social compilation service.  
 This project is a Pythonic binding to the Wandbox API, and CLI command.
 
+* related
+  * [wandbox-builder](https://github.com/melpon/wandbox-builder)
+  * [Wandbox Status](https://srz-zumix.github.io/wandbox-status/)
+  * [Wandbox News](https://github.com/srz-zumix/wandbox-news/)
+
 ## Installation
 
 > pip install wandbox-api
@@ -84,6 +89,8 @@ Source files required for runtime are automatically added to the file list.
 
 #### Bash Example
 
+> wandbox-bash run sample.sh
+
 [Bash Example](./samples/command/src/bash)
 
 ----
@@ -101,6 +108,9 @@ Include files required for compilation are automatically added to the file list.
 
 #### C Example
 
+> wandbox-gcc run sample.c test.c  
+> CXX="wandbox-gcc run" make
+
 [C Example](./samples/command/src/cc)
 
 ----
@@ -111,6 +121,8 @@ Include files required for compilation are automatically added to the file list.
   (wandbox -l C#)
 
 #### C# Example
+
+> wandbox-cs run sample.cs test.cs
 
 [C# Example](./samples/command/src/csharp)
 
@@ -179,9 +191,8 @@ optional arguments:
 
 #### C++ Example
 
-> wandbox-cxx -c gcc-head run main.cpp -DWANDBOX
-
-> CXX="wandbox-gcc run" make
+> wandbox-cxx -c gcc-head run main.cpp -DWANDBOX  
+> CXX="wandbox-g++ run" make
 
 [C++ Example](./samples/command/src/cxx)
 
@@ -196,6 +207,8 @@ Include files are automatically added to the file list.
 
 #### CMake Example
 
+> wandbox-cmake run sample.cmake
+
 [CMake Example](./samples/command/src/cmake)
 
 ----
@@ -206,6 +219,8 @@ Include files are automatically added to the file list.
   (wandbox -l CoffeeScript)
 
 #### CoffeeScript Example
+
+> wandbox-coffee run sample.coffee
 
 [CoffeeScript Example](./samples/command/src/coffee)
 
@@ -224,6 +239,8 @@ Include files required for compilation are automatically added to the file list.
 
 #### CPP Example
 
+> wandbox-clang-PP run -CC -nostdinc -E -P sample.cpp test.cpp
+
 [CPP Example](./samples/command/src/cpp)
 
 ----
@@ -236,6 +253,8 @@ Import modules required for compilation are automatically added to the file list
   (wandbox -l Crystal)
 
 #### Crystal Example
+
+> wandbox-crystal run sample.cr
 
 [Crystal Example](./samples/command/src/crystal)
 
@@ -253,6 +272,9 @@ Import modules required for compilation are automatically added to the file list
 
 #### D Example
 
+> wandbox-dmd run sample.d test2.d packages/test.d  
+> wandbox-dub run
+
 [D Example](./samples/command/src/dmd)
 [Dub Example](./samples/command/src/dub)
 
@@ -266,16 +288,21 @@ Import modules required for compilation are automatically added to the file list
 
 #### Elixir Example
 
+> wandbox-elixir run sample.exs  
+> wandbox-mix run test
+
 [Elixir Example](./samples/command/src/elixir)
 
 ----
 
 ### Erlang
 
-* wandbox-erlang  
+* wandbox-erlc  
   (wandbox -l Erlang)
 
 #### Erlang Example
+
+> wandbox-erlc run prog.erl
 
 [Erlang Example](./samples/command/src/erlang)
 
@@ -288,6 +315,8 @@ Import modules required for compilation are automatically added to the file list
 
 #### F# Example
 
+> wandbox-fsharpc run test1.fs sample.fs
+
 [F# Example](./samples/command/src/fsharp)
 
 ----
@@ -299,6 +328,8 @@ Import modules required for compilation are automatically added to the file list
 
 #### Go Example
 
+> wandbox-go run sample.go
+
 [Go Example](./samples/command/src/go)
 
 ----
@@ -309,6 +340,8 @@ Import modules required for compilation are automatically added to the file list
   (wandbox -l Groovy)
 
 #### Groovy Example
+
+> wandbox-groovy run -cp . sample.groovy
 
 [Groovy Example](./samples/command/src/groovy)
 
@@ -324,6 +357,9 @@ Note: wandbox-ghc/wandbox-stack add -dynamic compiler option. (output file size 
 
 #### Haskell Example
 
+> wandbox-ghc run sample.hs  
+> wandbox-stack run
+
 [Haskell Example](./samples/command/src/haskell)
 
 [Haskell Stack Example](./samples/command/src/haskell-stack)
@@ -336,6 +372,8 @@ Note: wandbox-ghc/wandbox-stack add -dynamic compiler option. (output file size 
   (wandbox -l Java)
 
 #### Java Example
+
+> wandbox-java run sample.java test.java
 
 [Java Example](./samples/command/src/java)
 
@@ -354,6 +392,8 @@ Import files/modules required for runtime are automatically added to the file li
 
 #### JavaScript Example
 
+> wandbox-node run --experimental-modules sample.js
+
 [JavaScript Example](./samples/command/src/js)
 
 ----
@@ -365,6 +405,8 @@ Import files/modules required for runtime are automatically added to the file li
 
 #### Julia Example
 
+> wandbox-julia run sample.jl
+
 [Julia Example](./samples/command/src/julia)
 
 ----
@@ -375,6 +417,8 @@ Import files/modules required for runtime are automatically added to the file li
   (wandbox -l "Lazy K")
 
 #### Lazy K Example
+
+> wandbox-lazyk run sample.lazy
 
 [Lazy K Example](./samples/command/src/lazyk)
 
@@ -388,6 +432,8 @@ Import files/modules required for runtime are automatically added to the file li
   (wandbox -l Lisp -c clisp-*)
 
 #### Lisp Example
+
+> wandbox-sbcl run sample.lisp
 
 [Lisp Example](./samples/command/src/lisp)
 
@@ -404,18 +450,22 @@ Import files/modules required for compilation are automatically added to the fil
 
 #### Lua Example
 
+> wandbox-lua run sample.lua
+
 [Lua Example](./samples/command/src/lua)
 
 ----
 
 ### Nim
 
-Import modules required for compilation are automatically added to the file list.
+Import modules/.c required for compilation are automatically added to the file list.
 
 * wandbox-nim  
   (wandbox -l Nim)
 
 #### Nim Example
+
+> wandbox-nim run sample.nim
 
 [Nim Example](./samples/command/src/nim)
 
@@ -427,6 +477,8 @@ Import modules required for compilation are automatically added to the file list
   (wandbox -l OCaml)
 
 #### OCaml Example
+
+> wandbox-ocamlopt run sample.ml
 
 [OCaml Example](./samples/command/src/ocaml)
 
@@ -440,8 +492,7 @@ Even just having wandbox would be enough.
 
 #### OpenSSL Example
 
-> wandbox-ssl genrsa -out test.key 2048
-
+> wandbox-ssl genrsa -out test.key 2048  
 > wandbox-ssl rsa -in test.key -pubout -out test.key.pub
 
 [OpenSSL Example](./samples/command/src/openssl)
@@ -457,6 +508,8 @@ Include files required for runtime are automatically added to the file list.
 
 #### Pascal Example
 
+> wandbox-fpc run sample.pas
+
 [Pascal Example](./samples/command/src/pascal)
 
 ----
@@ -470,6 +523,8 @@ Require files/modules required for runtime are automatically added to the file l
 
 #### Perl Example
 
+> wandbox-perl run sample.pl
+
 [Perl Example](./samples/command/src/perl)
 
 ----
@@ -482,6 +537,8 @@ Require/Include files required for runtime are automatically added to the file l
   (wandbox -l PHP)
 
 #### PHP Example
+
+> wandbox-php run sample.php
 
 [PHP Example](./samples/command/src/php)
 
@@ -542,6 +599,8 @@ Source files are automatically added to the file list.
 
 #### R Example
 
+> wandbox-rscript run sample.R
+
 [R Example](./samples/command/src/r)
 
 ----
@@ -552,6 +611,8 @@ Source files are automatically added to the file list.
   (wandbox -l Rill)
 
 #### Rill Example
+
+> wandbox-rillc run sample.rill
 
 [Rill Example](./samples/command/src/rill)
 
@@ -584,6 +645,7 @@ Module files required for runtime are automatically added to the file list.
 
 #### Rust Example
 
+> wandbox-rustc run sample.rs  
 > wandbox-cargo run
 
 [Rust Example](./samples/command/src/rust)
@@ -640,6 +702,8 @@ Import files/modules required for compilation are automatically added to the fil
 
 #### TypeScript Example
 
+> wandbox-tsc run --module es2015 sample.ts
+
 [TypeScript Example](./samples/command/src/ts)
 
 ----
@@ -650,6 +714,8 @@ Import files/modules required for compilation are automatically added to the fil
   (wandbox -l "Vim script")
 
 #### Vim script Example
+
+> wandbox-vim run -X -N -u NONE -i NONE -V1 -e -s -S sample.vim +qall!
 
 [Vim script Example](./samples/command/src/vim)
 
