@@ -20,6 +20,6 @@ jobs:
     - name: test
       # run: python setup.py test
       run: |
-        pip install -e.[test]
+        pip install -e".[test]"
         tox .
 
