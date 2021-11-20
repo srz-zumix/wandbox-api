@@ -1,6 +1,6 @@
 build:
     environment:
-        python: 3.6.0
+        python: 3.7.1
     nodes:
         tests: true
         analysis:
@@ -14,7 +14,7 @@ build:
         before:
           - pip install -e.[test] && pip install tox-venv && make pyenv-versions && pyenv versions
         override:
-            - command: tox -e py36,py37,flake8 .
+            - command: tox -e py37,flake8 .
 
 filter:
     excluded_paths:

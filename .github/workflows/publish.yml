@@ -6,7 +6,7 @@ on:
 
 jobs:
   pypi:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.7
@@ -18,9 +18,11 @@ jobs:
         PYPI_USERNAME: __token__
         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        echo -e '[pypi]' >> ~/.pypirc
-        echo -e "username = ${PYPI_USERNAME}" >> ~/.pypirc
-        echo -e "password = ${PYPI_PASSWORD}" >> ~/.pypirc
+        {
+          echo -e '[pypi]'
+          echo -e "username = ${PYPI_USERNAME}"
+          echo -e "password = ${PYPI_PASSWORD}"
+        } >> ~/.pypirc
     - name: Publish
       run: |
         pip install twine wheel
