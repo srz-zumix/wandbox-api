@@ -1,0 +1,8 @@
+requests
+pyyaml
+toml
+ndjson
+importlib-metadata<2,>=0.12
+tox
+tox-pyenv
+pytest
