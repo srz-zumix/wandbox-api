@@ -17,6 +17,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+        cache: pip
     - name: test
       # run: python setup.py test
       run: |
