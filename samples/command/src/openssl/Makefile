@@ -17,4 +17,4 @@ clean:
 	rm -rf test.key.pub
 
 wandbox:
-	make -C . local --no-print-directory OPENSSL="wandbox-ssl"
+	make -C . local --no-print-directory OPENSSL="wandbox-ssl --no-head"
