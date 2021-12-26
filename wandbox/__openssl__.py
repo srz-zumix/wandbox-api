@@ -14,7 +14,7 @@ class OpenSSLCLI:
 
         def __init__(self):
             self.output = None
-            super(OpenSSLCLI.InnerCLI, self).__init__('OpenSSL', 'openssl-head', False, False, False)
+            super(OpenSSLCLI.InnerCLI, self).__init__('OpenSSL', '', False, False, False)
 
         def on_run_response(self, response):
             if self.output:
@@ -43,6 +43,7 @@ class OpenSSLCLI:
         )
         self.parser.add_argument(
             'command',
+            default='help',
             nargs='?',
             help=SUPPRESS
         )
