@@ -1,7 +1,7 @@
 #
 # Makefile
 
-GOBUILD=go build
+GOBUILD=GO111MODULE=off go run
 # NOTE: head version is not stable
 WANDBOX_CLI_OPTIONS:=--no-head
 
