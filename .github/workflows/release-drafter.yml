@@ -1,10 +1,10 @@
 name: Release drafter
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches:
       - main
+      - feature/release-drafter
 
 jobs:
   draft_release:
