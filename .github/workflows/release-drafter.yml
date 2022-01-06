@@ -1,6 +1,7 @@
 name: Release drafter
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - main
