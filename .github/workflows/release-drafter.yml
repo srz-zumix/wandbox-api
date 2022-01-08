@@ -8,7 +8,6 @@ on:
 jobs:
   draft_release:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: release-drafter/release-drafter@v5
         id: release-drafter
