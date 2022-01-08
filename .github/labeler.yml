@@ -1,4 +1,4 @@
-Bash:
+Bash script:
   - 'wandbox/__bash__.py'
   - 'samples/command/src/bash/**/*'
 C:
@@ -55,7 +55,7 @@ JavaScript:
 Julia:
   - 'wandbox/__julia__.py'
   - 'samples/command/src/julia/**/*'
-LazyK:
+Lazy K:
   - 'wandbox/__lazyk__.py'
   - 'samples/command/src/lazyk/**/*'
 Lisp:
@@ -112,6 +112,6 @@ Swift:
 TypeScript:
   - 'wandbox/__tsc__.py'
   - 'samples/command/src/ts/**/*'
-Vim:
+Vim script:
   - 'wandbox/__vim__.py'
   - 'samples/command/src/vim/**/*'
