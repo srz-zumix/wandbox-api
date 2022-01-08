@@ -81,7 +81,7 @@ categories:
       - 'Nim'
   - title: 'OCaml'
     labels:
-      - 'Nim'
+      - 'OCaml'
   - title: 'OpenSSL'
     labels:
       - 'OpenSSL'
@@ -133,7 +133,7 @@ categories:
       - 'documentation'
   - title: 'Internal improvement'
     labels:
-      - 'ci'
+      - 'CI'
 exclude-labels:
   - 'dependencies'
   - 'renovate'
