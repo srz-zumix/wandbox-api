@@ -49,7 +49,7 @@ setup(
             'wandbox-g++      = wandbox.__cxx__:gcc',
             'wandbox-clang++  = wandbox.__cxx__:clang',
             'wandbox-cmake    = wandbox.__cmake__:main',
-            'wandbox-coffee   = wandbox.__coffee__:main',
+            # 'wandbox-coffee   = wandbox.__coffee__:main',
             'wandbox-CPP      = wandbox.__cpp__:main',
             'wandbox-gcc-PP   = wandbox.__cpp__:gcc',
             'wandbox-clang-PP = wandbox.__cpp__:clang',
