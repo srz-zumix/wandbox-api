@@ -24,16 +24,16 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ### for Languages
 
-|                               |                           |                           |                     |                     |
-|:------------------------------|:--------------------------|:--------------------------|:--------------------|:--------------------|
-| [Bash](#Bash)                 | [C](#C)                   | [C#](#C-1)                | [C++](#C-2)         | [CMake](#CMake)     |
-| [CoffeeScript](#CoffeeScript) | [CPP](#CPP)               | [Crystal](#Crystal)       | [D](#D)             | [Elixir](#Elixir)   |
-| [Erlang](#Erlang)             | [F#](#F)                  | [Go](#Go)                 | [Groovy](#Groovy)   | [Haskell](#Haskell) |
-| [Java](#Java)                 | [JavaScript](#JavaScript) | [Julia](#Julia)           | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       |
-| [Lua](#Lua)                   | [Nim](#Nim)               | [OCaml](#OCaml)           | [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   |
-| [Perl](#Perl)                 | [PHP](#PHP)               | [Pony](#Pony)             | [Python](#Python)   | [R](#R)             |
-| [Rill](#Rill)                 | [Ruby](#Ruby)             | [Rust](#Rust)             | [Scala](#Scala)     | [SQL](#SQL)         |
-| [Swift](#Swift)               | [TypeScript](#TypeScript) | [Vim script](#Vim-script) |||
+|                           |                           |                     |                     |                   |
+|:--------------------------|:--------------------------|:--------------------|:--------------------|:------------------|
+| [Bash](#Bash)             | [C](#C)                   | [C#](#C-1)          | [C++](#C-2)         | [CMake](#CMake)   |
+| [CPP](#CPP)               | [Crystal](#Crystal)       | [D](#D)             | [Elixir](#Elixir)   | [Erlang](#Erlang) |
+| [F#](#F)                  | [Go](#Go)                 | [Groovy](#Groovy)   | [Haskell](#Haskell) | [Java](#Java)     |
+| [JavaScript](#JavaScript) | [Julia](#Julia)           | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       | [Lua](#Lua)       |
+| [Nim](#Nim)               | [OCaml](#OCaml)           | [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   | [Perl](#Perl)     |
+| [PHP](#PHP)               | [Pony](#Pony)             | [Python](#Python)   | [R](#R)             | [Rill](#Rill)     |
+| [Ruby](#Ruby)             | [Rust](#Rust)             | [Scala](#Scala)     | [SQL](#SQL)         | [Swift](#Swift)   |
+| [TypeScript](#TypeScript) | [Vim script](#Vim-script) ||||
 
 ### wandbox
 
@@ -210,19 +210,6 @@ Include files are automatically added to the file list.
 > wandbox-cmake run sample.cmake
 
 [CMake Example](./samples/command/src/cmake)
-
-----
-
-### CoffeeScript
-
-* wandbox-coffee  
-  (wandbox -l CoffeeScript)
-
-#### CoffeeScript Example
-
-> wandbox-coffee run sample.coffee
-
-[CoffeeScript Example](./samples/command/src/coffee)
 
 ----
 

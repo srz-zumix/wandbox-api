@@ -7,4 +7,5 @@ local:
 	${COFFEESCRIPT} sample.coffee
 
 wandbox:
-	make -C . local --no-print-directory COFFEESCRIPT="wandbox-coffee run"
+	true
+	# make -C . local --no-print-directory COFFEESCRIPT="wandbox-coffee run"
