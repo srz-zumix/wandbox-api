@@ -1,5 +1,0 @@
-import std::stdio::*;
-
-def f(): unit {
-  println("test1::f!");
-}

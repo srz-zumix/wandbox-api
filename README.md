@@ -31,9 +31,9 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 | [F#](#F)                  | [Go](#Go)                 | [Groovy](#Groovy)   | [Haskell](#Haskell) | [Java](#Java)     |
 | [JavaScript](#JavaScript) | [Julia](#Julia)           | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       | [Lua](#Lua)       |
 | [Nim](#Nim)               | [OCaml](#OCaml)           | [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   | [Perl](#Perl)     |
-| [PHP](#PHP)               | [Pony](#Pony)             | [Python](#Python)   | [R](#R)             | [Rill](#Rill)     |
-| [Ruby](#Ruby)             | [Rust](#Rust)             | [Scala](#Scala)     | [SQL](#SQL)         | [Swift](#Swift)   |
-| [TypeScript](#TypeScript) | [Vim script](#Vim-script) ||||
+| [PHP](#PHP)               | [Pony](#Pony)             | [Python](#Python)   | [R](#R)             | [Ruby](#Ruby)     |
+| [Rust](#Rust)             | [Scala](#Scala)     | [SQL](#SQL)         | [Swift](#Swift)   | [TypeScript](#TypeScript) |
+| [Vim script](#Vim-script) |||||
 
 ### wandbox
 
@@ -589,19 +589,6 @@ Source files are automatically added to the file list.
 > wandbox-rscript run sample.R
 
 [R Example](./samples/command/src/r)
-
-----
-
-### Rill
-
-* wandbox-rillc  
-  (wandbox -l Rill)
-
-#### Rill Example
-
-> wandbox-rillc run sample.rill
-
-[Rill Example](./samples/command/src/rill)
 
 ----
 

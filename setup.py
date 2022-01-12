@@ -90,7 +90,6 @@ setup(
             'wandbox-python3  = wandbox.__python__:python3',
             'wandbox-pypy     = wandbox.__python__:pypy',
             'wandbox-rscript  = wandbox.__r__:main',
-            'wandbox-rillc    = wandbox.__rill__:main',
             'wandbox-ruby     = wandbox.__ruby__:main',
             'wandbox-mruby    = wandbox.__ruby__:mruby',
             'wandbox-rustc    = wandbox.__rust__:main',
