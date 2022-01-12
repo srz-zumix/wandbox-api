@@ -8,4 +8,5 @@ local:
 	# mono sample.exe
 
 wandbox:
-	make -C . local --no-print-directory FSHARP="wandbox-fsharpc run"
+	true
+	# make -C . local --no-print-directory FSHARP="wandbox-fsharpc run"
