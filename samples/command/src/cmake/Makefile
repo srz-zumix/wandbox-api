@@ -7,4 +7,5 @@ local:
 	${CMAKE_P} sample.cmake
 
 wandbox:
-	make -C . local --no-print-directory CMAKE_P="wandbox-cmake run"
+	true
+	# make -C . local --no-print-directory CMAKE_P="wandbox-cmake run"
