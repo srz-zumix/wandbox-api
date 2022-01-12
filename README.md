@@ -24,16 +24,15 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 
 ### for Languages
 
-|                           |                           |                     |                     |                   |
-|:--------------------------|:--------------------------|:--------------------|:--------------------|:------------------|
-| [Bash](#Bash)             | [C](#C)                   | [C#](#C-1)          | [C++](#C-2)         | [CMake](#CMake)   |
-| [CPP](#CPP)               | [Crystal](#Crystal)       | [D](#D)             | [Elixir](#Elixir)   | [Erlang](#Erlang) |
-| [Go](#Go)                 | [Groovy](#Groovy)   | [Haskell](#Haskell) | [Java](#Java)     |
-| [JavaScript](#JavaScript) | [Julia](#Julia)           | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       | [Lua](#Lua)       |
-| [Nim](#Nim)               | [OCaml](#OCaml)           | [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   | [Perl](#Perl)     |
-| [PHP](#PHP)               | [Pony](#Pony)             | [Python](#Python)   | [R](#R)             | [Ruby](#Ruby)     |
-| [Rust](#Rust)             | [Scala](#Scala)     | [SQL](#SQL)         | [Swift](#Swift)   | [TypeScript](#TypeScript) |
-| [Vim script](#Vim-script) |||||
+|                     |                     |                           |                           |                 |
+|:--------------------|:--------------------|:--------------------------|:--------------------------|:----------------|
+| [Bash](#Bash)       | [C](#C)             | [C#](#C-1)                | [C++](#C-2)               | [CPP](#CPP)     |
+| [Crystal](#Crystal) | [D](#D)             | [Elixir](#Elixir)         | [Erlang](#Erlang)         | [Go](#Go)       |
+| [Groovy](#Groovy)   | [Haskell](#Haskell) | [Java](#Java)             | [JavaScript](#JavaScript) | [Julia](#Julia) |
+| [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       | [Lua](#Lua)               | [Nim](#Nim)               | [OCaml](#OCaml) |
+| [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   | [Perl](#Perl)             | [PHP](#PHP)               | [Pony](#Pony)   |
+| [Python](#Python)   | [R](#R)             | [Ruby](#Ruby)             | [Rust](#Rust)             | [Scala](#Scala) |
+| [SQL](#SQL)         | [Swift](#Swift)     | [TypeScript](#TypeScript) | [Vim script](#Vim-script) ||
 
 ### wandbox
 
@@ -195,21 +194,6 @@ optional arguments:
 > CXX="wandbox-g++ run" make
 
 [C++ Example](./samples/command/src/cxx)
-
-----
-
-### CMake
-
-Include files are automatically added to the file list.
-
-* wandbox-cmake  
-  (wandbox -l CMake)
-
-#### CMake Example
-
-> wandbox-cmake run sample.cmake
-
-[CMake Example](./samples/command/src/cmake)
 
 ----
 
