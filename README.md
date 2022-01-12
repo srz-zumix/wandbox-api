@@ -28,7 +28,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 |:--------------------------|:--------------------------|:--------------------|:--------------------|:------------------|
 | [Bash](#Bash)             | [C](#C)                   | [C#](#C-1)          | [C++](#C-2)         | [CMake](#CMake)   |
 | [CPP](#CPP)               | [Crystal](#Crystal)       | [D](#D)             | [Elixir](#Elixir)   | [Erlang](#Erlang) |
-| [F#](#F)                  | [Go](#Go)                 | [Groovy](#Groovy)   | [Haskell](#Haskell) | [Java](#Java)     |
+| [Go](#Go)                 | [Groovy](#Groovy)   | [Haskell](#Haskell) | [Java](#Java)     |
 | [JavaScript](#JavaScript) | [Julia](#Julia)           | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       | [Lua](#Lua)       |
 | [Nim](#Nim)               | [OCaml](#OCaml)           | [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   | [Perl](#Perl)     |
 | [PHP](#PHP)               | [Pony](#Pony)             | [Python](#Python)   | [R](#R)             | [Ruby](#Ruby)     |
@@ -292,19 +292,6 @@ Import modules required for compilation are automatically added to the file list
 > wandbox-erlc run prog.erl
 
 [Erlang Example](./samples/command/src/erlang)
-
-----
-
-### F#
-
-* wandbox-fsharpc  
-  (wandbox -l F#)
-
-#### F# Example
-
-> wandbox-fsharpc run test1.fs sample.fs
-
-[F# Example](./samples/command/src/fsharp)
 
 ----
 
