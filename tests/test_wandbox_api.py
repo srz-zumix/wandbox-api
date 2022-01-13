@@ -93,23 +93,23 @@ class test_wandbox_cli(wandbox_test_base):
 
     def test_wildcard(self):
         try:
-            opt = [ '--dryrun', '--compiler=clang-3.*[!c]' ]
+            opt = [ '--dryrun', '--compiler=clang-11.*[!c]' ]
             opt.extend(run_cxx_options)
             self.wandbox_run(opt)
         except SystemExit as e:
             output = self.stdoout()
             eprint(output)
             self.assertEqual(e.code, 0)
-            self.assertTrue('clang-3.9.1' in output)
+            self.assertTrue('clang-11.1.0' in output)
         else:
             self.fail('SystemExit exception expected')
 
     def test_version(self):
-        opt = [ '-l=C++', '-c=clang-3.9.1', 'version' ]
+        opt = [ '-l=C++', '-c=clang-11.1.0', 'version' ]
         self.wandbox_run(opt)
         output = self.stdoout()
         eprint(output)
-        self.assertEqual('3.9.1', output.strip())
+        self.assertEqual('11.1.0', output.strip())
 
 class test_wandbox_cxx(wandbox_test_base):
 
@@ -183,7 +183,7 @@ class test_wandbox_go(wandbox_test_base):
 
     def wandbox_go(self, opt):
         opt.extend(run_cxx_options)
-        cli = go.GoCLI("go-head")
+        cli = go.GoCLI("go-*")
         cli.execute_with_args(opt)
 
     def test_prefix_options(self):
@@ -255,12 +255,13 @@ class test_wandbox_options(wandbox_test_base):
         for cli in clis:
             with self.subTest(cli=cli):
                 ll = [x for x in l if cli.language == x['language']]
-                head = ll[0]
-                # print(json.dumps(head, indent=2))
-                self.assertEqual(cli.has_compiler_option_raw, head['compiler-option-raw'])
-                # self.assertEqual(cli.has_runtime_option_raw, head['runtime-option-raw'])
-                self.assertEqual(cli.has_runtime_option_raw, cli.language != "OpenSSL")
-                self.assertEqual(cli.has_option, len(head['switches']) != 0)
+                if len(ll) > 0:
+                    head = ll[0]
+                    # print(json.dumps(head, indent=2))
+                    self.assertEqual(cli.has_compiler_option_raw, head['compiler-option-raw'], cli.language)
+                    # self.assertEqual(cli.has_runtime_option_raw, head['runtime-option-raw'], cli.language)
+                    self.assertEqual(cli.has_runtime_option_raw, cli.language != "OpenSSL", cli.language)
+                    self.assertEqual(cli.has_option, len(head['switches']) != 0, cli.language)
 
 
 if __name__ == '__main__':
