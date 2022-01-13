@@ -9,4 +9,4 @@ local:
 	${OCAMLOPT} sample.ml
 
 wandbox:
-	make -C . local --no-print-directory OCAMLOPT="wandbox-ocamlopt ${WANDBOX_CLI_OPTIONS} run"
+	make -C . local --no-print-directory OCAMLOPT="wandbox-ocamlopt --no-ocaml-core ${WANDBOX_CLI_OPTIONS} run"
