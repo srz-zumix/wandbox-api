@@ -8,7 +8,7 @@ local:
 
 wandbox:
 	make -C . local --no-print-directory DMD="wandbox-dmd run"
-	make -C . local --no-print-directory DMD="wandbox-gdmd run"
+	# make -C . local --no-print-directory DMD="wandbox-gdmd run"
 	make -C . local --no-print-directory DMD="wandbox-ldmd2 run"
 
 clean:

@@ -235,8 +235,6 @@ Import modules required for compilation are automatically added to the file list
 
 * wandbox-dmd  
   (wandbox -l D -c dmd-*)
-* wandbox-gdmd  
-  (wandbox -l D -c gdc-*)
 * wandbox-ldmd2  
   (wandbox -l D -c ldc-*)
 * wandbox-dub

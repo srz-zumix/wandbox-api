@@ -56,7 +56,7 @@ setup(
             'wandbox-crystal  = wandbox.__crystal__:main',
             'wandbox-cs       = wandbox.__csharp__:main',
             'wandbox-dmd      = wandbox.__dmd__:dmd',
-            'wandbox-gdmd     = wandbox.__dmd__:gdmd',
+            # 'wandbox-gdmd     = wandbox.__dmd__:gdmd',
             'wandbox-ldmd2    = wandbox.__dmd__:ldmd2',
             'wandbox-dub      = wandbox.__dub__:main',
             'wandbox-elixir   = wandbox.__elixir__:main',
