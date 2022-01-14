@@ -79,6 +79,7 @@ setup(
             'wandbox-lua      = wandbox.__lua__:main',
             'wandbox-luajit   = wandbox.__lua__:luajit',
             'wandbox-nim      = wandbox.__nim__:main',
+            'wandbox-ocaml    = wandbox.__ocaml__:main',
             'wandbox-ocamlopt = wandbox.__ocaml__:main',
             'wandbox-ssl      = wandbox.__openssl__:main',
             'wandbox-fpc      = wandbox.__pascal__:main',

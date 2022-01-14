@@ -431,6 +431,8 @@ Import modules/.c required for compilation are automatically added to the file l
 
 * wandbox-ocamlopt  
   (wandbox -l OCaml)
+* wandbox-ocaml  
+  (wandbox -l OCaml)
 
 #### OCaml Example
 
