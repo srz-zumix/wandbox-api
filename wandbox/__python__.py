@@ -155,5 +155,13 @@ def pypy():
     python('pypy-*')
 
 
+def pypy2():
+    python('pypy-2*')
+
+
+def pypy3():
+    python('pypy-3*')
+
+
 if __name__ == '__main__':
     main()

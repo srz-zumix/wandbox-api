@@ -529,6 +529,10 @@ Import files/modules required for runtime are automatically added to the file li
   (wandbox -l Python -c cpython-*)
 * wandbox-pypy  
   (wandbox -l Python -c pypy-*)
+* wandbox-pypy2  
+  (wandbox -l Python -c pypy-2*)
+* wandbox-pypy3  
+  (wandbox -l Python -c pypy-3*)
 
 #### Python Example
 
