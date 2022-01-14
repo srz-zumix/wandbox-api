@@ -134,7 +134,7 @@ class test_wandbox_cxx(wandbox_test_base):
 
     def test_bool_options(self):
         try:
-            self.wandbox_cxx([ '--dryrun', '--no-warning', '--cpp-verbose', '--sprout', '--msgpack', '--optimize', '--cpp-pedantic', 'error', '--boost', '1.68.0' ])
+            self.wandbox_cxx([ '--dryrun', '--no-warning', '--cpp-verbose', '--sprout', '--msgpack', '--optimize', '--cpp-pedantic', 'error', '--boost', '1.78.0' ])
         except SystemExit as e:
             self.assertEqual(e.code, 0)
             output = self.stdoout()
@@ -144,7 +144,7 @@ class test_wandbox_cxx(wandbox_test_base):
             self.assertTrue('msgpack' in output)
             self.assertTrue('optimize' in output)
             self.assertTrue('cpp-pedantic-errors' in output)
-            self.assertTrue('boost-1.68.0-gcc-head' in output)
+            self.assertTrue('boost-1.78.0-gcc-head' in output)
             self.assertTrue('cpp-no-pedantic' not in output)
             self.assertTrue('warning' not in output)
         else:
