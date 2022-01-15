@@ -52,14 +52,15 @@ class ElixirMixCLI(CLI):
 #!/bin/bash
 
 export LC_ALL=en_US.UTF-8
-export PATH=/opt/wandbox/{}/bin:$PATH
-ERLANG=`cat /opt/wandbox/{}/bin/run-elixir.sh | grep -oe 'erlang-[0-9\\.]*'`
+ELIXIR_PATH=$(find /opt/wandbox -name '{}*' -maxdepth 1)
+export PATH=$ELIXIR_PATH/bin:$PATH
+ERLANG=$(echo $ELIXIR_PATH | grep -oe 'erlang-[0-9\\.]*')
 export PATH=/opt/wandbox/$ERLANG/bin:$PATH
 
 {} || echo Unsolved: \"erts_mmap: Failed to create super carrier of size 1024 MB\", Please tell me the solution.
         '''
         command = 'mix ' + ' '.join(args.sources + args.compile_options)
-        code = StringIO(shell.format(args.compiler, args.compiler, command))
+        code = StringIO(shell.format(args.compiler, command))
         sys.stdin = code
 
         args.sources[:] = ['-']
