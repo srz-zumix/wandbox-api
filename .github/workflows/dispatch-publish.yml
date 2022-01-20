@@ -1,17 +1,18 @@
-name: PyPI Publish
+name: PyPI Publish (dispatch)
 on:
-  push:
-    tags:
-      - v*
-  release:
-    types:
-      - published
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'checkout ref'
+        required: true
 
 jobs:
   pypi:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.ref }}
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
