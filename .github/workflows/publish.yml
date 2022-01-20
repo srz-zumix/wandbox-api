@@ -1,8 +1,12 @@
 name: PyPI Publish
 on:
+  workflow_dispatch:
   push:
     tags:
       - v*
+  release:
+    types:
+      - published
 
 jobs:
   pypi:
