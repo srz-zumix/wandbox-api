@@ -14,6 +14,11 @@ class OCamlCLI(CLI):
             help='disable -package core'
         )
 
+    def command_run_template(self, args):
+        # Workaround: ocamlfind: Package `core' not found
+        args.no_ocaml_core = True
+        super(OCamlCLI, self).command_run_template(args)
+
     def setup_runner(self, args, enable_options, disable_options, runner):
         self.check_bool_option(args, 'no-ocaml-core', enable_options, disable_options)
 
