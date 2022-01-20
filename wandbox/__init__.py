@@ -1,7 +1,7 @@
 __author__ = 'srz_zumix'
-__version__ = '0.9.36'
+__version__ = '0.9.37'
 
-__copyright__ = '2014-2021 %s ' % __author__
+__copyright__ = '2014-2022 %s ' % __author__
 __license__ = """
 The MIT License (MIT)
 
