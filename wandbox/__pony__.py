@@ -5,8 +5,6 @@ import glob
 from .cli import CLI
 from .runner import Runner
 
-dummy_src_option = '@@dummy_src_option'
-
 
 class PonyRunner(Runner):
 
@@ -27,12 +25,19 @@ class PonyRunner(Runner):
         return dir
 
     def build_compiler_options(self, options):
+        codes = {}
+        # support stdin
+        if options[-1] == '-':
+            options.pop(-1)
+            main_filepath = '-'
+            main_files = self.open_main_code(main_filepath, main_filepath)
+            for k, v in main_files.items():
+                codes[k] = v
+
         paths = []
         reserved_build_dirs = ['prog', '.']
         build_dirs = []
         for opt in options:
-            if opt == dummy_src_option:
-                continue
             if opt[0] in self.prefix_chars:
                 self.add_commandline_options(opt)
             else:
@@ -50,7 +55,6 @@ class PonyRunner(Runner):
             reserved_build_dirs.append(dir)
             paths.append({'wandbox': dir, 'path': '.'})
             build_dirs.append(dir)
-        codes = {}
         for pair in paths:
             path = pair['path']
             wandbox_dir = pair['wandbox']
@@ -78,16 +82,10 @@ actor Main
 class PonyCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(PonyCLI, self).__init__('Pony', compiler, False)
+        super(PonyCLI, self).__init__('Pony', compiler, False, run_source_nargs='*')
 
     def get_runner(self, args, options):
         return PonyRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)
-
-    def execute(self):
-        args = sys.argv[1:]
-        if '.' not in args:
-            args.append(dummy_src_option)
-        self.execute_with_args(args)
 
 
 def pony(compiler=None):

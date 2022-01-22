@@ -27,7 +27,7 @@ class CLI:
 
     def __init__(self, lang=None, compiler=None,
             has_option=True, has_compiler_option_raw=True, has_runtime_option_raw=True,
-            run_prefix_chars='+'):
+            run_prefix_chars='+', run_source_nargs='+'):
         self.wrapper = Wrapper()
         self.compiler_list = None
         self.result_key = None
@@ -36,6 +36,7 @@ class CLI:
         self.has_compiler_option_raw = has_compiler_option_raw
         self.has_runtime_option_raw = has_runtime_option_raw
         self.run_prefix_chars = run_prefix_chars
+        self.run_source_nargs = run_source_nargs
         self.setup(lang, compiler, has_option)
 
     def command_list(self, args):
@@ -303,7 +304,7 @@ class CLI:
             passthrough_cmd.add_argument(
                 'sources',
                 metavar='SOURCE',
-                nargs='+',
+                nargs=self.run_source_nargs,
                 help='source files'
             )
             passthrough_cmd.add_argument(
