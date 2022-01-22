@@ -50,7 +50,7 @@ class BashCLI:
 
         def __init__(self):
             self.output = None
-            super(BashCLI.InnerCLI, self).__init__('Bash', 'bash', False, False)
+            super(BashCLI.InnerCLI, self).__init__('Bash script', 'bash', False, False)
 
         def get_runner(self, args, options):
             return BashRunner(args.language, args.compiler, args.save, args.encoding, args.retry, args.retry_wait)

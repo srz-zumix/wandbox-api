@@ -57,7 +57,7 @@ class CoffeeRunner(Runner):
 class CoffeeCLI(CLI):
 
     def __init__(self, compiler=None):
-        super(CoffeeCLI, self).__init__('CoffeeScript', compiler, True, False)
+        super(CoffeeCLI, self).__init__('CoffeeScript', compiler, has_compiler_option_raw=False)
 
     def cxx_setup(self, lang, compiler):
         self.parser.add_argument(
