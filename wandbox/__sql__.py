@@ -1,5 +1,3 @@
-import sys
-
 from .cli import CLI
 from .runner import Runner
 
