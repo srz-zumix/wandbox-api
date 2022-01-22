@@ -103,6 +103,7 @@ setup(
             'wandbox-swift    = wandbox.__swift__:main',
             'wandbox-tsc      = wandbox.__tsc__:main',
             'wandbox-vim      = wandbox.__vim__:main',
+            'wandbox-status   = wandbox.__status__:main',
         ]
     }
     , install_requires=['requests', 'pyyaml', 'toml', 'ndjson']
