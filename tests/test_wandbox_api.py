@@ -6,7 +6,7 @@ from wandbox import Wandbox
 from wandbox import cli as wandbox_cli
 from wandbox import __cxx__ as cxx
 from wandbox import __go__ as go
-from wandbox import __all__ as get_all_cli
+from wandbox.__all__ import get_all_cli
 
 try:
     import unittest2 as unittest
