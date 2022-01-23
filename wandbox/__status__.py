@@ -1,4 +1,3 @@
-import imp
 import re
 import sys
 from . import __version__ as VERSION
