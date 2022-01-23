@@ -55,7 +55,7 @@ class StatusCLI:
         clis = get_all_cli()
         cli = next((cli for cli in clis if cli.language == language), None)
 
-        if cli == None:
+        if cli is None:
             print("error: \"{}\" language is not found".format(language))
             self.parser.print_help()
             sys.exit(1)
@@ -69,17 +69,18 @@ class StatusCLI:
         if opts.verbose:
             cli_options.append('-V')
 
-        cli.on_run_response = type(cli.on_run_response)(StatusCLI.on_run_response, cli)
+        cli.on_run_response = type(cli.on_run_response)(StatusCLI.OnRunResponse, cli)
         cli.execute_with_args(cli_options + run_options)
 
-    def on_run_response(cli, response):
+    @staticmethod
+    def OnRunResponse(cli, response):
         r = WandboxCompileResponse(response)
         if r.has_error():
             print(r.error())
             return 1
         if StatusCLI.verbose:
             Wandbox.ShowResult(response)
-        if StatusCLI.response_check(cli, r):
+        if StatusCLI.CheckResponse(cli, r):
             if r.has_signal():
                 print(r.signal())
             else:
@@ -88,9 +89,10 @@ class StatusCLI:
         print('OK')
         return 0
 
-    def response_check(cli, r):
+    @staticmethod
+    def CheckResponse(cli, r):
         if r.has_program_output():
-            if not StatusCLI.output_check(cli.language, text_transform(r.program_output())):
+            if not StatusCLI.CheckOutput(cli.language, text_transform(r.program_output())):
                 return 1
         else:
             return 1
@@ -98,7 +100,8 @@ class StatusCLI:
             return int(r.status())
         return 0
 
-    def output_check(language, output):
+    @staticmethod
+    def CheckOutput(language, output):
         if language == "OpenSSL":
             return "PRIVATE KEY" in output
         elif language == "CPP":
@@ -111,8 +114,10 @@ def status():
     cli = StatusCLI()
     cli.execute()
 
+
 def main():
     status()
+
 
 if __name__ == '__main__':
     main()
