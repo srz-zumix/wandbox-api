@@ -22,6 +22,6 @@ def text_transform(value):
             return value.decode()
         # elif isinstance(value, unicode):
         #     return value.encode('utf_8')
-    except Exception:
+    except Exception: # nosec
         pass
     return value
