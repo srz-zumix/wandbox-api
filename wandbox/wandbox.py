@@ -17,17 +17,7 @@ from requests.exceptions import HTTPError as RHTTPError
 from requests.exceptions import ConnectionError as RConnectionError
 from requests.exceptions import ConnectTimeout as RConnectTimeout
 from .wandbox_compile_response import WandboxCompileResponse
-
-
-def text_transform(value):
-    try:
-        if isinstance(value, str):
-            return value.decode()
-        # elif isinstance(value, unicode):
-        #     return value.encode('utf_8')
-    except Exception:
-        pass
-    return value
+from .utils import text_transform
 
 
 #
