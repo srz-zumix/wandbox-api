@@ -51,7 +51,7 @@ class StatusCLI:
     def execute_with_args(self, args=None):
         opts = self.parse_command_line(args)
 
-        language, compiler, *_ = re.split(r'[\s:,]', opts.language, 2) + [None]
+        language, compiler, *_ = [x.strip() for x in re.split(r'[:,]', opts.language, 2)] + [None]
         clis = get_all_cli()
         cli = next((cli for cli in clis if cli.language == language), None)
 
