@@ -1,5 +1,4 @@
 import re
-import sys
 from . import __version__ as VERSION
 
 from .__all__ import get_all_cli
@@ -56,12 +55,8 @@ class StatusCLI:
         clis = get_all_cli()
         cli = next((cli for cli in clis if cli.language == language), None)
 
-        # if cli is None:
-        #     print("error: \"{}\" language is not found".format(language))
-        #     self.parser.print_help()
-        #     sys.exit(1)
         if cli is None:
-                cli = CLI(language)
+            cli = CLI(language)
 
         if opts.compiler:
             compiler = opts.compiler
