@@ -2,7 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/wandbox-api.svg)](https://badge.fury.io/py/wandbox-api)
 [![Python Versions](https://img.shields.io/pypi/pyversions/wandbox_api.svg)](https://pypi.org/project/wandbox-api/)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ff3eb34b617416c97f590b45b5e82fe)](https://app.codacy.com/manual/srz-zumix/wandbox-api?utm_source=github.com&utm_medium=referral&utm_content=srz-zumix/wandbox-api&utm_campaign=Badge_Grade_Settings)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/de16baa804f74dbe903201df65965118)](https://www.codacy.com/gh/srz-zumix/wandbox-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=srz-zumix/wandbox-api&amp;utm_campaign=Badge_Grade)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/srz-zumix/wandbox-api.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/srz-zumix/wandbox-api/context:python)
 [![GitHub Actions](https://github.com/srz-zumix/wandbox-api/actions/workflows/main.yml/badge.svg)](https://github.com/srz-zumix/wandbox-api/actions/workflows/main.yml)
 
