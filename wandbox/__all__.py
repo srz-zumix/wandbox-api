@@ -35,6 +35,7 @@ from wandbox import __sql__ as sql
 from wandbox import __swift__ as swift
 from wandbox import __tsc__ as tsc
 from wandbox import __vim__ as vim
+from wandbox import __zig__ as zig
 
 
 def get_all_cli():
@@ -75,6 +76,7 @@ def get_all_cli():
         sql.SqlCLI(),
         swift.SwiftCLI(),
         tsc.TscCLI(),
-        vim.VimCLI()
+        vim.VimCLI(),
+        zig.ZigCLI()
     ]
     return clis

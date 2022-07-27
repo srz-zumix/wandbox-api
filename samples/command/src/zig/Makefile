@@ -1,7 +1,7 @@
 #
 # Makefile
 
-ZIG=zig
+ZIG:=zig
 
 local:
 	${ZIG} run main.zig

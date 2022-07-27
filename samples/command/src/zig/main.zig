@@ -3,8 +3,7 @@ const test1 = @import("test1.zig");
 const test2 = @import("./test2.zig").print;
 const test3 = @import("sub/test3.zig").print;
 const test4 = @import("sub/test4.txt");
-const test5 = @import("sub/test5").print;
-const root_print = @import("root").print_all;
+const test5 = @import("sub/test5").print; const root_print = @import("root").print_all;
 
 pub fn main() void {
     std.debug.print("Hello, {s}!\n", .{"World"});
