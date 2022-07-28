@@ -1,8 +1,8 @@
 import re
-import sys
 from . import __version__ as VERSION
 
 from .__all__ import get_all_cli
+from .cli import CLI
 
 from .wandbox import Wandbox
 from .wandbox_compile_response import WandboxCompileResponse
@@ -56,9 +56,7 @@ class StatusCLI:
         cli = next((cli for cli in clis if cli.language == language), None)
 
         if cli is None:
-            print("error: \"{}\" language is not found".format(language))
-            self.parser.print_help()
-            sys.exit(1)
+            cli = CLI(language)
 
         if opts.compiler:
             compiler = opts.compiler
@@ -81,23 +79,23 @@ class StatusCLI:
         if StatusCLI.verbose:
             Wandbox.ShowResult(response)
         if StatusCLI.CheckResponse(cli, r):
-            if r.has_signal():
-                print(r.signal())
-            else:
-                print('Compile/Runtime Error')
             return 1
         print('OK')
         return 0
 
     @staticmethod
     def CheckResponse(cli, r):
-        if r.has_program_output():
-            if not StatusCLI.CheckOutput(cli.language, text_transform(r.program_output())):
+        if r.program_message():
+            if not StatusCLI.CheckOutput(cli.language, text_transform(r.program_message())):
+                print('Expect message was not contains: {}'.format(r.program_message()))
                 return 1
-        else:
-            return 1
         if r.has_status():
-            return int(r.status())
+            if int(r.status()):
+                if r.has_signal():
+                    print(r.signal())
+                else:
+                    print('Compile/Runtime Error')
+                return 1
         return 0
 
     @staticmethod

@@ -19,5 +19,17 @@ jobs:
         run: gem install awesome_bot
       - name: check
         run: |
+          awesome_bot_with_retry() {
+            local attempt_max=5
+            local -i attempt_num=1
+            until awesome_bot "$@"; do
+                if ((attempt_num == attempt_max)); then
+                    exit 1
+                fi
+                echo "retry ${attempt_num}"
+                ((attempt_num++))
+            done
+          }
+
           # shellcheck disable=SC2086
-          awesome_bot README.md    ${ASESOME_BOT_OPTION}
+          awesome_bot_with_retry README.md ${ASESOME_BOT_OPTION}
