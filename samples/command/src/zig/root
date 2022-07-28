@@ -1,0 +1,9 @@
+const log = @import("std").log.info;
+
+pub fn print_all() void {
+    log("Root All", .{});
+}
+
+pub fn print() void {
+    log("Root", .{});
+}

@@ -115,5 +115,8 @@ TypeScript:
 Vim script:
   - 'wandbox/__vim__.py'
   - 'samples/command/src/vim/**/*'
+Zig:
+  - 'wandbox/__zig__.py'
+  - 'samples/command/src/zig/**/*'
 CI:
   - '.github/**/*'
