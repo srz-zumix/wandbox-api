@@ -187,7 +187,7 @@ class test_wandbox_options(wandbox_test_base):
                     head = ll[0]
                     # print(json.dumps(head, indent=2))
                     self.assertEqual(cli.has_compiler_option_raw, head['compiler-option-raw'], cli.language)
-                    # self.assertEqual(cli.has_runtime_option_raw, head['runtime-option-raw'])
+                    # self.assertEqual(cli.has_runtime_option_raw, head['runtime-option-raw'], cli.language)
                     self.assertEqual(cli.has_runtime_option_raw, cli.language != "OpenSSL", cli.language)
                     self.assertEqual(cli.has_option, len(head['switches']) != 0, cli.language)
 
