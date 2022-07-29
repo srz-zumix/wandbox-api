@@ -10,7 +10,7 @@ from .cli import CLI
 
 class RustRunner(Runner):
 
-    MOD_REGEX = re.compile(r'^\s*mod\s+(.*?);\s*$')
+    MOD_REGEX = re.compile(r'\s*mod\s+(.*?)\s*;')
 
     def reset(self):
         self.modules = []
@@ -19,8 +19,8 @@ class RustRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.MOD_REGEX.match(line)
-            if m:
+            ml = self.MOD_REGEX.finditer(line)
+            for m in ml:
                 files.update(self.mod(os.path.dirname(filepath), m.group(1)))
             code += line
         files[filename] = code
