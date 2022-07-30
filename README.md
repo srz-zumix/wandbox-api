@@ -32,7 +32,7 @@ This project is a Pythonic binding to the Wandbox API, and CLI command.
 | [Lazy K](#Lazy-K)   | [Lisp](#Lisp)       | [Lua](#Lua)               | [Nim](#Nim)               | [OCaml](#OCaml) |
 | [OpenSSL](#OpenSSL) | [Pascal](#Pascal)   | [Perl](#Perl)             | [PHP](#PHP)               | [Pony](#Pony)   |
 | [Python](#Python)   | [R](#R)             | [Ruby](#Ruby)             | [Rust](#Rust)             | [Scala](#Scala) |
-| [SQL](#SQL)         | [Swift](#Swift)     | [TypeScript](#TypeScript) | [Vim script](#Vim-script) ||
+| [SQL](#SQL)         | [Swift](#Swift)     | [TypeScript](#TypeScript) | [Vim script](#Vim-script) | [Zig](#Zig)     |
 
 ### wandbox
 
@@ -667,6 +667,21 @@ Import files/modules required for compilation are automatically added to the fil
 > wandbox-vim run -X -N -u NONE -i NONE -V1 -e -s -S sample.vim +qall!
 
 [Vim script Example](./samples/command/src/vim)
+
+----
+
+### Zig
+
+Import files required for compilation are automatically added to the file list.
+
+* wandbox-zig  
+  (wandbox -l Zig)
+
+#### Zig Example
+
+> wandbox-zig run main.zig
+
+[Zig Example](./samples/command/src/zig)
 
 ----
 
