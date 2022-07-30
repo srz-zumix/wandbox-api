@@ -1,6 +1,5 @@
 #!/bin/bash
 # This file is a "Hello, world!" in Bash script for wandbox.
-# shellcheck disable=SC1091
 
 echo Hello, Wandbox!
 
