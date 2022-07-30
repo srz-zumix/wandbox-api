@@ -7,6 +7,7 @@ from wandbox import cli as wandbox_cli
 from wandbox import __cxx__ as cxx
 from wandbox import __go__ as go
 from wandbox.__all__ import get_all_cli
+from wandbox.utils  import split_statements
 
 try:
     import unittest2 as unittest
@@ -190,6 +191,20 @@ class test_wandbox_options(wandbox_test_base):
                     # self.assertEqual(cli.has_runtime_option_raw, head['runtime-option-raw'], cli.language)
                     self.assertEqual(cli.has_runtime_option_raw, cli.language != "OpenSSL", cli.language)
                     self.assertEqual(cli.has_option, len(head['switches']) != 0, cli.language)
+
+
+class test_wandbox_uitilities(wandbox_test_base):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_split_statements(self):
+        statements = split_statements(". test.sh; source \"test data.sh\"")
+        self.assertEqual(2, len(statements))
+        self.assertEqual(". test.sh", statements[0])
+        self.assertEqual("source \'test data.sh\'", statements[1])
 
 
 if __name__ == '__main__':
