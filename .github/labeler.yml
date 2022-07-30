@@ -120,3 +120,5 @@ Zig:
   - 'samples/command/src/zig/**/*'
 CI:
   - '.github/**/*'
+documents:
+  - 'README.md'

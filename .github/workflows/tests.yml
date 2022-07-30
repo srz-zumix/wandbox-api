@@ -1,6 +1,7 @@
 name: Compile each language tests
 on:
-  pull_request:
+  # wandbox 側のエラー解消するまでコメントアウト
+  # pull_request:
   push:
     branches:
       - master

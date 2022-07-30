@@ -37,6 +37,7 @@ setup(
         , "Programming Language :: Python :: 3.7"
         , "Programming Language :: Python :: 3.8"
         , "Programming Language :: Python :: 3.9"
+        , "Programming Language :: Python :: 3.10"
     ]
     , entry_points={
         'console_scripts': [
@@ -113,5 +114,5 @@ setup(
     , extras_require={
         'test': test_deps
     }
-    , python_requires=">3.4"
+    , python_requires=">3.5"
 )
