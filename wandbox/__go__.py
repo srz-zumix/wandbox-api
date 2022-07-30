@@ -3,6 +3,7 @@ import re
 
 from .runner import Runner
 from .cli import CLI
+from .utils import split_statements
 
 
 class GoRunner(Runner):
@@ -18,9 +19,11 @@ class GoRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.IMPORT_REGEX.match(line)
-            if m:
-                files.update(self.on_import_single(filepath, m.group(1).strip('(\'")')))
+            statements = split_statements(line, commenters="//")
+            for statement in statements:
+                m = self.IMPORT_REGEX.match(statement)
+                if m:
+                    files.update(self.on_import_single(filepath, m.group(1).strip('(\'")')))
             code += line
         for m in self.IMPORT_MULTILINE_REGEX.finditer(code):
             files.update(self.on_import_multiline(filepath, m.group(1)))
@@ -75,7 +78,6 @@ class GoCLI(CLI):
 
     def setup_runner(self, args, enable_options, disable_options, runner):
         self.check_bool_option(args, 'gcflags-m', enable_options, disable_options, 'go-')
-        runner.has_runtime_option_raw = False
 
         super(GoCLI, self).setup_runner(args, list(set(enable_options)), disable_options, runner)
 
