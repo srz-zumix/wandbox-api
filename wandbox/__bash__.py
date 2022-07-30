@@ -5,11 +5,12 @@ from argparse import ArgumentParser
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class BashRunner(Runner):
 
-    SOURCE_REGEX = re.compile(r'^\s*(source|\.)\s+(.*?)$')
+    SOURCE_REGEX = re.compile(r'^\s*(source|\.)\s+(.*?)\s*(|;)\s*$')
     SHELL_REGEX = re.compile(r'^\s*(\${SHELL}|sh|bash)\s+(.*?)$')
 
     def reset(self):
@@ -19,14 +20,16 @@ class BashRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.SOURCE_REGEX.match(line)
-            if m:
-                sourcename = m.group(2).strip('\'"')
-                files.update(self.source(os.path.dirname(filepath), sourcename.strip()))
-            m = self.SHELL_REGEX.match(line)
-            if m:
-                sourcename = m.group(2).strip('\'"')
-                files.update(self.source(os.path.dirname(filepath), sourcename.strip()))
+            statements = split_statements(line)
+            for statement in statements:
+                m = self.SOURCE_REGEX.match(statement)
+                if m:
+                    sourcename = m.group(2).strip('\'"')
+                    files.update(self.source(os.path.dirname(filepath), sourcename.strip()))
+                m = self.SHELL_REGEX.match(statement)
+                if m:
+                    sourcename = m.group(2).strip('\'"')
+                    files.update(self.source(os.path.dirname(filepath), sourcename.strip()))
             line = line.replace('${SHELL}', '/bin/bash')
             code += line
         files[filename] = code
