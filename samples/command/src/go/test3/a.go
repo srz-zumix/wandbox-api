@@ -1,7 +1,8 @@
 package test3
 
-import "./test"
+import "fmt"; import "./test";
 
 func Test() {
 	test.Test()
+	fmt.Println("Test3")
 }
