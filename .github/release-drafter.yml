@@ -8,6 +8,9 @@ categories:
     labels:
       - 'feature'
       - 'enhancement'
+  - title: 'Dependency'
+    labels:
+      - 'dependency'
   - title: 'Fixes'
     labels:
       - 'fix'
@@ -127,6 +130,9 @@ categories:
   - title: 'Vim script'
     labels:
       - 'Vim script'
+  - title: 'Zig'
+    labels:
+      - 'Zig'
   - title: 'Documentation'
     labels:
       - 'document'
@@ -147,6 +153,7 @@ version-resolver:
     labels:
       - 'feature'
       - 'enhancement'
+      - 'dependency'
   patch:
     labels:
       - 'fix'
