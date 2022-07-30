@@ -29,7 +29,7 @@ def text_transform(value):
 
 
 def shlex_join(split_command):
-    return " ".join([ shlex.quote(x) for x in split_command ])
+    return " ".join([shlex.quote(x) for x in split_command])
 
 
 def split_statements(line, end_of_statement=";", commenters="#"):
