@@ -7,6 +7,7 @@ from .cli import CLI
 from .runner import Runner
 from .utils import split_statements
 
+
 class BashRunner(Runner):
 
     SOURCE_REGEX = re.compile(r'^\s*(source|\.)\s+(.*?)\s*(|;)\s*$')
