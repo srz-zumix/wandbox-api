@@ -28,6 +28,10 @@ def text_transform(value):
     return value
 
 
+def shlex_join(split_command):
+    return " ".join([ shlex.quote(x) for x in split_command ])
+
+
 def split_statements(line, end_of_statement=";", commenters="#"):
     sl = shlex.shlex(line, posix=True, punctuation_chars=True)
     sl.commenters = commenters
@@ -36,10 +40,10 @@ def split_statements(line, end_of_statement=";", commenters="#"):
     statement = []
     for s in sl:
         if s == end_of_statement:
-            statements.append(shlex.join(statement))
+            statements.append(shlex_join(statement))
             statement = []
         else:
             statement.append(s)
     if len(statement) > 0:
-        statements.append(shlex.join(statement))
+        statements.append(shlex_join(statement))
     return statements
