@@ -9,6 +9,7 @@ Utilities
 
 import glob
 import os
+import shlex
 
 
 def case_insensitive_glob(path, pattern):
@@ -25,3 +26,20 @@ def text_transform(value):
     except Exception:  # nosec
         pass
     return value
+
+
+def split_statements(line, end_of_statement=";", commenters="#"):
+    sl = shlex.shlex(line, posix=True, punctuation_chars=True)
+    sl.commenters = commenters
+    sl.source = None
+    statements = []
+    statement = []
+    for s in sl:
+        if s == end_of_statement:
+            statements.append(shlex.join(statement))
+            statement = []
+        else:
+            statement.append(s)
+    if len(statement) > 0:
+        statements.append(shlex.join(statement))
+    return statements

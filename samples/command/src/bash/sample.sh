@@ -3,8 +3,8 @@
 echo Hello, Wandbox!
 
 source test1.sh
-. test2.sh
-. ./test2.sh
+. test2-1.sh
+. ./test2-2.sh;
 
 # ./test3.sh
 echo ${SHELL}
@@ -15,6 +15,9 @@ bash ./test3.sh
 # if [ "$1" = "wandbox" ]; then
 #   ls /opt/wandbox
 # fi
+
+. "test 4;.sh";
+source "test 4.sh"; . ./test4.sh;source "./test 4;;.sh"
 
 echo $*
 
