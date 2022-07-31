@@ -1,8 +1,9 @@
 // This file is a "Hello, world!" in JavaScript by Node.js for wandbox.
-import { Test1 } from "./test1.js";
+import { Test1 } from "./test1.js"; import { Test2 } from "./test2.js";
 
 console.log("Hello, Wandbox!");
 Test1();
+Test2();
 
 // Node.js reference:
 //   https://nodejs.org/
