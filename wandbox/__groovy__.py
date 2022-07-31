@@ -4,6 +4,7 @@ import glob
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class GroovyRunner(Runner):
@@ -23,10 +24,12 @@ class GroovyRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.IMPORT_REGEX.match(line)
-            if m:
-                module = m.group(1).strip('\'";')
-                files.update(self.import_module(os.path.dirname(filepath), module.strip()))
+            statements = split_statements(line, commenters="//")
+            for statement in statements:
+                m = self.IMPORT_REGEX.match(statement)
+                if m:
+                    module = m.group(1).strip('\'";')
+                    files.update(self.import_module(os.path.dirname(filepath), module.strip()))
             code += line
         files[filename] = code
         return files
