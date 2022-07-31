@@ -8,7 +8,7 @@ from .utils import split_statements
 
 class JuliaRunner(Runner):
 
-    INCLUDE_REGEX = re.compile(r'^\s*include\s*\((.*?)\)\s*$')
+    INCLUDE_REGEX = re.compile(r'^\s*include\s*\((.*?)\)(;|)\s*$')
 
     def reset(self):
         self.included = []
