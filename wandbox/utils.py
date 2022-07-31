@@ -9,7 +9,6 @@ Utilities
 
 import glob
 import os
-from re import S
 import shlex
 
 
