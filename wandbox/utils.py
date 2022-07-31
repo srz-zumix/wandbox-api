@@ -29,7 +29,7 @@ def text_transform(value):
 
 
 def statements_quote(s):
-    if s in ['(', ')']:
+    if s in ['(', ')', '{', '}']:
         return s
     else:
         return shlex.quote(s)
@@ -40,17 +40,18 @@ def statements_join(split_command):
 
 
 def split_statements(line, end_of_statement=";", commenters="#"):
-    sl = shlex.shlex(line, posix=True, punctuation_chars=end_of_statement)
+    sl = shlex.shlex(line, posix=False, punctuation_chars=end_of_statement)
     sl.commenters = commenters
     sl.source = None
+    sl.whitespace_split = True
     statements = []
     statement = []
     for s in sl:
         if s == end_of_statement:
-            statements.append(statements_join(statement) + s)
+            statements.append(" ".join(statement) + s)
             statement = []
         else:
             statement.append(s)
     if len(statement) > 0:
-        statements.append(statements_join(statement))
+        statements.append(" ".join(statement))
     return statements
