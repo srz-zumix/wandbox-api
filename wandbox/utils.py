@@ -30,7 +30,7 @@ def text_transform(value):
 
 
 def statements_quote(s):
-    if s in [ '(', ')' ]:
+    if s in ['(', ')']:
         return s
     else:
         return shlex.quote(s)
