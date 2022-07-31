@@ -1,8 +1,7 @@
 // This file is a "Hello, world!" in Groovy language for wandbox.
 
 import test1.*
-import test3.Test3
-import test3.test4.*;
+import test3.Test3; import test3.test4.*;
 
 println "Hello Wandbox!"
 Test1.test()
