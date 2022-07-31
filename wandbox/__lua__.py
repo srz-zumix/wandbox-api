@@ -3,6 +3,7 @@ import re
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class LuaRunner(Runner):
@@ -17,15 +18,17 @@ class LuaRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.REQUIRE_REGEX.match(line)
-            if m:
-                module = m.group(1).strip('(\'")')
-                files.update(self.require(os.path.dirname(filepath), module.strip()))
-            else:
-                m = self.LOADFILE_REGEX.match(line)
+            statements = split_statements(line, commenters="--")
+            for statement in statements:
+                m = self.REQUIRE_REGEX.match(statement)
                 if m:
                     module = m.group(1).strip('(\'")')
                     files.update(self.require(os.path.dirname(filepath), module.strip()))
+                else:
+                    m = self.LOADFILE_REGEX.match(line)
+                    if m:
+                        module = m.group(1).strip('(\'")')
+                        files.update(self.require(os.path.dirname(filepath), module.strip()))
             code += line
         files[filename] = code
         return files

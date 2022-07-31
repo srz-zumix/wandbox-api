@@ -8,8 +8,9 @@ md01:print();
 md02 = loadfile("m2.lua");
 md02();
 
-md03 = require "m3";
+md03 = require "m3"; md04 = require "m4";
 md03:print();
+md04:print();
 
 -- Lua language references:
 --   https://www.lua.org/

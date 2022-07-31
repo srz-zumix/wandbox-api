@@ -47,7 +47,7 @@ def split_statements(line, end_of_statement=";", commenters="#"):
     statement = []
     for s in sl:
         if s == end_of_statement:
-            statements.append(statements_join(statement))
+            statements.append(statements_join(statement) + s)
             statement = []
         else:
             statement.append(s)
