@@ -3,11 +3,12 @@ import os
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class JsRunner(Runner):
 
-    IMPORT_REGEX = re.compile(r'^\s*import\s+.*?\s+from\s+(.*?)[;|]$')
+    IMPORT_REGEX = re.compile(r'^\s*import\s+.*?\s+from\s+(.*?)(;|)$')
     REQUIRE_REGEX = re.compile(r'^\s.*?require\s+\((.*?)\)')
 
     def __init__(self, lang, compiler, save, encoding, retry, retry_wait, prefix_chars='-'):
@@ -26,11 +27,13 @@ class JsRunner(Runner):
             if os.path.exists(config_path):
                 files.update(self.import_from(os.path.dirname(config_path), config_path_name))
         for line in file:
-            m = self.IMPORT_REGEX.match(line)
-            if m:
-                module = m.group(1).strip('\'"')
-                if module.startswith('.'):
-                    files.update(self.import_from(os.path.dirname(filepath), module.strip()))
+            statements = split_statements(line, commenters="//")
+            for statement in statements:
+                m = self.IMPORT_REGEX.match(statement)
+                if m:
+                    module = m.group(1).strip('\'"')
+                    if module.startswith('.'):
+                        files.update(self.import_from(os.path.dirname(filepath), module.strip()))
             code += line
         files[filename] = code
         return files
