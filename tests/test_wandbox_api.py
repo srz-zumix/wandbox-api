@@ -206,6 +206,12 @@ class test_wandbox_uitilities(wandbox_test_base):
         self.assertEqual(". test.sh", statements[0])
         self.assertEqual("source \'test data.sh\'", statements[1])
 
+    def test_split_statements_2(self):
+        statements = split_statements("include(\"test1.jl\"); include(\"test2.jl\");")
+        self.assertEqual(2, len(statements))
+        self.assertEqual("include ( test1.jl )", statements[0])
+        self.assertEqual("include ( test2.jl )", statements[1])
+
 
 if __name__ == '__main__':
     test_loader = unittest.defaultTestLoader

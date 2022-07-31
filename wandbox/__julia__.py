@@ -3,6 +3,7 @@ import os
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class JuliaRunner(Runner):
@@ -16,10 +17,12 @@ class JuliaRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.INCLUDE_REGEX.match(line)
-            if m:
-                module = m.group(1).strip('(\'")')
-                files.update(self.include(os.path.dirname(filepath), module.strip()))
+            statements = split_statements(line, commenters="#")
+            for statement in statements:
+                m = self.INCLUDE_REGEX.match(statement)
+                if m:
+                    module = m.group(1).strip('(\'")')
+                    files.update(self.include(os.path.dirname(filepath), module.strip()))
             code += line
         files[filename] = code
         return files
