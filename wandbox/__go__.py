@@ -8,7 +8,7 @@ from .utils import split_statements
 
 class GoRunner(Runner):
 
-    IMPORT_REGEX = re.compile(r'^\s*import\s+(.*?)$')
+    IMPORT_REGEX = re.compile(r'^\s*import\s+(.*?)(;|)\s*$')
     IMPORT_MULTILINE_REGEX = re.compile(r'import\s+\((.*?)\)', re.MULTILINE | re.DOTALL)
 
     def reset(self):
