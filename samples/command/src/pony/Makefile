@@ -2,6 +2,7 @@
 # Makefile
 
 PONYC:=ponyc
+IGNORE_ERROR:=-
 
 local:
 	${PONYC} simple sample sample2
@@ -13,4 +14,4 @@ clean:
 	rm -f sample1 sample21
 	
 wandbox:
-	make -C . local --no-print-directory PONYC="wandbox-ponyc run"
+	${IGNORE_ERROR} make -C . local --no-print-directory PONYC="wandbox-ponyc run"

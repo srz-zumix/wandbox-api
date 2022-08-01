@@ -2,9 +2,10 @@
 # Makefile
 
 LAZYK:=lazyk
+IGNORE_ERROR:=-
 
 local:
 	${LAZYK} sample.lazy
 
 wandbox:
-	make -C . local --no-print-directory LAZYK="wandbox-lazyk run"
+	${IGNORE_ERROR} make -C . local --no-print-directory LAZYK="wandbox-lazyk run"
