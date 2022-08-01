@@ -4,14 +4,15 @@ import os
 from .cli import CLI
 from .runner import Runner
 from .__cxx__ import CxxRunner
+from .utils import split_statements
 
 
 class NimRunner(Runner):
 
-    IMPORT_REGEX = re.compile(r'^\s*import\s*(.*?)(\s*except\s*.*|)$')
-    FROM_IMPORT_REGEX = re.compile(r'^\s*from\s*(\S*?)\s*import\s*(.*?)$')
-    C_PROC_REGEX = re.compile(r'^\s*proc.*{.*\.header\s*:\s*([\'"].*[\'"]).*}\s*$')
-    PUSH_HEADER_REGEX = re.compile(r'^\s*{\.push\s*.*header\s*:\s*([\'"].*[\'"]).*}$')
+    IMPORT_REGEX = re.compile(r'^\s*import\s*(.*?)(\s*except\s*.*|)(;|)$')
+    FROM_IMPORT_REGEX = re.compile(r'^\s*from\s*(\S*?)\s*import\s*(.*?)(;|)$')
+    C_PROC_REGEX = re.compile(r'^\s*proc.*{.*\.header\s*:\s*([\'"].*[\'"]).*}(;|)\s*$')
+    PUSH_HEADER_REGEX = re.compile(r'^\s*{\.push\s*.*header\s*:\s*([\'"].*[\'"]).*}(;|)\s*$')
 
     def __init__(self, lang, compiler, save, encoding, retry, retry_wait, prefix_chars='-'):
         super(NimRunner, self).__init__(lang, compiler, save, encoding, retry, retry_wait, prefix_chars)
@@ -25,22 +26,23 @@ class NimRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            codeline = re.sub(r'\s*#.*$', '', line)
-            m = self.IMPORT_REGEX.match(codeline)
-            if m:
-                files.update(self.get_imports(m, filepath))
-            else:
-                m = self.FROM_IMPORT_REGEX.match(codeline)
+            statements = split_statements(line, commenters="#")
+            for statement in statements:
+                m = self.IMPORT_REGEX.match(statement)
                 if m:
-                    files.update(self.get_from_imports(m, filepath))
+                    files.update(self.get_imports(m, filepath))
                 else:
-                    m = self.C_PROC_REGEX.match(codeline)
+                    m = self.FROM_IMPORT_REGEX.match(statement)
                     if m:
-                        files.update(self.get_c_header(m, filepath))
+                        files.update(self.get_from_imports(m, filepath))
                     else:
-                        m = self.PUSH_HEADER_REGEX.match(codeline)
+                        m = self.C_PROC_REGEX.match(statement)
                         if m:
                             files.update(self.get_c_header(m, filepath))
+                        else:
+                            m = self.PUSH_HEADER_REGEX.match(statement)
+                            if m:
+                                files.update(self.get_c_header(m, filepath))
             code += line
         files[filename] = code
         return files
