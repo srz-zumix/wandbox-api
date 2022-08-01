@@ -43,7 +43,7 @@ def split_statements(line, end_of_statement=";", commenters="#"):
     sl = shlex.shlex(line, posix=False)
     sl.commenters = commenters
     sl.source = None
-    sl.wordchars += "!#$%&()*+,-./:;<=>?@[\]^_`{|}~".replace(end_of_statement, '')
+    sl.wordchars += "!#$%&()*+,-./:;<=>?@[]^_{|}~".replace(end_of_statement, '')
     statements = []
     statement = []
     for s in sl:
