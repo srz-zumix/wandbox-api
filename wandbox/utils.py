@@ -40,10 +40,10 @@ def statements_join(split_command):
 
 
 def split_statements(line, end_of_statement=";", commenters="#"):
-    sl = shlex.shlex(line, posix=False, punctuation_chars=end_of_statement)
+    sl = shlex.shlex(line, posix=False)
     sl.commenters = commenters
     sl.source = None
-    sl.whitespace_split = True
+    sl.wordchars += "!#$%&()*+,-./:;<=>?@[\]^_`{|}~".replace(end_of_statement, '')
     statements = []
     statement = []
     for s in sl:
