@@ -2,6 +2,7 @@
 # Makefile
 
 SCALA=scalac
+IGNORE_ERROR:=-
 
 local:
 	${SCALA} simple/simple.scala
@@ -14,4 +15,4 @@ clean:
 	rm -f **/*.class *.class
 
 wandbox:
-	make -C . local --no-print-directory SCALA="wandbox-scalac run"
+	${IGNORE_ERROR} make -C . local --no-print-directory SCALA="wandbox-scalac run"
