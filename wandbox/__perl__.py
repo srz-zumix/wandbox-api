@@ -3,13 +3,14 @@ import os
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class PerlRunner(Runner):
 
-    REQUIRE_REGEX = re.compile(r'^\s*require\s+(.*?);$')
-    USE_LIB_REGEX = re.compile(r'^\s*use\s+lib\s+(.*?);$')
-    UNSHIFT_INC_REGEX = re.compile(r'^\s*unshift\s+@INC\s*,\s*(.*?);$')
+    REQUIRE_REGEX = re.compile(r'^\s*require\s+(.*?)(;|)\s*$')
+    USE_LIB_REGEX = re.compile(r'^\s*use\s+lib\s+(.*?)(;|)\s*$')
+    UNSHIFT_INC_REGEX = re.compile(r'^\s*unshift\s+@INC\s*,\s*(.*?)(;|)\s*$')
 
     def reset(self):
         self.required = []
@@ -19,16 +20,18 @@ class PerlRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.USE_LIB_REGEX.match(line)
-            if m:
-                self.add_incdir(filepath, m.group(1))
-            m = self.UNSHIFT_INC_REGEX.match(line)
-            if m:
-                self.add_incdir(filepath, m.group(1))
-            m = self.REQUIRE_REGEX.match(line)
-            if m:
-                module = m.group(1).strip('\'"')
-                files.update(self.require(os.path.dirname(filepath), module.strip()))
+            statements = split_statements(line, commenters="#")
+            for statement in statements:
+                m = self.USE_LIB_REGEX.match(statement)
+                if m:
+                    self.add_incdir(filepath, m.group(1))
+                m = self.UNSHIFT_INC_REGEX.match(statement)
+                if m:
+                    self.add_incdir(filepath, m.group(1))
+                m = self.REQUIRE_REGEX.match(statement)
+                if m:
+                    module = m.group(1).strip('\'"')
+                    files.update(self.require(os.path.dirname(filepath), module.strip()))
             code += line
         files[filename] = code
         return files
