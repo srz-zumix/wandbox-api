@@ -3,6 +3,7 @@ import os
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class PhpRunner(Runner):
@@ -20,19 +21,21 @@ class PhpRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.REQUIRE_INCLUDE_REGEX.match(line)
+            statements = split_statements(line, commenters="//")
             dir = os.path.dirname(filepath)
-            if m:
-                path = m.group(2).strip('\'"()')
-                files.update(self.require(dir, path.strip()))
-            else:
-                m = self.SET_INCLUDE_PATH_REGEX.match(line)
+            for statement in statements:
+                m = self.REQUIRE_INCLUDE_REGEX.match(statement)
                 if m:
-                    self.parse_include_path(dir, m.group(1))
+                    path = m.group(2).strip('\'"()')
+                    files.update(self.require(dir, path.strip()))
                 else:
-                    m = self.INIT_SET_INCLUDE_PATH_REGEX.match(line)
+                    m = self.SET_INCLUDE_PATH_REGEX.match(statement)
                     if m:
                         self.parse_include_path(dir, m.group(1))
+                    else:
+                        m = self.INIT_SET_INCLUDE_PATH_REGEX.match(statement)
+                        if m:
+                            self.parse_include_path(dir, m.group(1))
             code += line
         files[filename] = code
         return files
