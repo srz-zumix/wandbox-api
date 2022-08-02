@@ -7,8 +7,7 @@ BEGIN {
 }
 
 require test0;
-require './test1.pl';
-require test2;
+require './test1.pl'; require test2;
 
 print "Hello, Wandbox!\n";
 test0();
