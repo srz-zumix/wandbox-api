@@ -7,9 +7,10 @@ summary(fit)                             ## summary
 
 cat("All done\n")
 
-source("test1.R")
+source("test1.R"); source("test2.R")
 
 test1()
+test2()
 
 # R language references:
 #   https://cran.r-project.org/manuals.html
