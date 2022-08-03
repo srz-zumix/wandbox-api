@@ -3,11 +3,12 @@ import os
 
 from .cli import CLI
 from .runner import Runner
+from .utils import split_statements
 
 
 class RscriptRunner(Runner):
 
-    SOURCE_REGEX = re.compile(r'^\s*source\s*\((.*?)\)\s*$')
+    SOURCE_REGEX = re.compile(r'^\s*source\s*\((.*?)\)\s*(;|)\s*$')
 
     def reset(self):
         self.sourced = []
@@ -16,10 +17,12 @@ class RscriptRunner(Runner):
         files = dict()
         code = ''
         for line in file:
-            m = self.SOURCE_REGEX.match(line)
-            if m:
-                module = m.group(1).strip('(\'")')
-                files.update(self.source(os.path.dirname(filepath), module.strip()))
+            statements = split_statements(line, commenters="#")
+            for statement in statements:
+                m = self.SOURCE_REGEX.match(statement)
+                if m:
+                    module = m.group(1).strip('(\'")')
+                    files.update(self.source(os.path.dirname(filepath), module.strip()))
             code += line
         files[filename] = code
         return files
