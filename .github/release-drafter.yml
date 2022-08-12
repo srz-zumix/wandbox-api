@@ -162,7 +162,7 @@ version-resolver:
       - 'security'
   default: patch
 template: |
-  [Compare $PREVIOUS_TAG with v$RESOLVED_VERSION](https://github.com/srz-zumix/tails-of-words/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION)
+  [Compare $PREVIOUS_TAG with v$RESOLVED_VERSION](https://github.com/srz-zumix/wandbox-api/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION)
 
   ## Changes
 
