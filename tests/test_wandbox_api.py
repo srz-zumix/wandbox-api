@@ -60,23 +60,23 @@ class test_wandbox_cli(wandbox_test_base):
 
     def test_wildcard(self):
         try:
-            opt = [ '--dryrun', '--compiler=clang-11.*[!c]' ]
+            opt = [ '--dryrun', '--compiler=zig-0.9.*' ]
             opt.extend(run_cxx_options)
             self.wandbox_run(opt)
         except SystemExit as e:
             output = self.stdoout()
             eprint(output)
             self.assertEqual(e.code, 0)
-            self.assertTrue('clang-11.1.0' in output)
+            self.assertTrue('zig-0.9.1' in output)
         else:
             self.fail('SystemExit exception expected')
 
     def test_version(self):
-        opt = [ '-l=C++', '-c=clang-11.1.0', 'version' ]
+        opt = [ '-l=Zig', '-c=zig-0.9.1', 'version' ]
         self.wandbox_run(opt)
         output = self.stdoout()
         eprint(output)
-        self.assertEqual('11.1.0', output.strip())
+        self.assertEqual('0.9.1', output.strip())
 
 class test_wandbox_cxx(wandbox_test_base):
 
