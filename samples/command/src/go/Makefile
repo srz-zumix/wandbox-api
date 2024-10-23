@@ -3,7 +3,7 @@
 
 GOBUILD=GO111MODULE=off go run
 # NOTE: head version is not stable
-WANDBOX_CLI_OPTIONS:=--no-head
+WANDBOX_CLI_OPTIONS:=-c=go-1.16.3
 
 local:
 	${GOBUILD} sample.go

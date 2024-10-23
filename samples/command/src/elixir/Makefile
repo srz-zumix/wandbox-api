@@ -3,10 +3,11 @@
 
 ELIXIR:=elixir
 MIX:=mix
+IGNORE_ERROR:=-
 
 local:
 	${ELIXIR} sample.exs
 	(cd sample && ${MIX} test) 
 
 wandbox:
-	make -C . local --no-print-directory ELIXIR="wandbox-elixir run" MIX="wandbox-mix run"
+	${IGNORE_ERROR} make -C . local --no-print-directory ELIXIR="wandbox-elixir run" MIX="wandbox-mix run"
