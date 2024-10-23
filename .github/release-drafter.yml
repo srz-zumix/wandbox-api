@@ -8,47 +8,161 @@ categories:
     labels:
       - 'feature'
       - 'enhancement'
+  - title: 'Dependency'
+    labels:
+      - 'dependency'
   - title: 'Fixes'
     labels:
       - 'fix'
       - 'bug'
       - 'security'
-  - title: 'Dependencies'
-    collapse-after: 3
+  - title: 'Bash script'
     labels:
-      - 'dependencies'
-      - 'renovate'
+      - 'Bash script'
+  - title: 'C'
+    labels:
+      - 'C'
+  - title: 'C#'
+    labels:
+      - 'C#'
+  - title: 'C++'
+    labels:
+      - 'C++'
+  - title: 'CMake'
+    labels:
+      - 'CMake'
+  - title: 'CoffeeScript'
+    labels:
+      - 'CoffeeScript'
+  - title: 'CPP'
+    labels:
+      - 'CPP'
+  - title: 'Crystal'
+    labels:
+      - 'Crystal'
+  - title: 'D'
+    labels:
+      - 'D'
+  - title: 'Elixir'
+    labels:
+      - 'Elixir'
+  - title: 'Erlang'
+    labels:
+      - 'Erlang'
+  - title: 'F#'
+    labels:
+      - 'F#'
+  - title: 'Go'
+    labels:
+      - 'Go'
+  - title: 'Groovy'
+    labels:
+      - 'Groovy'
+  - title: 'Haskell'
+    labels:
+      - 'Haskell'
+  - title: 'Java'
+    labels:
+      - 'Java'
+  - title: 'JavaScript'
+    labels:
+      - 'JavaScript'
+  - title: 'Julia'
+    labels:
+      - 'Julia'
+  - title: 'Lazy K'
+    labels:
+      - 'Lazy K'
+  - title: 'Lisp'
+    labels:
+      - 'Lisp'
+  - title: 'Lua'
+    labels:
+      - 'Lua'
+  - title: 'Nim'
+    labels:
+      - 'Nim'
+  - title: 'OCaml'
+    labels:
+      - 'OCaml'
+  - title: 'OpenSSL'
+    labels:
+      - 'OpenSSL'
+  - title: 'Pascal'
+    labels:
+      - 'Pascal'
+  - title: 'Perl'
+    labels:
+      - 'Perl'
+  - title: 'PHP'
+    labels:
+      - 'PHP'
+  - title: 'Pony'
+    labels:
+      - 'Pony'
+  - title: 'Python'
+    labels:
+      - 'Python'
+  - title: 'R'
+    labels:
+      - 'R'
+  - title: 'Rill'
+    labels:
+      - 'Rill'
+  - title: 'Ruby'
+    labels:
+      - 'Ruby'
+  - title: 'Rust'
+    labels:
+      - 'Rust'
+  - title: 'Scala'
+    labels:
+      - 'Scala'
+  - title: 'SQL'
+    labels:
+      - 'SQL'
+  - title: 'Swift'
+    labels:
+      - 'Swift'
+  - title: 'TypeScript'
+    labels:
+      - 'TypeScript'
+  - title: 'Vim script'
+    labels:
+      - 'Vim script'
+  - title: 'Zig'
+    labels:
+      - 'Zig'
   - title: 'Documentation'
     labels:
       - 'document'
+      - 'documents'
       - 'documentation'
+  - title: 'Internal improvement'
+    labels:
+      - 'CI'
 exclude-labels:
-  - 'invalid'
-  - 'internal-fix'
-  - 'misc'
-  - 'ci'
+  - 'dependencies'
+  - 'renovate'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
   major:
     labels:
       - 'BREAKING CHANGE'
-      - 'major'
   minor:
     labels:
       - 'feature'
       - 'enhancement'
-      - 'minor'
+      - 'dependency'
   patch:
     labels:
-      - 'improvement'
       - 'fix'
       - 'bug'
       - 'security'
-      - 'patch'
   default: patch
 template: |
-  [Compare $PREVIOUS_TAG with v$RESOLVED_VERSION](https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION)
+  [Compare $PREVIOUS_TAG with v$RESOLVED_VERSION](https://github.com/srz-zumix/wandbox-api/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION)
 
   ## Changes
 
