@@ -14,7 +14,7 @@ for line in f:
         author_ = [x for x in re.split(r"[ =']", line) if x][1]
 f.close()
 
-test_deps = ['importlib-metadata<2,>=0.12', 'tox<4', 'tox-pyenv', 'pytest']
+test_deps = ['importlib-metadata>=0.12,<9', 'tox<4', 'tox-pyenv', 'pytest']
 
 setup(
     name = "wandbox-api"
