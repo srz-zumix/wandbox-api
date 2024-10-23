@@ -72,7 +72,7 @@ class test_wandbox_cli(wandbox_test_base):
             self.fail('SystemExit exception expected')
 
     def test_version(self):
-        opt = [ '-l=C++', '-c=zig-0.9.1', 'version' ]
+        opt = [ '-l=Zig', '-c=zig-0.9.1', 'version' ]
         self.wandbox_run(opt)
         output = self.stdoout()
         eprint(output)
