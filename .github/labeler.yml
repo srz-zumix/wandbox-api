@@ -1,124 +1,206 @@
 Bash script:
-  - 'wandbox/__bash__.py'
-  - 'samples/command/src/bash/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__bash__.py'
+      - 'samples/command/src/bash/**/*'
 C:
-  - 'wandbox/__cc__.py'
-  - 'samples/command/src/cc/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__cc__.py'
+      - 'samples/command/src/cc/**/*'
 CMake:
-  - 'wandbox/__cmake__.py'
-  - 'samples/command/src/cmake/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__cmake__.py'
+      - 'samples/command/src/cmake/**/*'
 CoffeeScript:
-  - 'wandbox/__coffee__.py'
-  - 'samples/command/src/coffee/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__coffee__.py'
+      - 'samples/command/src/coffee/**/*'
 CPP:
-  - 'wandbox/__cpp__.py'
-  - 'samples/command/src/cpp/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__cpp__.py'
+      - 'samples/command/src/cpp/**/*'
 Crystal:
-  - 'wandbox/__crystal__.py'
-  - 'samples/command/src/crystal/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__crystal__.py'
+      - 'samples/command/src/crystal/**/*'
 C#:
-  - 'wandbox/__csharp__.py'
-  - 'samples/command/src/csharp/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__csharp__.py'
+      - 'samples/command/src/csharp/**/*'
 C++:
-  - 'wandbox/__cxx__.py'
-  - 'samples/command/src/cxx/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__cxx__.py'
+      - 'samples/command/src/cxx/**/*'
 D:
-  - 'wandbox/__dmd__.py'
-  - 'wandbox/__dub__.py'
-  - 'samples/command/src/dmd/**/*'
-  - 'samples/command/src/dub/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__dmd__.py'
+      - 'wandbox/__dub__.py'
+      - 'samples/command/src/dmd/**/*'
+      - 'samples/command/src/dub/**/*'
 Elixir:
-  - 'wandbox/__elixir__.py'
-  - 'samples/command/src/elixir/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__elixir__.py'
+      - 'samples/command/src/elixir/**/*'
 Erlang:
-  - 'wandbox/__erlang__.py'
-  - 'samples/command/src/erlang/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__erlang__.py'
+      - 'samples/command/src/erlang/**/*'
 F#:
-  - 'wandbox/__fsharp__.py'
-  - 'samples/command/src/fsharp/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__fsharp__.py'
+      - 'samples/command/src/fsharp/**/*'
 Haskell:
-  - 'wandbox/__ghc__.py'
-  - 'samples/command/src/haskell/**/*'
-  - 'samples/command/src/haskell-stack/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__ghc__.py'
+      - 'samples/command/src/haskell/**/*'
+      - 'samples/command/src/haskell-stack/**/*'
 Go:
-  - 'wandbox/__go__.py'
-  - 'samples/command/src/go/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__go__.py'
+      - 'samples/command/src/go/**/*'
 Groovy:
-  - 'wandbox/__groovy__.py'
-  - 'samples/command/src/groovy/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__groovy__.py'
+      - 'samples/command/src/groovy/**/*'
 Java:
-  - 'wandbox/__java__.py'
-  - 'samples/command/src/java/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__java__.py'
+      - 'samples/command/src/java/**/*'
 JavaScript:
-  - 'wandbox/__js__.py'
-  - 'samples/command/src/js/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__js__.py'
+      - 'samples/command/src/js/**/*'
 Julia:
-  - 'wandbox/__julia__.py'
-  - 'samples/command/src/julia/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__julia__.py'
+      - 'samples/command/src/julia/**/*'
 Lazy K:
-  - 'wandbox/__lazyk__.py'
-  - 'samples/command/src/lazyk/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__lazyk__.py'
+      - 'samples/command/src/lazyk/**/*'
 Lisp:
-  - 'wandbox/__lisp__.py'
-  - 'samples/command/src/lisp/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__lisp__.py'
+      - 'samples/command/src/lisp/**/*'
 Lua:
-  - 'wandbox/__lua__.py'
-  - 'samples/command/src/lua/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__lua__.py'
+      - 'samples/command/src/lua/**/*'
 Nim:
-  - 'wandbox/__nim__.py'
-  - 'samples/command/src/nim/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__nim__.py'
+      - 'samples/command/src/nim/**/*'
 OCaml:
-  - 'wandbox/__ocaml__.py'
-  - 'samples/command/src/ocaml/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__ocaml__.py'
+      - 'samples/command/src/ocaml/**/*'
 OpenSSL:
-  - 'wandbox/__openssl__.py'
-  - 'samples/command/src/openssl/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__openssl__.py'
+      - 'samples/command/src/openssl/**/*'
 Pascal:
-  - 'wandbox/__pascal__.py'
-  - 'samples/command/src/pascal/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__pascal__.py'
+      - 'samples/command/src/pascal/**/*'
 Perl:
-  - 'wandbox/__perl__.py'
-  - 'samples/command/src/perl/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__perl__.py'
+      - 'samples/command/src/perl/**/*'
 PHP:
-  - 'wandbox/__php__.py'
-  - 'samples/command/src/php/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__php__.py'
+      - 'samples/command/src/php/**/*'
 Pony:
-  - 'wandbox/__pony__.py'
-  - 'samples/command/src/pony/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__pony__.py'
+      - 'samples/command/src/pony/**/*'
 Python:
-  - 'wandbox/__python__.py'
-  - 'samples/command/src/python/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__python__.py'
+      - 'samples/command/src/python/**/*'
 R:
-  - 'wandbox/__r__.py'
-  - 'samples/command/src/r/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__r__.py'
+      - 'samples/command/src/r/**/*'
 Rill:
-  - 'wandbox/__rill__.py'
-  - 'samples/command/src/rill/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__rill__.py'
+      - 'samples/command/src/rill/**/*'
 Ruby:
-  - 'wandbox/__ruby__.py'
-  - 'samples/command/src/ruby/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__ruby__.py'
+      - 'samples/command/src/ruby/**/*'
 Rust:
-  - 'wandbox/__rust__.py'
-  - 'samples/command/src/rust/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__rust__.py'
+      - 'samples/command/src/rust/**/*'
 Scala:
-  - 'wandbox/__scala__.py'
-  - 'samples/command/src/scala/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__scala__.py'
+      - 'samples/command/src/scala/**/*'
 SQL:
-  - 'wandbox/__sql__.py'
-  - 'samples/command/src/sql/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__sql__.py'
+      - 'samples/command/src/sql/**/*'
 Swift:
-  - 'wandbox/__swift__.py'
-  - 'samples/command/src/swift/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__swift__.py'
+      - 'samples/command/src/swift/**/*'
 TypeScript:
-  - 'wandbox/__tsc__.py'
-  - 'samples/command/src/ts/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__tsc__.py'
+      - 'samples/command/src/ts/**/*'
 Vim script:
-  - 'wandbox/__vim__.py'
-  - 'samples/command/src/vim/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__vim__.py'
+      - 'samples/command/src/vim/**/*'
 Zig:
-  - 'wandbox/__zig__.py'
-  - 'samples/command/src/zig/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'wandbox/__zig__.py'
+      - 'samples/command/src/zig/**/*'
 CI:
-  - '.github/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/**/*'
 documents:
-  - 'README.md'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'README.md'
