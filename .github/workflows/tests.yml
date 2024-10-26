@@ -11,8 +11,8 @@ jobs:
     container:
       image: python:3.8-alpine
       credentials:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        username: ${{ secrets.DOCKERHUB_USERNAME || '' }}
+        password: ${{ secrets.DOCKERHUB_TOKEN || '' }}
     steps:
     - uses: actions/checkout@v3
     - name: setup
