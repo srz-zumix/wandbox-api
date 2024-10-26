@@ -4,7 +4,7 @@
 defaut: help
 
 install: wandbox/*.py ## install self
-	python setup.py install
+	python -m pip install .
 
 install-test-deps: ## install test dependencies
 	pip install -e.[test]
