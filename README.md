@@ -2,7 +2,6 @@
 
 [![PyPI version](https://badge.fury.io/py/wandbox-api.svg)](https://badge.fury.io/py/wandbox-api)
 [![Python Versions](https://img.shields.io/pypi/pyversions/wandbox_api.svg)](https://pypi.org/project/wandbox-api/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/srz-zumix/wandbox-api.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/srz-zumix/wandbox-api/context:python)
 [![GitHub Actions](https://github.com/srz-zumix/wandbox-api/actions/workflows/main.yml/badge.svg)](https://github.com/srz-zumix/wandbox-api/actions/workflows/main.yml)
 
 [Wandbox](http://wandbox.org/) is a social compilation service.  
