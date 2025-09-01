@@ -1,5 +1,6 @@
 name: Set Label
 on:
+  - pull_request
   - pull_request_target
 
 permissions:
